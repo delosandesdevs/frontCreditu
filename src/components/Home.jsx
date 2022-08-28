@@ -10,6 +10,7 @@ function Home(props) {
 
     return (
         <div>
+            <p>pruebas desde Develop</p>
             <div>
                 {
                     data.map( e => (

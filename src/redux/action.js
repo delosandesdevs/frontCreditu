@@ -18,7 +18,7 @@ export function addTest(test){
         return fetch(`${API_URL}/test1`,{
             method : 'POST',
             body : JSON.stringify(test),
-            header : {
+            headers : {
                 'Content-Type' : 'application/json'
             }
         })

@@ -1,4 +1,4 @@
-import {API_URL,ACTION_TEST} from "./constans"
+import {API_URL,GET_TEST, ADD_TEST} from "./constans"
 
 export function actionTest() {
     return function (dispatch) {
@@ -6,9 +6,21 @@ export function actionTest() {
             .then(res => res.json())
             .then(data => {
                 dispatch({
-                    type: ACTION_TEST,
+                    type: GET_TEST,
                     payload: data
                 })
             })
+    }
+}
+
+export function addTest(test){
+    return function (dispatch){
+        return fetch(`${API_URL}/test1`,{
+            method : 'POST',
+            body : JSON.stringify(test),
+            header : {
+                'Content-Type' : 'application/json'
+            }
+        })
     }
 }

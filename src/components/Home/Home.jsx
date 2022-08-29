@@ -13,22 +13,70 @@ const Home = (props) => {
     //TESTING, NO BORRAR
     const [topthree, setTopthree] = useState([
         {
+            position: '1°',
             img: ImageTest,
             name: 'Test',
             ranking: 43
         },
         {
+            position: '2°',
             img: ImageTest,
             name: 'Test',
             ranking: 43
         },
         {
+            position: '3°',
             img: ImageTest,
             name: 'Test',
             ranking: 43
         }
     ])
-    const [topten, setTopten] = useState([])
+    ///////////DATA FALSA
+    const [topten, setTopten] = useState([
+        {
+            position: '4°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '5°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '6°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '7°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '8°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '9°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '10°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        }
+    ])
+    //////////////DATA FALSA
     const [errorThree, setErrorThree] = useState(false)
     const [errorTen, setErrorTen] = useState(false)
 
@@ -58,15 +106,13 @@ const Home = (props) => {
         <div className='home_container'>
             <div className='top-three_container'>
                 {/* {errorThree && <p>No top 3 were found</p>} */}
-                <h2>TOP 3</h2>
-                {topthree && topthree.map(p => <Player name={p.name} img={p.img} ranking={p.ranking} alt={'topthree'} key={p.ranking} />)}
+                <h2>TOP 10</h2>
+                {topthree && topthree.map(p => <Player position={p.position} name={p.name} img={p.img} ranking={p.ranking} alt={'topthree'} key={p.ranking} />)}
             </div>
-
-            {errorTen && <p>No top 10 were found</p>}
-            <ol>
-                {topten && topten.map(p => <li><Player name={p.name} img={p.img} ranking={p.ranking} alt={'topten'} key={p.ranking} /></li>)}
-            </ol>
-
+            <div className='top-ten_container'>
+                {/* {errorTen && <p>No top 10 were found</p>} */}
+                {topten && topten.map(p => <Player position={p.position} name={p.name} img={p.img} ranking={p.ranking} alt={'topten'} key={p.ranking} size={true}/>)}
+            </div>
             <hr />
         </div>
     );

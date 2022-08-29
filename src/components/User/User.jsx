@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
-import{addTest} from '../redux/action'
+import{addTest} from '../../redux/action'
 import {useDispatch} from 'react-redux'
+//import './User.scss'
 
-function User(props) {
+const User = (props) => {
     const dispatch = useDispatch()
     const [data, setData] = useState()
     
-    function changer(e){
+    const changer = (e) => {
         setData ({
             ...data,
             [e.target.name] : e.target.value

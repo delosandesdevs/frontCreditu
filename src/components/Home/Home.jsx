@@ -1,12 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import{actionTest} from '../redux/action'
+import{actionTest} from '../../redux/action'
 import {useEffect} from 'react'
 import { useState } from 'react';
-import { Player } from './Player';
-import { API_PORT } from '../redux/constans';
+import  Player from '../Player/Player';
+import { API_PORT } from '../../redux/constans';
 
-function Home(props) {
+const Home = (props) => {
     
     //TESTING, NO BORRAR
     const [topthree, setTopthree] = useState([])

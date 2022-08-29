@@ -1,8 +1,10 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { CreatePlayer } from "../CreatePlayer";
+import CreatePlayer from "../CreatePlayer/CreatePlayer";
 
 
+
+// eslint-disable-next-line testing-library/no-render-in-setup
 beforeEach(() => render(<CreatePlayer />))
 
 describe('Testing UI Create Player component', () => {
@@ -34,11 +36,11 @@ describe('Testing Form Error handlers', () => {
     test('Should not throw any alerts if the fields are filled', () => {
         const playerName = screen.getByRole('textbox')
         const status = screen.getByRole('combobox')
-        const ranking = screen.getByPlaceholderText(/ranking/i)
+        // const ranking = screen.getByPlaceholderText(/ranking/i)
         const errorHandler = screen.queryByText("All fields should be filled")
         
         userEvent.type(playerName, 'test')        
-        userEvent.type(ranking, '123')        
+        // userEvent.type(ranking, '123')        
         userEvent.selectOptions(status, "gold")
         
         

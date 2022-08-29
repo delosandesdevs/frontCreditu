@@ -1,40 +1,57 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux'
-import{actionTest} from '../../redux/action'
-import {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { actionTest } from '../../redux/action'
+import { useEffect } from 'react'
 import { useState } from 'react';
-import  Player from '../Player/Player';
+import Player from '../Player/Player';
 import { API_PORT } from '../../redux/constans';
+import ImageTest from './test.png'
 
 const Home = (props) => {
-    
+
     //TESTING, NO BORRAR
-    const [topthree, setTopthree] = useState([])
+    const [topthree, setTopthree] = useState([
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        }
+    ])
     const [topten, setTopten] = useState([])
     const [errorThree, setErrorThree] = useState(false)
-    const [errorTen, setErrorTen] = useState(false)    
-    
+    const [errorTen, setErrorTen] = useState(false)
+
     //TESTING, NO BORRAR
-    const testingTopThree = ()=>{
+    const testingTopThree = () => {
         fetch(`http://localhost:${API_PORT}/topthree`)
-        .then(data => data.json())
-        .then(res => setTopthree(res))
-        .catch(e => setErrorThree(true))
+            .then(data => data.json())
+            .then(res => setTopthree(res))
+            .catch(e => setErrorThree(true))
     }
 
     //TESTING, NO BORRAR
-    const testingTopTen = ()=>{
+    const testingTopTen = () => {
         fetch(`http://localhost:${API_PORT}/topten`)
-        .then(data => data.json())
-        .then(res => setTopten(res))
-        .catch(e => setErrorTen(true))
+            .then(data => data.json())
+            .then(res => setTopten(res))
+            .catch(e => setErrorTen(true))
     }
 
     useEffect(() => {
         //TESTING, NO BORRAR
         testingTopThree()
         testingTopTen()
-    },[])
+    }, [])
 
     const data = useSelector(state => state.test_state)
     const dispatch = useDispatch()
@@ -46,12 +63,12 @@ const Home = (props) => {
 
             <div>
                 {
-                    data.map( e => (
+                    data.map(e => (
                         <p>{e.test}</p>
                     ))
                 }
             </div>
-            <button onClick={()=>dispatch(actionTest())}>Test</button>
+            <button onClick={() => dispatch(actionTest())}>Test</button>
 
             <h1>Top 3</h1>
             <hr />

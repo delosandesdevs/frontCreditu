@@ -1,0 +1,107 @@
+.nav {    
+    width: 100%;
+    // height: 60px;    
+    background: #FEF1EE;
+    box-shadow: 0px 7px 10px -2px rgba(0, 0, 0, 0.25);
+}
+
+.nav img{
+    width: 100px;    
+}
+
+// .container-nav-button-active{    
+//     border-bottom: 3px solid #C65F72;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: row;
+//     width: 100px;
+//     padding: 6px;
+//     margin-left: 20px;    
+// }
+
+.dropdown{
+    display: flex;    
+}
+
+// .container-nav-button-active .nav-button{
+//     color: #C65F72;
+// }
+
+// .container-nav-button{            
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: row;
+//     width: 100px;
+//     padding: 6px;
+//     margin-left: 20px;
+// }
+
+
+.navw{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dropdown .profile-pic{
+    width: 40px;    
+    height: 40px;
+}
+
+.nav-button{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;    
+    font-size: 17px;    
+}
+.nav-button-drop{
+    color: black;    
+    text-decoration: none;    
+    font-size: 15px;    
+    display: flex;    
+    justify-content: center;        
+}
+
+
+
+/* From uiverse.io by @WhiteNervosa */
+.nav-button {
+    font-size: 18px;
+    color: #0F5156;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+  }
+  
+  .nav-button:focus,
+  .nav-button:hover {
+    color: rgb(39, 136, 68);
+  }
+  
+  .nav-button:focus:after,
+  .nav-button:hover:after {
+    width: 200%;
+    left: 0%;
+  }
+  
+  .nav-button:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: -50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }

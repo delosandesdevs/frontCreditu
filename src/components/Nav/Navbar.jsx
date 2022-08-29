@@ -13,10 +13,10 @@ const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
                 <div className='container-nav-button'>
-                    <NavLink to='' className="nav-button">Home</NavLink>
+                    <NavLink to='/home' className="nav-button">Home</NavLink>
                 </div>
                 <div className='container-nav-button'>
-                    <NavLink to='' className="nav-button">Create</NavLink>
+                    <NavLink to='/create-player' className="nav-button">Create Player</NavLink>
                 </div>
                 <div className='container-nav-button'>
                     <NavLink to='' className="nav-button">About</NavLink>

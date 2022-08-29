@@ -1,9 +1,10 @@
 .home_container {
     width: 100%;
+    background: #0F5156;
 }
 
 .top-three_container {
-    width: 80%;
+    width: 90%;
     height: 380px;
     margin: auto;
     display: flex;
@@ -27,4 +28,16 @@
     line-height: 80px;
     color: #FFFFFF;
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.49);
+}
+
+.top-ten_container {
+    width: 90%;
+    height: 480px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #0F5156;
 }

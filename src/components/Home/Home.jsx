@@ -28,7 +28,43 @@ const Home = (props) => {
             ranking: 43
         }
     ])
-    const [topten, setTopten] = useState([])
+    const [topten, setTopten] = useState([
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        }
+    ])
     const [errorThree, setErrorThree] = useState(false)
     const [errorTen, setErrorTen] = useState(false)
 
@@ -58,15 +94,13 @@ const Home = (props) => {
         <div className='home_container'>
             <div className='top-three_container'>
                 {/* {errorThree && <p>No top 3 were found</p>} */}
-                <h2>TOP 3</h2>
+                <h2>TOP 10</h2>
                 {topthree && topthree.map(p => <Player name={p.name} img={p.img} ranking={p.ranking} alt={'topthree'} key={p.ranking} />)}
             </div>
-
-            {errorTen && <p>No top 10 were found</p>}
-            <ol>
-                {topten && topten.map(p => <li><Player name={p.name} img={p.img} ranking={p.ranking} alt={'topten'} key={p.ranking} /></li>)}
-            </ol>
-
+            <div className='top-ten_container'>
+                {/* {errorTen && <p>No top 10 were found</p>} */}
+                {topten && topten.map(p => <Player name={p.name} img={p.img} ranking={p.ranking} alt={'topten'} key={p.ranking} size={true}/>)}
+            </div>
             <hr />
         </div>
     );

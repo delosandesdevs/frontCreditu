@@ -1,0 +1,30 @@
+.home_container {
+    width: 100%;
+}
+
+.top-three_container {
+    width: 80%;
+    height: 380px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(180deg, #C65F72 0%, #2A855A 50%, #0F5156 100%);
+    border-radius: 7px;
+    position: relative;
+}
+
+.top-three_container h2 {
+    position: absolute;
+    top: 15px;
+    margin: auto;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 53.3333px;
+    line-height: 80px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.49);
+}

@@ -53,25 +53,8 @@ const Home = (props) => {
         testingTopTen()
     }, [])
 
-    const data = useSelector(state => state.test_state)
-    const dispatch = useDispatch()
-
     return (
         <div>
-
-            <p>desde PRE-PRODUCTION</p>
-
-            <div>
-                {
-                    data.map(e => (
-                        <p>{e.test}</p>
-                    ))
-                }
-            </div>
-            <button onClick={() => dispatch(actionTest())}>Test</button>
-
-            <h1>Top 3</h1>
-            <hr />
             {errorThree && <p>No top 3 were found</p>}
             <ol>
                 {topthree && topthree.map(p => <li><Player name={p.name} img={p.img} ranking={p.ranking} alt={'topthree'} key={p.ranking} /></li>)}

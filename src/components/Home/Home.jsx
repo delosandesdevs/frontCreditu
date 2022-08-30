@@ -14,6 +14,8 @@ import config from '../Chatbot/Chatbot/config';
 import MessageParser from '../Chatbot/Chatbot/MessageParser';
 import ActionProvider from '../Chatbot/Chatbot/actionProvider';
 import TopPlayers from '../TopPlayers/TopPlayers';
+import { API_PORT } from '../../redux/constans'
+import ImageTest from './test.png'
 
 const Home = (props) => {
 
@@ -22,6 +24,95 @@ const Home = (props) => {
     }, [])
 
     const [showBot, setShowBot] = useState(true)
+    const [errorThree, setErrorThree] = useState(false)
+    const [errorTen, setErrorTen] = useState(false)
+    const [topthree, setTopthree] = useState([
+        {
+            position: '1°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '2°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '3°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        }
+    ])
+    ///////////DATA FALSA
+    const [topten, setTopten] = useState([
+        {
+            position: '4°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '5°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '6°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '7°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '8°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '9°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        },
+        {
+            position: '10°',
+            img: ImageTest,
+            name: 'Test',
+            ranking: 43
+        }
+    ])
+    //////////////DATA FALSA
+    //TESTING, NO BORRAR
+    const testingTopThree = () => {
+        fetch(`http://localhost:${API_PORT}/topthree`)
+            .then(data => data.json())
+            .then(res => setTopthree(res))
+            .catch(e => setErrorThree(true))
+    }
+
+    //TESTING, NO BORRAR
+    const testingTopTen = () => {
+        fetch(`http://localhost:${API_PORT}/topten`)
+            .then(data => data.json())
+            .then(res => setTopten(res))
+            .catch(e => setErrorTen(true))
+    }
+
+    useEffect(() => {
+        //TESTING, NO BORRAR
+        testingTopThree()
+        testingTopTen()
+    }, [])
 
     function showMeTheBot() {
         const bot = document.getElementById('bot')
@@ -45,7 +136,7 @@ const Home = (props) => {
                 <img data-aos="fade" data-aos-duration={3000} src={homeLogo} alt="home_logo_img" id='home-logo' />
             </div>
             <img src={introImage} alt="home_img" id="home-wallpaper" />
-            <TopPlayers />
+            <TopPlayers topthree={topthree} topten={topten}/>
             <div className="chart">
                 <PieChart />
             </div>

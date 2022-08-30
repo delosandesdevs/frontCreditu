@@ -1,0 +1,14 @@
+.bot-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;        
+    background: transparent;
+    background-image: url('../../../assets/miscellaneous/chatlogo.png');
+    background-position: center;
+    background-size: cover;
+    margin: 10px;
+}

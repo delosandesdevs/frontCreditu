@@ -11,13 +11,19 @@ import homeLogo from '../../assets/miscellaneous/home_logo.png'
 import './Home.scss'
 import PieChart from '../Charts/PieChart';
 import Aos from 'aos'
+import { Bot } from '../Chatbot/Chatbot'
 import 'aos/dist/aos.css'
+import config from '../Chatbot/Chatbot/config';
+import MessageParser from '../Chatbot/Chatbot/MessageParser';
+import ActionProvider from '../Chatbot/Chatbot/actionProvider';
 
 const Home = (props) => {
 
     useEffect(() => {
         Aos.init({ duration: 1000, once: true })
       }, [])
+
+      const [showBot, setShowBot] = useState(true)
 
     //TESTING, NO BORRAR
     const [topthree, setTopthree] = useState([
@@ -111,6 +117,22 @@ const Home = (props) => {
         testingTopTen()
     }, [])
 
+    function showMeTheBot() {
+        const bot = document.getElementById('bot')
+        // eslint-disable-next-line 
+        { showBot ? setShowBot(false) : setShowBot(true) }
+        if (showBot) {
+          // bot.setAttribute('data-aos','fade-right');
+          bot.classList.add('showBot')
+        //   setAnimated(false)
+        }
+        else {
+          // bot.setAttribute('data-aos','');
+          bot.classList.remove('showBot')
+        //   setAnimated(true)
+        }
+      }
+
     return (
         <div className='home_container'>
             <div className="logo-location">
@@ -131,6 +153,24 @@ const Home = (props) => {
             <div className="chart">
                 <PieChart />
             </div>
+
+
+
+            <div className="bot" id='bot' >
+
+          <Bot
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+          />
+        </div>
+
+        <button className={`chatbot chat-button`} onClick={showMeTheBot}>
+          <span className="material-symbols-outlined">
+            forest
+          </span>
+          ForestChat
+        </button>
         </div>
     );
 }

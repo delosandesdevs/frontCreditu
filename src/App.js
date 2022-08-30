@@ -6,6 +6,7 @@ import User from './components/User/User'
 import Navbar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer'
 import CreatePlayer from './components/CreatePlayer/CreatePlayer';
+import Ranking from './components/Ranking/Ranking';
 
 function App() {
   return <>
@@ -14,6 +15,7 @@ function App() {
       <Route path='/home' element={<Home />} exact />
       <Route path='/user' element={<User />} />
       <Route path='/create-player' element={<CreatePlayer />} />
+      <Route path='/ranking' element={<Ranking />} />
     </Routes>
     
   <Footer />

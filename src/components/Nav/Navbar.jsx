@@ -19,6 +19,9 @@ const Navbar = () => {
                     <NavLink to='/create-player' className="nav-button">Create Player</NavLink>
                 </div>
                 <div className='container-nav-button'>
+                    <NavLink to='/ranking' className="nav-button">Ranking</NavLink>
+                </div>
+                <div className='container-nav-button'>
                     <NavLink to='' className="nav-button">About</NavLink>
                 </div>
 

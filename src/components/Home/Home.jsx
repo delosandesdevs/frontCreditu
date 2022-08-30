@@ -16,6 +16,8 @@ import ActionProvider from '../Chatbot/Chatbot/actionProvider';
 import TopPlayers from '../TopPlayers/TopPlayers';
 import { API_PORT } from '../../redux/constans'
 import ImageTest from './test.png'
+import Birds from './Birds/Birds';
+import Button from '../Chatbot/Button/Button';
 
 const Home = (props) => {
 
@@ -132,6 +134,9 @@ const Home = (props) => {
 
     return (
         <div className='home_container'>
+            
+            <Birds />
+
             <div className="logo-location">
                 <img data-aos="fade" data-aos-duration={3000} src={homeLogo} alt="home_logo_img" id='home-logo' />
             </div>
@@ -148,13 +153,7 @@ const Home = (props) => {
                     actionProvider={ActionProvider}
                 />
             </div>
-
-            <button className={`chatbot chat-button`} onClick={showMeTheBot}>
-                <span className="material-symbols-outlined">
-                    forest
-                </span>
-                ForestChat
-            </button>
+            <Button showMeTheBot={showMeTheBot} />
         </div>
     );
 }

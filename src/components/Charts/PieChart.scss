@@ -1,0 +1,21 @@
+.pie-chart{
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    text-align: center;
+}
+
+.pie-chart p{
+    color: rgb(192, 192, 192);
+}
+
+.pie-chart h3{
+    color: white;
+}
+
+.shadow{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}

@@ -6,9 +6,18 @@ import { useState } from 'react';
 import Player from '../Player/Player';
 import { API_PORT } from '../../redux/constans';
 import ImageTest from './test.png'
+import introImage from '../../assets/miscellaneous/home_wallpaper.png'
+import homeLogo from '../../assets/miscellaneous/home_logo.png'
 import './Home.scss'
+import PieChart from '../Charts/PieChart';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Home = (props) => {
+
+    useEffect(() => {
+        Aos.init({ duration: 1000, once: true })
+      }, [])
 
     //TESTING, NO BORRAR
     const [topthree, setTopthree] = useState([
@@ -104,6 +113,10 @@ const Home = (props) => {
 
     return (
         <div className='home_container'>
+            <div className="logo-location">
+                <img data-aos="fade" data-aos-duration={3000} src={homeLogo} alt="home_logo_img" id='home-logo' />
+            </div>
+            <img src={introImage} alt="home_img" id="home-wallpaper" />
             <div className='top-three_container'>
                 {/* {errorThree && <p>No top 3 were found</p>} */}
                 <h2>TOP 10</h2>
@@ -114,6 +127,10 @@ const Home = (props) => {
                 {topten && topten.map(p => <Player position={p.position} name={p.name} img={p.img} ranking={p.ranking} alt={'topten'} key={p.ranking} size={true}/>)}
             </div>
             <hr />
+
+            <div className="chart">
+                <PieChart />
+            </div>
         </div>
     );
 }

@@ -40,6 +40,7 @@ const CreatePlayer = () => {
 
     useEffect(() => {
         errorhandler()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [player])
 
     return <>

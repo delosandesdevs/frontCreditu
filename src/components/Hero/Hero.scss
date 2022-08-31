@@ -1,0 +1,19 @@
+.logo-location{
+    display: flex;
+    justify-content: center;
+    width: 100%;    
+    align-items: center;
+}
+
+#home-logo{
+    width: 300px;
+    position: absolute;    
+    margin-top: 100px;
+    filter: drop-shadow(0px 10px 5px rgba(34, 34, 34, 0.39));
+}
+
+#home-wallpaper{
+    width: 100%;
+    z-index: 1;
+    // position: absolute;
+}

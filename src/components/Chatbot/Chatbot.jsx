@@ -1,16 +1,20 @@
-import Chatbot from "react-chatbot-kit";
+import Chatbot from "react-chatbot-kit"
+import config from "./Chatbot/config"
+import MessageParser from "./Chatbot/MessageParser"
+import ActionProvider from "./Chatbot/actionProvider"
 import 'react-chatbot-kit/build/main.css'
-import config from "./Chatbot/config";
-import MessageParser from "./Chatbot/MessageParser";
-import ActionProvider from "./Chatbot/actionProvider";
 import './Chatbot.scss'
 
-export function Bot(){
-    return <div className='' >
-       <Chatbot
+const Bot = () => {
+  return (
+    <>
+      <Chatbot
         config={config}
         messageParser={MessageParser}
         actionProvider={ActionProvider}
       />
-    </div>
+    </>
+  )
 }
+
+export default Bot

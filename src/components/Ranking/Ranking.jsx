@@ -1,26 +1,50 @@
 import './Ranking.scss'
-import gold from '../../assets/miscellaneous/oro.png'
-import silver from '../../assets/miscellaneous/plata.png'
-import bronze from '../../assets/miscellaneous/bronce.png'
-import leftArrow from '../../assets/miscellaneous/arrow.png'
-import rightArrow from '../../assets/miscellaneous/arrow_derecha.png'
+import RankingCard from './RankingCard/RankingCard'
+import Pagination from '../Pagination/Pagination'
+import Position from '../Position/Position'
+import { useState } from 'react'
 
 
 const Ranking = () => {
+
+    const [search, setSearch] = useState('')
+    const [fakeRanking, setFakeRanking] = useState([
+        {position:'1' , playername:'Juano', status:'gold', score:'9000'},
+        {position:'2' , playername:'Giancin', status:'silver', score:'5000'},
+        {position:'3' , playername:'Rodra', status:'bronze', score:'2000'}
+    ])
+
+    const handleSearchPlayer = (e) => {
+        e.preventDefault()
+        const filtered = fakeRanking.filter(p => p.playername.toLowerCase().includes(search))
+        if(search!=='')
+        setFakeRanking(filtered)        
+        else
+        setFakeRanking([{position:'1' , playername:'Juano', status:'gold', score:'9000'},
+        {position:'2' , playername:'Giancin', status:'silver', score:'5000'},
+        {position:'3' , playername:'Rodra', status:'bronze', score:'2000'}])
+
+    }
+
+    const fillSearch = (e) => {
+        setSearch(e.target.value)
+    }
+    
+
     return <div className="ranking">
-        <form className='ranking-search'>
-            <input type="text" id='player' placeholder='Ingrese player a buscar' />
+        <form className='ranking-search' onSubmit={handleSearchPlayer}>
+            <label htmlFor="player" hidden>Player Name</label>
+            <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} />
             <button className='btn btn-ff'>Buscar</button>
         </form>
 
         <div className="ranking-table ">
-        <table class="table table-borderless table-striped ranking-t">
+        <table className="table table-borderless table-striped ranking-t">
             <thead className='ranking-header'>
                 <tr>
                 <th scope="col">
                     <div id='v-align'>
-                    <span class="material-symbols-outlined">arrow_downward</span>Puesto
-
+                        <span className="material-symbols-outlined">arrow_downward</span>Puesto
                     </div>
                     </th>
                 <th scope="col">Nombre</th>
@@ -29,41 +53,21 @@ const Ranking = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td><img src={gold} alt="trophy_gold_icon" className='ranking-status' /></td>
-                <td>9000</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td><img src={silver} alt="trophy_gold_icon" className='ranking-status' /></td>
-                    <td>5211</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Frank</td>
-                    <td><img src={bronze} alt="trophy_gold_icon" className='ranking-status' /></td>
-                    <td>666</td>
-                </tr>
-               
+                {fakeRanking && fakeRanking.map(p => {
+                    return <RankingCard 
+                                position={p.position} 
+                                playername={p.playername} 
+                                status={p.status} 
+                                score={p.score}
+                                key={p.playername}
+                                 />
+                })}                
             </tbody>
-            </table>
-        
+            </table>        
 
-            <div className="pagination">
-                <div className='pagination-button'>
-                    <img src={leftArrow} alt="left-arrow-img" className='ranking-arrow' />
-                    <span>Anterior</span>
-                </div>
+            <Pagination />
 
-                <div className='pagination-button'>
-                    <span>Siguiente</span>
-                    <img src={rightArrow} alt="left-arrow-img" className='ranking-arrow' />
-                </div>
-                
-            </div>
+            <Position />
         </div>
     </div>
 }

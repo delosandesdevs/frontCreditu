@@ -13,16 +13,16 @@ const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
                 <div className='container-nav-button'>
-                    <NavLink to='/home' className="nav-button">Home</NavLink>
+                    <NavLink to='/home' className="nav-button">Inicio</NavLink>
                 </div>
                 <div className='container-nav-button'>
-                    <NavLink to='/create-player' className="nav-button">Create Player</NavLink>
+                    <NavLink to='/create-player' className="nav-button">Crear Player</NavLink>
                 </div>
                 <div className='container-nav-button'>
                     <NavLink to='/ranking' className="nav-button">Ranking</NavLink>
                 </div>
                 <div className='container-nav-button'>
-                    <NavLink to='' className="nav-button">About</NavLink>
+                    <NavLink to='' className="nav-button">Acerca de</NavLink>
                 </div>
 
 
@@ -31,11 +31,16 @@ const Navbar = () => {
                     <div className="dropdown">
                         <img src={profile} alt="profile-avatar" className='profile-pic' />
                         <button className="btn dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
+                            Perfil
                         </button>
                         <ul className="dropdown-menu">
-                            <NavLink className='nav-button-drop' to=''>My Profile</NavLink>
-                        </ul>
+                            <li>
+                                <NavLink className='nav-button-drop' to=''>Mi Perfil</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className='nav-button-drop' to=''>Logout</NavLink>
+                            </li>
+                        </ul>                        
                     </div>                    
                 </div>
             </div>

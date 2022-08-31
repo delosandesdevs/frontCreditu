@@ -31,7 +31,7 @@ const Ranking = () => {
     }
     
 
-    return <div className="ranking">
+    return <div className="tree-wallpaper">
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
             <label htmlFor="player" hidden>Player Name</label>
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} />
@@ -66,8 +66,7 @@ const Ranking = () => {
             </table>        
 
             <Pagination />
-
-            <Position />
+            <Position toBeUsed={'ranking'} />
         </div>
     </div>
 }

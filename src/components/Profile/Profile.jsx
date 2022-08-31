@@ -1,0 +1,24 @@
+import Avatar from "../Avatar/Avatar";
+import Position from "../Position/Position";
+import Gallery from "./Gallery/Gallery";
+import './Profile.scss'
+import Upload from "./UploadImg/Upload";
+
+const Profile = () => {
+    return <div className="tree-wallpaper">
+        <div className="profile-container mb-5">
+            
+            <div className="profile-info ">
+                <Avatar pic={1} displayName={'Juano'} />
+                <Position toBeUsed={'profile'} />
+            </div>
+        </div>
+
+        <div className="gallery-section pb-5">
+            <Upload />
+            <Gallery />
+        </div>
+    </div>
+}
+
+export default Profile;

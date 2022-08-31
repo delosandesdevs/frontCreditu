@@ -11,7 +11,7 @@ const RankingCard = ({position, playername, status, score}) => {
     }
 
     return  <tr>
-    <th scope="row">{position}</th>
+    <th scope="row" style={{textAlign:"center"}}>{position}</th>
     <td data-testid={'testplayer'}>{playername}</td>
     <td>{setImage()}</td>
     <td>{score}</td>

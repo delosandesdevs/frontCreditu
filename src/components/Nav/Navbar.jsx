@@ -1,7 +1,7 @@
 import './Navbar.scss'
 import logo from '../../assets/miscellaneous/logo.png'
-import { NavLink } from 'react-router-dom'
 import profile from '../../assets/avatars/profile.png'
+import NavLinkCmp from './NavLink/NavLinkCmp'
 
 const Navbar = () => {
     return <div className='nav navbar navbar-expand-lg'>
@@ -12,22 +12,11 @@ const Navbar = () => {
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-                <div className='container-nav-button'>
-                    <NavLink to='/home' className="nav-button">Inicio</NavLink>
-                </div>
-                <div className='container-nav-button'>
-                    <NavLink to='/create-player' className="nav-button">Crear Player</NavLink>
-                </div>
-                <div className='container-nav-button'>
-                    <NavLink to='/ranking' className="nav-button">Ranking</NavLink>
-                </div>
-                <div className='container-nav-button'>
-                    <NavLink to='' className="nav-button">Acerca de</NavLink>
-                </div>
-
-
-
-                <div className=''>
+            <NavLinkCmp path={'home'} title={'Inicio'} />
+            <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+            <NavLinkCmp path={'ranking'} title={'Ranking'} />
+            <NavLinkCmp path={'about'} title={'Acerca de'} />                    
+                <div>
                     <div className="dropdown">
                         <img src={profile} alt="profile-avatar" className='profile-pic' />
                         <button className="btn dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,10 +24,10 @@ const Navbar = () => {
                         </button>
                         <ul className="dropdown-menu">
                             <li>
-                                <NavLink className='nav-button-drop' to=''>Mi Perfil</NavLink>
+                                <NavLinkCmp path={'profile'} title={'Perfil'} />                    
                             </li>
                             <li>
-                                <NavLink className='nav-button-drop' to=''>Logout</NavLink>
+                                Logout
                             </li>
                         </ul>                        
                     </div>                    

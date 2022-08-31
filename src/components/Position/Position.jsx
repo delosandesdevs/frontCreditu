@@ -1,10 +1,12 @@
 import whiteLogo from '../../assets/miscellaneous/logo_white.png'
 import CurrentPosition from './CurrentPosition';
 import './Position.scss'
-const Position = () => {
+const Position = ({toBeUsed}) => {
     return <div>
         <div className="position">
-            <h3 id="position-title">Tu puesto en</h3>
+            <h3 id="position-title">
+                {(toBeUsed === 'ranking') ? 'Tu ranking en' : (toBeUsed === 'profile') ? 'Tu perfil en' : null}                            
+            </h3>
             <img src={whiteLogo} alt="white_icon" id='position-logo' />
         </div>
 

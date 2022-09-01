@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import './CreatePlayer.scss'
 import defaultAvatar from '../../assets/avatars/default.png'
+import 'animate.css';
 
 const CreatePlayer = () => {
 

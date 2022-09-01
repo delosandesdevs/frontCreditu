@@ -11,3 +11,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.tree-wallpaper{
+    background-image: url('./assets/miscellaneous/footer-trees2.png');
+    background-position: bottom;
+    background-size: cover;    
+}

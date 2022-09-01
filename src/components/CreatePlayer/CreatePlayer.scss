@@ -98,20 +98,7 @@
     background-color: #FE9C84;
    }
    
-   .create-player-submit::before {
-    content: '';
-    width: 0;
-    height: 3em;
-    
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
-    transition: .5s ease;
-    display: block;
-    z-index: -1;
-   }
-   
-   .create-player-submit:hover::before {
-    width: 100%;
+   .create-player-submit:hover{
+    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
    }

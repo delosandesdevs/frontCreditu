@@ -1,9 +1,3 @@
-.ranking{
-    background-image: url('../../assets/miscellaneous/footer-trees2.png');
-    background-position: bottom;
-    background-size: cover;
-}
-
 .btn-ff{
     background-color: #FE9C84;
     color: black;
@@ -51,7 +45,7 @@
 
 .ranking th, td{
     color: white;
-    text-align: center;
+    text-align: center;     
     padding: 20px;
     cursor:default;
     font-size: 20px;
@@ -62,7 +56,8 @@
 .ranking-header{
     background: linear-gradient(90deg, #C65F72 0%, #2A855A 50%, #0F5156 100%);
     border-radius: 0px 5px 5px 0px;
-    height: 50px;        
+    height: 50px;   
+    text-align: center;     
 }
 
 .ranking tr:hover{
@@ -83,7 +78,7 @@
 #v-align{
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;        
 }
 
 .pagination{

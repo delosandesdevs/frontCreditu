@@ -40,9 +40,9 @@ const About = () => {
                 <div className='about-team'>
                     <h1 className='about-team-title'>FREE FOREST TEAM</h1>
                     <div className='about-team-avatar'>
-                    <Avatar pic={'juano'} displayName={'Juano'} />
                     <Avatar pic={'rami'} displayName={'Rami'} />
                     <Avatar pic={'gian'} displayName={'Gian'} />
+                    <Avatar pic={'juano'} displayName={'Juano'} />
                     <Avatar pic={'rodri'} displayName={'Rodri'} />
                     <Avatar pic={'flor'} displayName={'Flor'} />                    
                     </div>

@@ -2,6 +2,7 @@ import threeLogo from '../../assets/miscellaneous/three_white.png'
 import aboutLogo from '../../assets/miscellaneous/logo_white.png'
 import aboutTeam from '../../assets/avatars/profile.png'
 import './About.scss'
+import Avatar from '../Avatar/Avatar'
 
 const About = () => {
 
@@ -39,18 +40,11 @@ const About = () => {
                 <div className='about-team'>
                     <h1 className='about-team-title'>FREE FOREST TEAM</h1>
                     <div className='about-team-avatar'>
-                        {
-                            team.map((a, i) => {
-                                return (
-                                    <div key={i} className='avatar'>
-                                        <div className='avatar-img'>
-                                            <img src={aboutTeam} />
-                                        </div>
-                                        <p>{a}</p>
-                                    </div>
-                                )
-                            })
-                        }
+                    <Avatar pic={'rami'} displayName={'Rami'} />
+                    <Avatar pic={'gian'} displayName={'Gian'} />
+                    <Avatar pic={'juano'} displayName={'Juano'} />
+                    <Avatar pic={'rodri'} displayName={'Rodri'} />
+                    <Avatar pic={'flor'} displayName={'Flor'} />                    
                     </div>
                 </div>
             </div>

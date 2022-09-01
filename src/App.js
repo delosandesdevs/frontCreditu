@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer'
 import CreatePlayer from './components/CreatePlayer/CreatePlayer';
 import Ranking from './components/Ranking/Ranking';
 import Profile from './components/Profile/Profile';
+import About from './components/About/About';
 
 function App() {
   return <>
@@ -18,6 +19,7 @@ function App() {
       <Route path='/create-player' element={<CreatePlayer />} />
       <Route path='/ranking' element={<Ranking />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path='/about' element={<About />} />
     </Routes>
     
   <Footer />

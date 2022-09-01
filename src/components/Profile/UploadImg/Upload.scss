@@ -1,0 +1,16 @@
+.upload{    
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.upload img{
+    width: 200px;  
+    cursor: pointer;  
+}
+
+.upload button{
+    background-color: #FECF78;
+    font-weight: bold;    
+    padding: 10px;
+}

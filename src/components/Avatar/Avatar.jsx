@@ -17,57 +17,46 @@ import flor from '../../assets/avatars/flor.png'
 import './Avatar.scss'
 
 
-const Avatar = ({pic, displayName}) => {
-    
-    // useEffect(() => {console.log('name',name); randomName()},[])
+const Avatar = ({ pic, displayName }) => {
 
     const randomName = () => {
-        
-        if(typeof pic === 'number'){
-                        
-            switch (pic) {
-                case 1: 
-                    return avatar1
-                case 2: 
-                    return avatar2
-                case 3: 
-                    return avatar3
-                case 4: 
-                    return avatar4
-                case 5: 
-                    return avatar5
-                case 6: 
-                    return avatar6
-                case 7: 
-                    return avatar7
-                case 8: 
-                    return avatar8
-                case 9: 
-                    return avatar9
-                case 10: 
-                    return avatar10
-            
-                default:
-                    return avatar6;
-            }
-
-        }
 
         switch (pic) {
-            case 'juano': 
+            case '1':
+                return avatar1
+            case '2':
+                return avatar2
+            case '3':
+                return avatar3
+            case '4':
+                return avatar4
+            case '5':
+                return avatar5
+            case '6':
+                return avatar6
+            case '7':
+                return avatar7
+            case '8':
+                return avatar8
+            case '9':
+                return avatar9
+            case '10':
+                return avatar10
+
+            case 'juano':
                 return juano
-            case 'flor': 
+            case 'flor':
                 return flor
-            case 'rami': 
+            case 'rami':
                 return rami;
-            case 'rodri': 
+            case 'rodri':
                 return rodri
-            case 'gian': 
-                return gian    
+            case 'gian':
+                return gian
             default:
-                return avatar5    
+                return avatar5
+        }
     }
-}
 
     return <div className="avatar">
         <img src={randomName()} alt={`${displayName}_img`} className='avatar-img glass-effect' />

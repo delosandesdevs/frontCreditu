@@ -14,7 +14,7 @@ function App() {
   return <>
   <Navbar />
     <Routes>
-      <Route path='/home' element={<Home />} exact />
+      <Route path='/' element={<Home />} exact />
       <Route path='/user' element={<User />} />
       <Route path='/create-player' element={<CreatePlayer />} />
       <Route path='/ranking' element={<Ranking />} />

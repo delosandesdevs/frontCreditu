@@ -45,6 +45,11 @@
     padding: 20px;
 }
 
+.avatar-movement{
+    animation: flipInX;
+    animation-duration: 1.5s;
+}
+
 .cmp-create-player-avatar-background{    
     display: flex;
     justify-content: center;

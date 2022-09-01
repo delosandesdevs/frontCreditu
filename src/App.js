@@ -7,6 +7,7 @@ import Navbar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer'
 import CreatePlayer from './components/CreatePlayer/CreatePlayer';
 import Ranking from './components/Ranking/Ranking';
+import About from './components/About/About';
 
 function App() {
   return <>
@@ -16,6 +17,7 @@ function App() {
       <Route path='/user' element={<User />} />
       <Route path='/create-player' element={<CreatePlayer />} />
       <Route path='/ranking' element={<Ranking />} />
+      <Route path='/about' element={<About />} />
     </Routes>
     
   <Footer />

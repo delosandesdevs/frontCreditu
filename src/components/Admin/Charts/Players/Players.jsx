@@ -44,7 +44,7 @@ const Players = () => {
       const allPlayers = useSelector(store => store.allPlayers)
 
       useEffect(() => {
-        dispatch(getAllPlayers())
+        // dispatch(getAllPlayers())
       },[])
 
       useEffect(() => {

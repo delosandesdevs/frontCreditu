@@ -27,7 +27,7 @@ export function addTest(test){
 
 export function getAllPlayers(){
     return function(dispatch){
-        return fetch(`http://localhost:8080/players`)
+        return fetch(`http://locaslhost:8080/players`)
         .then(data => data.json())
         .then(res => {
             console.log('action creator allplayers', res)

@@ -1,3 +1,4 @@
+export const GET_ALL_PLAYERS = 'GET_ALL_PLAYERS'
 export const GET_TEST = 'GET_TEST'
 export const ADD_TEST = 'ADD_TEST'
 // export const API_URL = 'http://localhost:8080'

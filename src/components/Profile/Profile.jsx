@@ -1,3 +1,4 @@
+import Admin from "../Admin/Admin";
 import Avatar from "../Avatar/Avatar";
 import Position from "../Position/Position";
 import Gallery from "./Gallery/Gallery";
@@ -12,6 +13,12 @@ const Profile = () => {
                 <Avatar pic={1} displayName={'Juano'} />
                 <Position toBeUsed={'profile'} />
             </div>
+        </div>        
+        <Admin />
+        <br />
+
+        <div className="gallery-title">
+            <h3>Subí fotografías de tus FreeTrees!</h3>
         </div>
 
         <div className="gallery-section pb-5">

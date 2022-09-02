@@ -112,7 +112,9 @@ const Home = () => {
 
     return (
         <div className='home_container'>
-            <Hero />
+            <div className="mt-5">
+                <Hero />
+            </div>
             <TopPlayers topthree={topthree} topten={topten} />
             <PieChart />
             <ChatbotContainer />

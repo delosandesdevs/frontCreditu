@@ -16,6 +16,7 @@ const Hero = () => {
                 <img data-aos="fade" data-aos-duration={3000} src={homeLogo} alt="home_logo_img" id='home-logo' />
             </div>
                 <img src={introImage} alt="home_img" id="home-wallpaper" />
+            
             <div className="scroll">
                 <div class="scrolldown">
                     <div class="chevrons">

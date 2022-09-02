@@ -16,7 +16,9 @@ import Users from './components/Admin/Charts/Users/Users';
 
 function App() {
   return <>
-  <Navbar />
+  <div style={{marginBottom:"70px"}}>
+    <Navbar />
+  </div>
     <Routes>
       <Route path='/' element={<Home />} exact />
       <Route path='/user' element={<User />} />

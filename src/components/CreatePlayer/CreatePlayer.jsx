@@ -49,7 +49,7 @@ const CreatePlayer = () => {
     return (
         <div className="create-player">
             <div className="banner-title">
-                <h1>Usa la imaginación y crea tu jugador</h1>
+                <h1>Usa la imaginación y crea tu Player</h1>
             </div>
 
             <div className="cmp-create-player">
@@ -62,6 +62,7 @@ const CreatePlayer = () => {
                             <Avatar pic={player.avatar} displayName={''} />
                         </div>
                     }
+                    <span>{player.name}</span>
                     </div>
                     <span id="cmp-create-player-span">SELECCIONÁ TU AVATAR</span>
                 </div>
@@ -69,8 +70,8 @@ const CreatePlayer = () => {
                 <div className="cmp-create-player-form">
 
                     <div className="create-player-form-field">
-                        <label className="cmp-create-player-label" htmlFor="name">Nombre jugador</label>
-                        <input type="text" placeholder="Enter your player name here" onChange={handlePlayer} name="name" id="name" />
+                        <label className="cmp-create-player-label" htmlFor="name">Nombre Player</label>
+                        <input type="text" placeholder="Enter your player name here" onChange={handlePlayer} name="name" id="name" maxLength={16} />
                     </div>
 
                     <div className="create-player-form-field">
@@ -87,6 +88,9 @@ const CreatePlayer = () => {
 
                     {error && <p style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>All fields should be filled</p>}
                 </div>
+            </div>
+            <div id='create-player-text'>
+                <h4>Una vez que crees tu Player, no podras crear otro, con lo cual piensa mucho tu nombre y avatar!</h4>
             </div>
         </div>
     )

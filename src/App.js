@@ -33,7 +33,7 @@ function App() {
       </Route>
       <Route path='/about' element={<About />} />
     </Routes>
-    <ChatbotContainer />
+    <ChatbotContainer />    
   <Footer />
   </>
 }

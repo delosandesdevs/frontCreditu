@@ -1,6 +1,10 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
 .chart{    
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -24,4 +28,31 @@
 
 .shadow{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+#chart-section{
+    
+    @include respond-to('medium') {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+    }
+}
+
+#chart-section h4{
+    
+    text-align: right;
+    font-size: 40px;
+    background: -webkit-linear-gradient(#eee, rgb(101, 209, 101));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.circular-chart{
+    width: 30%;
+}
+
+#chart-oxigen-text{
+    width: 100px;
 }

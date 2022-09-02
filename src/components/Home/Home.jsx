@@ -10,7 +10,7 @@ import TopPlayers from '../TopPlayers/TopPlayers';
 import { API_PORT } from '../../redux/constans'
 import ImageTest from './test.png'
 import Hero from '../Hero/Hero';
-import ChatbotContainer from '../Chatbot/ChatbotContainer';
+// import ChatbotContainer from '../Chatbot/ChatbotContainer';
 import 'aos/dist/aos.css'
 
 const Home = () => {
@@ -112,12 +112,11 @@ const Home = () => {
 
     return (
         <div className='home_container'>
-            <div className="mt-5">
+            <div style={{backgroundColor:"white"}}>
                 <Hero />
             </div>
             <TopPlayers topthree={topthree} topten={topten} />
             <PieChart />
-            <ChatbotContainer />
         </div>
     );
 }

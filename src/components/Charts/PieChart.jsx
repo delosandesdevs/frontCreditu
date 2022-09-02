@@ -44,14 +44,25 @@ const PieChart = () => {
   return (
     <div className="chart">
       <div className='pie-chart'>
-        <div className='centered-line'>
-          <h3><span class="material-symbols-outlined">forest</span> ¡Aire renovado
-            gracias a Free Forest! <span class="material-symbols-outlined">forest</span></h3>
+
+        <div>
+          <div className='centered-line'>
+            <h3><span class="material-symbols-outlined">forest</span> ¡Aire renovado
+              gracias a Free Forest! <span class="material-symbols-outlined">forest</span></h3>
+          </div>
+          <p>En este juego ganamos todos.<br />Gracias a nuestros players, estamos generando una mejora en el cambio climático, logrando que se renueve el aire por los nuevos FreeTrees!</p>
         </div>
-        <p>En este juego ganamos todos.<br />Gracias a nuestros players, estamos generando una mejora en el cambio climático, logrando que se renueve el aire por los nuevos FreeTrees!</p>
+
         <hr />
-        <div className="circular-chart" data-aos='fade-left' data-aos-delay="600">
-          <Pie data={data} />
+        <div className="row" id='chart-section'>
+          <div className="col-sm-6">
+            <Pie data={data} />
+          </div>
+          <div className="col-sm-6">
+            <h4>
+              CANTIDAD DE OXÍGENO RECUPERADO PARA NUESTRO PLANETA
+            </h4>
+          </div>
         </div>
       </div>
     </div>

@@ -1,29 +1,30 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
 .top-players {
     width: 100%;
     height: auto;
+    background-color: #105157;
 }
 
 .top-players_container {
     width: 90%;
-    height: auto;
+    height: fit-content;
     text-align: center;
     margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     align-items: center;
 }
 
 .top-three {
     width: 100%;
-    height: 300px;
-    margin: auto;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #C65F72 0%, #2A855A 50%, #0F5156 100%);
     border-radius: 7px;
-    position: relative;
 }
 
 .top-three-title {
@@ -39,19 +40,21 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.top-ten_container {
-    width: 90%;
-    height: 300px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    background: #0F5156;
+.top-ten_container {    
+    
+    @include respond-to('medium') {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        background: #0F5156;
+    }
 }

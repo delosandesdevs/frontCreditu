@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import avatar1 from '../../assets/avatars/avatar-01.png'
 import avatar2 from '../../assets/avatars/avatar-02.png'
 import avatar3 from '../../assets/avatars/avatar-03.png'

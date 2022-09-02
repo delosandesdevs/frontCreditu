@@ -1,4 +1,4 @@
-.avatar{
+.cmp-avatar{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,8 +6,8 @@
 }
 
 .avatar-img{
-    width: 200px;
-   z-index: 1;
+    width: 100%;
+   
 }
 
 .glass-effect {
@@ -20,7 +20,7 @@
     background-size: 200% 100%;
     background-position: 100% 0;
     animation: load89234 2s infinite;
-    z-index: 9999;
+    
   }
 
   .avatar span{

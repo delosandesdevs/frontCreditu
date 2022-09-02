@@ -1,16 +1,28 @@
+/* From uiverse.io by @alexruix */
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/mixins.scss';
+
+
+.scroll{
+  
+display: none;
+  @include respond-to('medium') {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;     
+    top: 420px;
+}
+}
+
 .scrolldown {
-    --color: white;
+    --color: rgb(16, 99, 51);
     --sizeX: 60px;
     --sizeY: 100px;
-    position: relative;
     width: var(--sizeX);
     height: var(--sizeY);
     margin-left: var(sizeX / 2);
-    // border: calc(var(--sizeX) / 10) solid var(--color);
-    
     box-sizing: border-box;
-    margin-bottom: 16px;
-    
   }
   
   
@@ -48,10 +60,10 @@
   }
   
   .chevrondown {
-    margin-top: -6px;
+    margin-top: -65px;
     position: relative;
-    border: solid var(--color);
-    border-width: 0 3px 3px 0;
+    border: 1px solid white;
+    border-width: 0 5px 5px 0;
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -76,11 +88,4 @@
     }
   }
 
-  .scroll{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;   
-    position: absolute;
-    top: 420px;
-  }
+

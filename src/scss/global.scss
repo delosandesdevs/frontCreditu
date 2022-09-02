@@ -1,0 +1,78 @@
+@import './mixins.scss';
+@import './breakpoints.scss';
+@import './utils.scss';
+@import './animations.scss';
+
+body::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: #438A00;
+    border-radius: 5px;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    margin: 0;
+    p + p {
+        margin-top: 10px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 0;
+    }
+
+.App {
+    overflow-x: hidden;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.btn-w{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 0px;    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-w span{
+    padding-left: 3px;
+}
+
+.btn-w-red{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 0px;    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-w-red span{
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+tr{
+    text-align: center;
+}
+
+.fit {
+    white-space: nowrap;
+    width: 1%;
+}

@@ -13,6 +13,7 @@ import Players from './components/Admin/Charts/Players/Players';
 import RenewedAir from './components/Admin/Charts/RenewedAir/RenewedAir';
 import Sellings from './components/Admin/Charts/Sellings/Sellings';
 import Users from './components/Admin/Charts/Users/Users';
+import ChatbotContainer from './components/Chatbot/ChatbotContainer'
 
 function App() {
   return <>
@@ -32,7 +33,7 @@ function App() {
       </Route>
       <Route path='/about' element={<About />} />
     </Routes>
-    
+    <ChatbotContainer />
   <Footer />
   </>
 }

@@ -38,7 +38,7 @@ const About = () => {
                     </div>
                 </div>
                 <div className='about-team'>
-                    <h1 className='about-team-title'>FREE FOREST TEAM</h1>
+                    <h1 className='about-team-title'>DESARROLLADORES FREE FOREST</h1>
                     <div className='about-team-avatar'>
                     <Avatar pic={'rami'} displayName={'Rami'} />
                     <Avatar pic={'gian'} displayName={'Gian'} />

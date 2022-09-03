@@ -71,7 +71,7 @@ const CreatePlayer = () => {
 
                     <div className="create-player-form-field">
                         <label className="cmp-create-player-label" htmlFor="name">Nombre Player</label>
-                        <input type="text" placeholder="Enter your player name here" onChange={handlePlayer} name="name" id="name" maxLength={16} />
+                        <input type="text" placeholder="Ingresa el nombre de tu player" onChange={handlePlayer} name="name" id="name" maxLength={16} />
                     </div>
 
                     <div className="create-player-form-field">
@@ -84,9 +84,9 @@ const CreatePlayer = () => {
                         </select>
                     </div>
                    
-                    <button className="create-player-submit" onClick={createPlayer}>CREAR JUGADOR</button>
+                    <button className="create-player-submit" onClick={createPlayer}>CREAR PLAYER</button>
 
-                    {error && <p style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>All fields should be filled</p>}
+                    {error && <p style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados</p>}
                 </div>
             </div>
             <div id='create-player-text'>

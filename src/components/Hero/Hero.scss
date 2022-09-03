@@ -15,7 +15,7 @@
     width: 300px;
     position: absolute;
     margin-top: 100px;
-    filter: drop-shadow(0px 10px 5px rgba(34, 34, 34, 0.39));
+transition: 1s;
 }
 
 #home-wallpaper {
@@ -27,7 +27,7 @@
 #home-oxigen-text {
     margin-top: 300px;
     color: white;
-
+    
     @include respond-to('medium') {
         margin-top: 300px;
         color: white;
@@ -39,7 +39,8 @@
     font-size: 40px;
     width: fit-content;
     margin-left: 20px;
-    background: -webkit-linear-gradient(#eee, rgb(101, 209, 101));
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(101, 209, 101));
+    
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -47,16 +48,27 @@
         font-size: 40px;
         width: fit-content;
         margin-left: 60px;
-        background: -webkit-linear-gradient(#eee, rgb(101, 209, 101));
+        background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(101, 209, 101));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    
     }
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.9));
 }
 
 #home-section {
-    background-image: url('../../assets/miscellaneous/home_wallpaper.png');
+    background-image: url('../../assets/miscellaneous/home_wallpaper.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 500px;
+    height: auto;
+    margin-top: -28px;
+}
+
+@media screen and (max-width: 525px) {
+    #home-logo {
+              margin-top: 50px;
+              transition: 1s;
+    }
+    
 }

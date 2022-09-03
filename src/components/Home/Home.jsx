@@ -11,13 +11,20 @@ import { API_PORT } from '../../redux/constans'
 import ImageTest from './test.png'
 import Hero from '../Hero/Hero';
 import { useSelector } from 'react-redux'
-// import ChatbotContainer from '../Chatbot/ChatbotContainer';
 import 'aos/dist/aos.css'
+import { useDispatch } from 'react-redux'
+import { getTenPlayers } from "../../redux/action"
 
 const Home = () => {
 
-    const [topten, setTopten] = useState(useSelector(state => (state.topten.slice(4, 11))));
-    const [topthree, setTopthree] = useState(useSelector(state => (state.topten.slice(0, 3))));
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getTenPlayers());
+    }, [])
+
+    const topten = useSelector(state => (state.topten.slice(4, 11)));
+    const topthree = useSelector(state => (state.topten.slice(0, 3)));
 
     useEffect(() => {
         Aos.init({ duration: 1000, once: true })
@@ -25,33 +32,36 @@ const Home = () => {
     }, [])
 
 
+    ////////////////////////TESTING, NO BORRAR/////////////////////////////////
 
-    const [errorThree, setErrorThree] = useState(false)
-    const [errorTen, setErrorTen] = useState(false)
+    // const [topten, setTopten] = useState(useSelector(state => (state.topten.slice(4, 11))));
+    // const [topthree, setTopthree] = useState(useSelector(state => (state.topten.slice(0, 3))));
 
-    //TESTING, NO BORRAR
-    const testingTopThree = () => {
-        fetch(`http://localhost:${API_PORT}/topthree`)
-            .then(data => data.json())
-            .then(res => setTopthree(res))
-            .catch(e => setErrorThree(true))
-    }
+    // const [errorThree, setErrorThree] = useState(false)
+    // const [errorTen, setErrorTen] = useState(false)
 
     //TESTING, NO BORRAR
-    const testingTopTen = () => {
-        fetch(`http://localhost:${API_PORT}/topten`)
-            .then(data => data.json())
-            .then(res => setTopten(res))
-            .catch(e => setErrorTen(true))
-    }
+    // const testingTopThree = () => {
+    //     fetch(`http://localhost:${API_PORT}/topthree`)
+    //         .then(data => data.json())
+    //         .then(res => setTopthree(res))
+    //         .catch(e => setErrorThree(true))
+    // }
 
-    useEffect(() => {
-        //TESTING, NO BORRAR
-        testingTopThree()
-        testingTopTen()
-    }, [])
+    // //TESTING, NO BORRAR
+    // const testingTopTen = () => {
+    //     fetch(`http://localhost:${API_PORT}/topten`)
+    //         .then(data => data.json())
+    //         .then(res => setTopten(res))
+    //         .catch(e => setErrorTen(true))
+    // }
 
-
+    // useEffect(() => {
+    //     //TESTING, NO BORRAR
+    //     testingTopThree()
+    //     testingTopTen()
+    // }, [])
+    ///////////////////////////////////////////////////////////
 
     return (
         <div className='home_container'>

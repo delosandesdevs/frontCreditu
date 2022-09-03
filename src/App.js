@@ -14,12 +14,23 @@ import RenewedAir from './components/Admin/Charts/RenewedAir/RenewedAir';
 import Sellings from './components/Admin/Charts/Sellings/Sellings';
 import Users from './components/Admin/Charts/Users/Users';
 import ChatbotContainer from './components/Chatbot/ChatbotContainer'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getTenPlayers } from "../src/redux/action"
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTenPlayers());
+
+  }, [])
+
   return <>
-  <div style={{marginBottom:"70px"}}>
-    <Navbar />
-  </div>
+    <div style={{ marginBottom: "70px" }}>
+      <Navbar />
+    </div>
     <Routes>
       <Route path='/' element={<Home />} exact />
       <Route path='/user' element={<User />} />
@@ -33,8 +44,8 @@ function App() {
       </Route>
       <Route path='/about' element={<About />} />
     </Routes>
-    <ChatbotContainer />    
-  <Footer />
+    <ChatbotContainer />
+    <Footer />
   </>
 }
 

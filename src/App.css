@@ -12,11 +12,7 @@
   align-items: center;
 }
 
-.tree-wallpaper{
-    background-image: url('./assets/miscellaneous/footer-trees2.png');
-    background-position: bottom;
-    background-size: cover;    
-}
+
 
 body {
   min-height: 100vh;

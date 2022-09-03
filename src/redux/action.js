@@ -1,4 +1,4 @@
-import {API_URL,GET_TEST, ADD_TEST, GET_ALL_PLAYERS} from "./constans"
+import {API_URL,GET_TEST, ADD_TEST, GET_TEN_PLAYERS} from "./constans"
 
 export function actionTest() {
     return function (dispatch) {
@@ -25,17 +25,18 @@ export function addTest(test){
     }
 }
 
-export function getAllPlayers(){
-    return function(dispatch){
-        return fetch(`http://locaslhost:8080/players`)
-        .then(data => data.json())
-        .then(res => {
+export function getTenPlayers(){
+    return async function(dispatch){
+        try {
+            const data = await fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players?page=0&size=11&orderby=dsc`)
+            const res = await data.json()
             console.log('action creator allplayers', res)
             dispatch({
-                type: GET_ALL_PLAYERS,
-                payload:res
+                type: GET_TEN_PLAYERS,
+                payload: res
             })
-        })
-        .catch(e => console.log('ERROR!', e))
+        } catch (e) {
+            return console.log('ERROR!', e)
+        }
     }
 }

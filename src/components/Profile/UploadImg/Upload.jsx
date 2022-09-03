@@ -6,7 +6,7 @@ const Upload = () => {
     return <div className='upload'>
         {/* <img src={upload} alt="" /> */}
         <Button variant="contained" color="success" style={{height:"200px",color:"black"}}>
-            <span class="material-symbols-outlined" style={{fontSize:"80px"}}>cloud_upload</span>
+            <span className="material-symbols-outlined" style={{fontSize:"80px"}}>cloud_upload</span>
         </Button>
     </div>
 }

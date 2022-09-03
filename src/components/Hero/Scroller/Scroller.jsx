@@ -2,10 +2,10 @@ import './Scroll.scss'
 
 const Scroller = () => {
     return  <div className="scroll">
-    <div class="scrolldown">
-        <div class="chevrons">
-            <div class="chevrondown"></div>
-            <div class="chevrondown"></div>
+    <div className="scrolldown">
+        <div className="chevrons">
+            <div className="chevrondown"></div>
+            <div className="chevrondown"></div>
         </div>
     </div>
 </div>

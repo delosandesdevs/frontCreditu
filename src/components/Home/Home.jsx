@@ -10,84 +10,25 @@ import TopPlayers from '../TopPlayers/TopPlayers';
 import { API_PORT } from '../../redux/constans'
 import ImageTest from './test.png'
 import Hero from '../Hero/Hero';
+import { useSelector } from 'react-redux'
 // import ChatbotContainer from '../Chatbot/ChatbotContainer';
 import 'aos/dist/aos.css'
 
 const Home = () => {
+
+    const [topten, setTopten] = useState(useSelector(state => (state.topten.slice(4, 11))));
+    const [topthree, setTopthree] = useState(useSelector(state => (state.topten.slice(0, 3))));
 
     useEffect(() => {
         Aos.init({ duration: 1000, once: true })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
+
     const [errorThree, setErrorThree] = useState(false)
     const [errorTen, setErrorTen] = useState(false)
-    const [topthree, setTopthree] = useState([
-        {
-            position: '1°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '2°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '3°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        }
-    ])
-    ///////////DATA FALSA
-    const [topten, setTopten] = useState([
-        {
-            position: '4°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '5°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '6°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '7°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '8°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '9°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        },
-        {
-            position: '10°',
-            img: ImageTest,
-            name: 'Test',
-            ranking: 43
-        }
-    ])
-    //////////////DATA FALSA
+
     //TESTING, NO BORRAR
     const testingTopThree = () => {
         fetch(`http://localhost:${API_PORT}/topthree`)
@@ -110,9 +51,11 @@ const Home = () => {
         testingTopTen()
     }, [])
 
+
+
     return (
         <div className='home_container'>
-            <div style={{backgroundColor:"white"}}>
+            <div style={{ backgroundColor: "white" }}>
                 <Hero />
             </div>
             <TopPlayers topthree={topthree} topten={topten} />

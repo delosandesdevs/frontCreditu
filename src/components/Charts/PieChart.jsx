@@ -48,8 +48,8 @@ const PieChart = () => {
 
         <div>
           <div className='centered-line'>
-            <h3><span class="material-symbols-outlined">forest</span> ¡Aire renovado
-              gracias a Free Forest! <span class="material-symbols-outlined">forest</span></h3>
+            <h3><span className="material-symbols-outlined">forest</span> ¡Aire renovado
+              gracias a Free Forest! <span className="material-symbols-outlined">forest</span></h3>
           </div>
           <p>En este juego ganamos todos.<br />Gracias a nuestros players, estamos generando una mejora en el cambio climático, logrando que se renueve el aire por los nuevos FreeTrees!</p>
         </div>

@@ -23,20 +23,21 @@ const PieChart = () => {
   }, [])
 
   const data = {
-    labels: ['Air in planet', 'Renewed air'],
+    labels: ['Aire en el planeta', 'Aire renovado'],
     datasets: [
       {
         label: ['90%', '10%'],
         data: [90, 10],
         backgroundColor: [
-          'lightblue',
-          'green',
+          '#6DCC5E',
+          '#C65F72',
         ],
         borderColor: [
-          'blue',
-          'green',
+          'white',
+          'white',
         ],
-        borderWidth: 1,
+        borderWidth: 2,
+
       },
     ],
   };

@@ -6,7 +6,7 @@ import './Profile.scss'
 import Upload from "./UploadImg/Upload";
 
 const Profile = () => {
-    return <div className="tree-wallpaper">
+    return <div className="profile">
         <div className="profile-container mb-5">
             
             <div className="profile-info ">
@@ -14,11 +14,9 @@ const Profile = () => {
                 <Position toBeUsed={'profile'} />
             </div>
         </div>        
-        <Admin />
-        <br />
-
-        <div className="gallery-title">
-            <h3>Subí fotografías de tus FreeTrees!</h3>
+        {/* <Admin /> */}
+           <div className="gallery-title">
+            <h3 className="gallery-h3">Subí fotografías de tus FreeTrees!</h3>
         </div>
 
         <div className="gallery-section pb-5">

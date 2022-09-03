@@ -1,30 +1,47 @@
-.profile-container{    
+.profile {
+    background-image: url('../../assets/miscellaneous/doodle.png');
+    margin-top: -15px;
+  
+    display: flex;
+    flex-direction: column;
+}
+
+
+.profile-container {
     background: linear-gradient(180deg, #c65f72 0%, #2a855b63 50%, #0f51568a 100%);
-    border-radius: 10px;    
+    border-radius: 10px;
     width: 90%;
     margin: auto;
-    border: 1px solid white;
-}
+    margin-top: 50px;
+  }
 
-.profile-info{
+.profile-info {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding: 30px;    
+    flex-wrap: wrap;
+    padding: 20px;
+    transition: 1s;
 }
 
-.gallery-section{
+.gallery-section {
     display: flex;
     justify-content: space-around;
     margin-top: 40px;
     width: 90%;
+    flex-wrap: wrap;
     margin: auto;
 }
 
-.gallery-title{
+.gallery-title {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 40px;
-}
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .gallery-h3{
+    color: aliceblue;
+  }

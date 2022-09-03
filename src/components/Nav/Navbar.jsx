@@ -14,13 +14,17 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import LoginButton from '../LoginControl/Login';
+import LogoutButton from '../LoginControl/Logout';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from 'react';
 import juano from '../../assets/avatars/juano.png'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const { isAuthenticated, user } = useAuth0();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -155,7 +159,7 @@ const Navbar = () => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Juano_icon" src={juano} />
+              <Avatar alt={isAuthenticated ? user.name : "Juano_icon"} src={isAuthenticated ? user.picture : juano} />
             </IconButton>
           </Tooltip>
           <Menu
@@ -181,7 +185,11 @@ const Navbar = () => {
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Salir de sesión</Typography>
+                {
+                  isAuthenticated ? <LogoutButton/>
+                  : <LoginButton/>
+                }
+                
               </MenuItem>
             
           </Menu>

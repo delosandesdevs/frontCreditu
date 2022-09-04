@@ -1,4 +1,5 @@
-import {API_URL,GET_TEST, ADD_TEST, GET_TEN_PLAYERS, LOGIN_OR_CREATE,} from "./constans"
+import {API_URL,GET_TEST, ADD_TEST, GET_TOPTEN_PLAYERS, GET_PAGINATION, GET_ALL_PLAYERS, LOGIN_OR_CREATE,} from "./constans"
+
 
 export function actionTest() {
     return function (dispatch) {
@@ -47,11 +48,11 @@ export function findOrCreateUser(name, email) {
 export function getTenPlayers(){
     return async function(dispatch){
         try {
-            const data = await fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players?page=0&size=11&orderby=dsc`)
+            const data = await fetch(`${API_URL}/players?page=0&size=11&orderby=dsc`)
             const res = await data.json()
             console.log('action creator allplayers', res)
             dispatch({
-                type: GET_TEN_PLAYERS,
+                type: GET_TOPTEN_PLAYERS,
                 payload: res
             })
         } catch (e) {
@@ -59,3 +60,40 @@ export function getTenPlayers(){
         }
     }
 }
+
+export function getPlayersPaginated(pageNumber, orderBy, size){
+    return function(dispatch){
+        return fetch(`${API_URL}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_PAGINATION,
+                payload: data
+            })
+        })
+    }
+}
+
+export function postPlayer(player){
+    return function(){
+        return fetch(`${API_URL}/players`,{
+            method : 'POST',
+            body : JSON.stringify(player),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+}
+
+export function getAllPlayers(){
+    return function(dispatch){
+        return fetch(`${API_URL}/players`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PLAYERS,
+                payload: data
+            })
+        })        
+}}

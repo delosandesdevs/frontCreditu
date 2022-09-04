@@ -32,7 +32,7 @@
 
 .ranking-table {
     width: 70%;
-    height: 100%;
+    
     margin: auto;
 padding: auto;
     opacity: 0.8;
@@ -109,9 +109,27 @@ td {
 .tree-wallpaper {
     background-image: url('../../assets/miscellaneous/doodle.png');
     margin-top: -15px;
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.pages{
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+#order-by-toggle{
+    cursor: pointer;
+}
+
+.loader{
+    width: 325%;
+    padding-top: 40px;
 }
 
 @media screen and (max-width: 525px) {

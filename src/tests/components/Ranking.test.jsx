@@ -1,8 +1,6 @@
-import { screen, render, findAllByTestId } from "@testing-library/react";
-import Ranking from "../Ranking/Ranking";
+import { screen, render } from "@testing-library/react";
+import Ranking from "../../components/Ranking/Ranking";
 import userEvent from "@testing-library/user-event";
-import RankingCard from "../Ranking/RankingCard/RankingCard";
-import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 describe('Testing Ranking Component', () => {
     test('Should filter players by name', async () => {

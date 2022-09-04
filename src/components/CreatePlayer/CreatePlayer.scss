@@ -52,8 +52,10 @@
     padding: 20px;
 }
 
+
 .avatar-movement{
-    animation: flipInX;
+    --movementEffect: flipInX;
+    animation: var(--movementEffect);
     animation-duration: 1.5s;
 }
 
@@ -79,6 +81,7 @@
     align-items: center;
     flex-direction: column;
     padding: 20px;
+    width: 100%;
 }
 
 .cmp-create-player-form input,select{

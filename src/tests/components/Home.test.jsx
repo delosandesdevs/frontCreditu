@@ -27,27 +27,27 @@ describe('Testing Home Component', () => {
 
 describe('Error Handler', () => {
 
-    test('Show error in top 3', async () => {
-        server.resetHandlers(
-            rest.get('http://localhost:3030/topthree', (req, res, ctx) =>
-            res(ctx.status(500))
-            )
-        )
+    // test('Show error in top 10 ', async () => {
+    //     server.resetHandlers(
+    //         rest.get('http://localhost:3030/topthree', (req, res, ctx) =>
+    //         res(ctx.status(500))
+    //         )
+    //     )
 
-        render(<Provider store={store}>
-            <Home />
-        </Provider>)
+    //     render(<Provider store={store}>
+    //         <Home />
+    //     </Provider>)
 
-        await waitFor(async () => {
-            const topThreeError = await screen.findByText(/no top 3 were found/i)
-            expect(topThreeError).toBeInTheDocument()
-        })
+    //     await waitFor(async () => {
+    //         const topThreeError = await screen.findByText(/no top 3 were found/i)
+    //         expect(topThreeError).toBeInTheDocument()
+    //     })
 
-    })
+    // })
 
     test('Show error in top 10', async () => {
         server.resetHandlers(
-            rest.get('http://localhost:3030/topten', (req, res, ctx) =>
+            rest.get(`${process.env.REACT_APP_API_URL}/players?page=0&size=11&orderby=dsc`, (req, res, ctx) =>
             res(ctx.status(500))
             )
         )
@@ -57,7 +57,7 @@ describe('Error Handler', () => {
         </Provider>)
 
         await waitFor(async () => {
-            const topTenError = await screen.findByText(/no top 10 were found/i)
+            const topTenError = await screen.findByText(/error: no se encontraron players/i)
             expect(topTenError).toBeInTheDocument()
         })
     })

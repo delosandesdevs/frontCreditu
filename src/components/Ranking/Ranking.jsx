@@ -21,28 +21,33 @@ const Ranking = () => {
     const [page, setPage] = useState(0)
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
-
-    const calcPages = Math.round(allPlayers.length/5)
+    const [error, setError] = useState(false)
+    const calcPages = Math.round(allPlayers.length / 5)
 
     useEffect(() => {
         // dispatch(getPlayersPaginated(page, order, 5))    
-        setLoading(true)    
-        fetch(`${API_URL}/players?page=${page}&size=10&orderby=${order}`)
-                .then(res => res.json())
-                .then(data => {
-                    dispatch({
-                        type: GET_PAGINATION,
-                        payload: data
-                    })
-                setLoading(false)
+        setLoading(true)
+        setError(false)
+        fetch(`${process.env.REACT_APP_API_URL}/players?page=${page}&size=10&orderby=${order}`)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_PAGINATION,
+                    payload: data
                 })
-                .catch(err => console.log(err))
-        
-    },[page, order])
+                setLoading(false)
+            })
+            .catch(err => {
+                setLoading(false)
+                setError(true)
+                console.log(err)
+            })
 
-    useEffect(() =>{ 
+    }, [page, order])
+
+    useEffect(() => {
         dispatch(getAllPlayers())
-    },[])
+    }, [])
 
     const [search, setSearch] = useState('')
     const [fakeRanking, setFakeRanking] = useState([
@@ -69,7 +74,7 @@ const Ranking = () => {
     }
 
     const playerPosition = (player) => {
-        return allPlayers.findIndex(p => {return p.nickname === player})+1
+        return allPlayers.findIndex(p => { return p.nickname === player }) + 1
     }
 
     const handlePages = (page) => {
@@ -93,6 +98,10 @@ const Ranking = () => {
         </form>
         {/* <Pagination /> */}
         <div className="ranking-table" >
+            {error
+                ? <p style={{color:'red'}}>Error: No se encontraron Players</p>
+                : null
+            }
 
             <div className="pages ranking-header">
                 <Pages pages={148} handlePages={(e) => handlePages(e)} />
@@ -103,34 +112,34 @@ const Ranking = () => {
                     <tr>
                         <th scope="col" onClick={handleOrder} id='order-by-toggle'>
                             <div id='v-align'>
-                                <span className="material-symbols-outlined">arrow_downward</span>Puesto
+                                <span className="material-symbols-outlined">arrow_downward</span>Posición
                             </div>
                         </th>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Nickname</th>
                         <th scope="col">Status</th>
                         <th scope="col">Puntos</th>
                     </tr>
                 </thead>
-                <tbody style={{height:'700px'}}>
-                    {loading 
-                    ? <>
-                        <div className="loader">
-                            <Loader />
-                        </div>
-                    </>
-                    : <>
-                    {playersPaginated && playersPaginated.map(p => {
-                        return <RankingCard
-                            position={playerPosition(p.nickname)}
-                            playername={p.nickname}
-                            status={p.status}
-                            score={p.score}
-                            key={p.nickname}
-                        />
-                    })}
-                    </>
-                 }
-                    
+                <tbody style={{ height: '700px' }}>
+
+                    {loading
+                        ? <>
+                            <div className="loader">
+                                <Loader />
+                            </div>
+                        </>
+                        : <>
+                            {playersPaginated && playersPaginated.length > 0 && playersPaginated.map(p => {
+                                return <RankingCard
+                                    position={playerPosition(p.nickname)}
+                                    playername={p.nickname}
+                                    status={p.status}
+                                    score={p.score}
+                                    key={p.nickname}
+                                />
+                            })}
+                        </>
+                    }
                 </tbody>
             </table>
 

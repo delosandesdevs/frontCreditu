@@ -22,7 +22,6 @@ const Upload = () => {
                     Clearable={true}
                     id="file"
                     name="photos"
-                    multiple
                     onChange={ image => {
                         console.log(image.cdnUrl)
                         //dispatch(postGallery(image.cdnUrl))

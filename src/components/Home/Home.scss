@@ -4,6 +4,16 @@
     background-image: url('../../assets/miscellaneous/doodle.png');
 }
 
+.home_container::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.home_container::-webkit-scrollbar-thumb {
+    background-color: #C65F72;
+    border-radius: 20px;
+    border: 4px solid #0F5156 ;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai:300');
 
 *,

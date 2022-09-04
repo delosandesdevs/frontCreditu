@@ -21,3 +21,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C65F72 0%, #2A855A 50%, #0F5156 100%);
+  border-radius: 20px;
+  border: 2px solid #ffffff5b ;
+}
+
+
+body::-webkit-scrollbar-track {
+  background: linear-gradient(0deg, #C65F72 0%, #2A855A 50%, #0F5156 100%);
+}

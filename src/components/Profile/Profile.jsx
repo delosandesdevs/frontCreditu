@@ -4,13 +4,17 @@ import Position from "../Position/Position";
 import Gallery from "./Gallery/Gallery";
 import './Profile.scss'
 import Upload from "./UploadImg/Upload";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Profile = () => {
+
+    const { user } = useAuth0();
+
     return <div className="profile">
         <div className="profile-container mb-5">
             
             <div className="profile-info ">
-                <Avatar pic={1} displayName={'Juano'} />
+                <Avatar pic={1} displayName={user ? user.given_name : 'user'} />
                 <Position toBeUsed={'profile'} />
             </div>
         </div>        

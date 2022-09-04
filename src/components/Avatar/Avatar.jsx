@@ -19,41 +19,24 @@ import './Avatar.scss'
 const Avatar = ({ pic, displayName }) => {
 
     const randomName = () => {
-
         switch (pic) {
-            case '1':
-                return avatar1
-            case '2':
-                return avatar2
-            case '3':
-                return avatar3
-            case '4':
-                return avatar4
-            case '5':
-                return avatar5
-            case '6':
-                return avatar6
-            case '7':
-                return avatar7
-            case '8':
-                return avatar8
-            case '9':
-                return avatar9
-            case '10':
-                return avatar10
-
-            case 'juano':
-                return juano
-            case 'flor':
-                return flor
-            case 'rami':
-                return rami;
-            case 'rodri':
-                return rodri
-            case 'gian':
-                return gian
-            default:
-                return avatar5
+            case '' : return avatar1
+            case '/images/avatar-01.png': return avatar1
+            case '/images/avatar-02.png': return avatar2
+            case '/images/avatar-03.png': return avatar3
+            case '/images/avatar-04.png': return avatar4
+            case '/images/avatar-05.png': return avatar5
+            case '/images/avatar-06.png': return avatar6
+            case '/images/avatar-07.png': return avatar7
+            case '/images/avatar-08.png': return avatar8
+            case '/images/avatar-09.png': return avatar9
+            case '/images/avatar-10.png': return avatar10
+            case 'juano': return juano
+            case 'flor': return flor
+            case 'rami': return rami;
+            case 'rodri': return rodri
+            case 'gian': return gian
+            default: return avatar5
         }
     }
 

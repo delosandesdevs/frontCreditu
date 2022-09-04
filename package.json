@@ -14,6 +14,7 @@
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "chart.js": "^3.9.1",
+    "party-js": "^2.2.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-chatbot-kit": "^2.1.0",
@@ -27,6 +28,8 @@
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.4.1",
     "sass": "^1.54.5",
+    "sweetalert": "^2.1.2",
+    "toastify-js": "^1.12.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

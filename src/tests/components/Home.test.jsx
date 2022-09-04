@@ -1,9 +1,9 @@
 import { screen, render, waitFor } from "@testing-library/react";
 import { Provider } from 'react-redux'
 import store from "../../redux/store";
-import {server} from '../tests/mocks/server.js'
+import {server} from '../mocks/server'
 import { rest } from 'msw'
-import Home from "../Home/Home";
+import Home from '../../components/Home/Home'
 
 // eslint-disable-next-line testing-library/no-render-in-setup
 beforeEach(() => render(<Provider store={store}>

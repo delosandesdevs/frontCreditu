@@ -17,15 +17,23 @@ import MenuItem from '@mui/material/MenuItem';
 import LoginButton from '../LoginControl/Login';
 import LogoutButton from '../LoginControl/Logout';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import juano from '../../assets/avatars/juano.png'
 import { useAuth0 } from "@auth0/auth0-react";
+import {useDispatch} from 'react-redux'
+import{findOrCreateUser} from '../../redux/action'
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const { isAuthenticated, user } = useAuth0();
-
+    const dispatch = useDispatch();
+  useEffect(()=>{
+    if(isAuthenticated){
+      dispatch(findOrCreateUser(user.name, user.email))
+    }
+  },[isAuthenticated])
+    
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -189,7 +197,6 @@ const Navbar = () => {
                   isAuthenticated ? <LogoutButton/>
                   : <LoginButton/>
                 }
-                
               </MenuItem>
             
           </Menu>

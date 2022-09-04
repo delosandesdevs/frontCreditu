@@ -1,4 +1,5 @@
-import {API_URL,GET_TEST, ADD_TEST, GET_TOPTEN_PLAYERS, GET_PAGINATION, GET_ALL_PLAYERS} from "./constans"
+import {API_URL,GET_TEST, ADD_TEST, GET_TOPTEN_PLAYERS, GET_PAGINATION, GET_ALL_PLAYERS, LOGIN_OR_CREATE,} from "./constans"
+
 
 export function actionTest() {
     return function (dispatch) {
@@ -22,6 +23,25 @@ export function addTest(test){
                 'Content-Type' : 'application/json'
             }
         })
+    }
+}
+
+export function findOrCreateUser(name, email) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/user`, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify({name, email}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: LOGIN_OR_CREATE,
+                    payload: data
+                })
+            })
     }
 }
 

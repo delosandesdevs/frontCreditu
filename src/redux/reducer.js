@@ -1,9 +1,10 @@
-import { GET_TEST, ADD_TEST, GET_TEN_PLAYERS } from "./constans"
+import { GET_TEST, ADD_TEST, GET_TEN_PLAYERS, LOGIN_OR_CREATE } from "./constans"
 
 
 const initialState = {
     test_state: [],
-    topten: []
+    topten: [],
+    loggedUser : []
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -17,6 +18,12 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 topten: action.payload
+            }
+        
+        case LOGIN_OR_CREATE:
+            return {
+                ...state,
+                loggedUser: action.payload
             }
             
         default:

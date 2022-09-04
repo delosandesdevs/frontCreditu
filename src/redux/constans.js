@@ -1,4 +1,5 @@
 export const GET_TEN_PLAYERS = 'GET_TEN_PLAYERS'
+export const LOGIN_OR_CREATE = 'LOGIN_OR_CREATE'
 export const GET_TEST = 'GET_TEST'
 export const ADD_TEST = 'ADD_TEST'
 // export const API_URL = 'http://localhost:8080'

@@ -1,9 +1,11 @@
-import { GET_TEST, ADD_TEST, GET_TEN_PLAYERS } from "./constans"
+import { GET_TEST, GET_PAGINATION, GET_TOPTEN_PLAYERS, POST_PLAYER, GET_PLAYER_BY_ID } from "./constans"
 
 
-const initialState = {
-    test_state: [],
-    topten: []
+export const initialState = {
+    topten: [],
+    player:{},
+    players:[],
+    pagination: []
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,10 +15,28 @@ export const reducer = (state = initialState, action) => {
                 test_state : action.payload
             }
         
-        case GET_TEN_PLAYERS:
+        case GET_TOPTEN_PLAYERS:
             return {
                 ...state,
                 topten: action.payload
+            }
+        
+        case POST_PLAYER:
+            return {
+                ...state,
+                players: [...state.players, action.payload]
+            }
+        
+        case GET_PLAYER_BY_ID:
+            return {
+                ...state,
+                player: action.payload
+            }
+        
+        case GET_PAGINATION:
+            return {
+                ...state,
+                pagination: action.payload
             }
             
         default:

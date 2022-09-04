@@ -16,8 +16,8 @@ import 'aos/dist/aos.css'
 
 const Home = () => {
 
-    const [topten, setTopten] = useState(useSelector(state => (state.topTenPlayers.slice(4, 11))));
-    const [topthree, setTopthree] = useState(useSelector(state => (state.topTenPlayers.slice(0, 3))));
+    const [topten, setTopten] = useState(useSelector(state => (state.topten.slice(4, 11))));
+    const [topthree, setTopthree] = useState(useSelector(state => (state.topten.slice(0, 3))));
 
     useEffect(() => {
         Aos.init({ duration: 1000, once: true })

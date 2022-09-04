@@ -3,8 +3,15 @@ import aboutLogo from '../../assets/miscellaneous/logo_white.png'
 import aboutTeam from '../../assets/avatars/profile.png'
 import './About.scss'
 import Avatar from '../Avatar/Avatar'
+import { useEffect } from 'react'
+import Aos from 'aos'
 
 const About = () => {
+
+    useEffect(() => {
+        Aos.init({ duration: 1000, once: true })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const team = ['Rami', 'Flor', 'Rodri', 'Juano', 'Gian']
 
@@ -15,7 +22,7 @@ const About = () => {
                     <img src={threeLogo} alt="three_logo_img" className='three-logo' />
                     <img src={aboutLogo} alt="home_logo_img" className='about-logo' />
                 </div>
-                <div className='about-text_container'>
+                <div className='about-text_container' data-aos="fade-up" >
                     <div className='text'>
                         <p>
                             Atravesamos constantemente una lucha ecológica para evitar destruir el planeta de nuestros hijos, y desde nuestro humilde lugar quisimos ayudar

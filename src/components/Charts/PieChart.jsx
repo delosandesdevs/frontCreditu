@@ -60,7 +60,7 @@ const PieChart = () => {
             <Pie data={data} />
           </div>
           <div className="col-sm-6">
-            <h4>
+            <h4 data-aos="fade-left" data-aos-duration={3000}>
               CANTIDAD DE OXÍGENO RECUPERADO PARA NUESTRO PLANETA
             </h4>
           </div>

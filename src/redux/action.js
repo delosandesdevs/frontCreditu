@@ -1,4 +1,4 @@
-import {API_URL,GET_TEST, ADD_TEST, GET_TOPTEN_PLAYERS, GET_PAGINATION} from "./constans"
+import {API_URL,GET_TEST, ADD_TEST, GET_TOPTEN_PLAYERS, GET_PAGINATION, GET_ALL_PLAYERS} from "./constans"
 
 export function actionTest() {
     return function (dispatch) {
@@ -41,9 +41,9 @@ export function getTenPlayers(){
     }
 }
 
-export function getPlayersPaginated(pageNumber, orderBy){
+export function getPlayersPaginated(pageNumber, orderBy, size){
     return function(dispatch){
-        return fetch(`${API_URL}/players?page=${pageNumber}&size=10&orderby=${orderBy}`)
+        return fetch(`${API_URL}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`)
         .then(res => res.json())
         .then(data => {
             dispatch({
@@ -65,3 +65,15 @@ export function postPlayer(player){
         })
     }
 }
+
+export function getAllPlayers(){
+    return function(dispatch){
+        return fetch(`${API_URL}/players`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: GET_ALL_PLAYERS,
+                payload: data
+            })
+        })        
+}}

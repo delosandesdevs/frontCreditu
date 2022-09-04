@@ -5,6 +5,7 @@ export const ADD_TEST = 'ADD_TEST'
 export const POST_PLAYER = 'POST_PLAYER'
 export const GET_PLAYER_BY_ID = 'GET_PLAYER_BY_ID'
 export const GET_PAGINATION = 'GET_PAGINATION'
+export const GET_ALL_PLAYERS = 'GET_ALL_PLAYERS'
 
 
 export const API_URL = 'http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com'

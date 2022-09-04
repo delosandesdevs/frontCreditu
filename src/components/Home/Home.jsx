@@ -2,13 +2,10 @@ import React from 'react';
 //import { useDispatch, useSelector } from 'react-redux'
 //import { actionTest } from '../../redux/action'
 import { useEffect } from 'react'
-import { useState } from 'react';
 import './Home.scss'
 import PieChart from '../Charts/PieChart';
 import Aos from 'aos'
 import TopPlayers from '../TopPlayers/TopPlayers';
-import { API_PORT } from '../../redux/constans'
-import ImageTest from './test.png'
 import Hero from '../Hero/Hero';
 import { useSelector } from 'react-redux'
 import 'aos/dist/aos.css'

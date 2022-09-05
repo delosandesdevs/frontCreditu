@@ -97,3 +97,15 @@ export function getAllPlayers(){
             })
         })        
 }}
+
+export function postGallery(image){
+    return function(){
+        return fetch(`${process.env.REACT_APP_API_URL}/profile`,{
+            method : 'POST',
+            body : JSON.stringify(image),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+}

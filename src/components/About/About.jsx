@@ -33,15 +33,13 @@ const About = () => {
                             Enviaremos semillas a tu hogar con las intrucciones para plantarlas y cuidarlas.
                         </p>
                         <p>
-                            Cada semana nos enviaras una foto para ver el crecimiento de tu planta y así ganaras puntos, los cuales te permitirán desbloquear nuevas semillas,
-                            y a fin de año a nuestros primeros diez oxigenadores les otorgaremos grandes premios.
+                        Elegirás un bosque para reforestar según tu ubicación para que crezca. Alimentaras, les darás sol, lo regarás, lo cuidarás de plagas y aprenderás datos de árboles super curiosos en la aplicación interactuando con mini juegos de acción y rompecabezas forestales super divertidos para mantenerlo saludable y feliz.
                         </p>
                         <p>
-                            Te invitamos a crear tu jugador, elegir tu avatar, tu nombre y empezar esta oxigenada aventura !!!
-                        </p>
+                        Puedes experimentar con comprar nutrientes para tu bosque para que crezcan velozmente.                        </p>
                         <p>
-                            En el panel Rankings encontrarás a tus compañeros y tu puesto en el mundo de Free Forest.
-                        </p>
+                        Una vez que haya nutrido sus árboles desde plántulas hasta árboles adultos, puedes enviarlos a una arboleda junto a una donación para plantarlos en el mundo real.  En Free Forest tenemos como objetivo final, lograr plantar 1 millón de árboles con tu ayuda.
+                                              </p>
                     </div>
                 </div>
                 <div className='about-team'>

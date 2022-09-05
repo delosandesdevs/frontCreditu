@@ -3,7 +3,7 @@
     height: auto;
     display: flex;
     background-image: url('../../assets/miscellaneous/doodle.png');
-    margin-top: -10px;
+    margin-top: -13px;
 }
 
 .about_container {
@@ -74,6 +74,7 @@
     line-height: 54px;
     color: #FFFFFF; 
     letter-spacing: 0.08em;
+    margin: auto;
 }
 
 .about-team-avatar {
@@ -109,4 +110,20 @@
     font-weight: bolder;
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     color: #fff;
+}
+
+@media screen and (max-width: 525px){
+    .about_container {
+        width: 100%;
+            }
+    .text {
+        width: 90%
+    }
+    .about-team-title{
+        font-size: 25px;
+        line-height: 35px;
+        width:90%;
+        text-align: center;
+        margin:auto;
+    }
 }

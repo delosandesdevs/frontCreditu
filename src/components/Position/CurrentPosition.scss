@@ -5,7 +5,7 @@
     align-items: baseline;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: rgba(255, 255, 255, 0.226);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(150, 150, 150, 0.701) 40%, rgba(146, 146, 146, 0.922) 50%, rgba(172, 172, 172, 0.706) 60%, rgba(0,0,0,0) 100%);
     padding: 10px;
     border-radius: 10px;
 }

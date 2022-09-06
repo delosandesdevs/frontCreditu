@@ -20,7 +20,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useState, useEffect } from 'react';
 import juano from '../../assets/avatars/juano.png'
 import { useAuth0 } from "@auth0/auth0-react";
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import{findOrCreateUser} from '../../redux/action'
 
 const Navbar = () => {
@@ -28,11 +28,18 @@ const Navbar = () => {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const { isAuthenticated, user } = useAuth0();
     const dispatch = useDispatch();
+    const userLogged = useSelector(store => store.loggedUser)    
   useEffect(()=>{
     if(isAuthenticated){
       dispatch(findOrCreateUser(user.name, user.email))
     }
+    console.log(userLogged);
   },[isAuthenticated])
+
+  useEffect(() => {
+    checkIfHasPlayer()
+  })
+
     
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,6 +55,18 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const checkIfHasPlayer = () => {
+    console.log(userLogged);
+    if(userLogged && !userLogged.player) return null
+    else{
+      return(
+      <MenuItem onClick={handleCloseNavMenu} >
+                  <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+                </MenuItem>
+                )
+    }
+  }
 
     return <AppBar position="fixed" 
     style={{
@@ -107,9 +126,13 @@ const Navbar = () => {
               <MenuItem onClick={handleCloseNavMenu} >
                 <NavLinkCmp path={''} title={'Inicio'} />
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu} >
-                <NavLinkCmp path={'create-player'} title={'Crear Player'} />
-              </MenuItem>
+
+              {checkIfHasPlayer()}
+               {/* <MenuItem onClick={handleCloseNavMenu} >
+                  <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+                </MenuItem>
+                             */}
+
               <MenuItem onClick={handleCloseNavMenu} >
                 <NavLinkCmp path={'ranking'} title={'Ranking'} />
               </MenuItem>
@@ -144,12 +167,15 @@ const Navbar = () => {
             >
               <NavLinkCmp path={''} title={'Inicio'} />
             </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              <NavLinkCmp path={'create-player'} title={'Crear Player'} />
-            </Button>
+            { userLogged && userLogged.player===false
+            ? <Button
+            onClick={handleCloseNavMenu}
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+             <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+          </Button>
+            : null            
+            }
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block' }}
@@ -205,43 +231,5 @@ const Navbar = () => {
     </Container>
   </AppBar>
 } 
-    
-    
-    
-    
-    
-    // <div className='nav navbar navbar-expand-lg'>
-    //     <div className="container-fluid">
-    //         {/* <a class="navbar-brand" href="#">Navbar</a> */}
-    //         <div className="collapse navbar-collapse navw" id="navbarSupportedContent">
-    //         <img src={logo} alt="logo_nav" />
-    //         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    //             <span className="navbar-toggler-icon"></span>
-    //         </button>
-    //         <NavLinkCmp path={''} title={'Inicio'} />
-    //         <NavLinkCmp path={'create-player'} title={'Crear Player'} />
-    //         <NavLinkCmp path={'ranking'} title={'Ranking'} />
-    //         <NavLinkCmp path={'about'} title={'Acerca de'} />                    
-    //             <div>
-    //                 <div className="dropdown">
-    //                     <img src={profile} alt="profile-avatar" className='profile-pic' />
-    //                     <button className="btn dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    //                         Perfil
-    //                     </button>
-    //                     <ul className="dropdown-menu">
-    //                         <li>
-    //                             <NavLinkCmp path={'profile'} title={'Perfil'} />                    
-    //                         </li>
-    //                         <li>
-    //                             Logout
-    //                         </li>
-    //                     </ul>                        
-    //                 </div>                    
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
-
-
 
 export default Navbar;

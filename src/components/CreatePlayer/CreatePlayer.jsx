@@ -7,7 +7,7 @@ import Avatar from "../Avatar/Avatar";
 import { objHasNull } from "../../functions/validateForm";
 import Gallery from "../Profile/Gallery/Gallery";
 import { avatarList } from "../../functions/varsForDevelopment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postPlayer } from "../../redux/action";
 // import party from "party-js";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -17,13 +17,19 @@ const CreatePlayer = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const userLogged = useSelector(store => store.loggedUser)    
+
     const [player, setPlayer] = useState({
         nickname: "",
         avatar: '',
-        score: '0'
+        score: '0',
+        user_id: userLogged.createdUser.id
     })
 
-    const [error, setError] = useState(false)
+    const [error, setError] = useState({
+        msg: '',
+        error: false
+    })
 
     // FUNCTION TO MATCH THE IMAGE NAME => avatar-01, avatar-02, ... , avatar-10
     const checkIfAvatar = (e) => {
@@ -49,58 +55,65 @@ const CreatePlayer = () => {
             setError(true)
     }
 
-    const createPlayer = (e) => {
-        // party.confetti(e.target, {
-        //     count: party.variation.range(10, 20),
-        //   });
-        errorhandler()
-        if(!error){
-            // dispatch(postPlayer(player))
+    const checkIfPlayerExists = () => {
+        fetch(`${process.env.REACT_APP_API_URL}/players`,{
+            method : 'POST',
+            body : JSON.stringify(player),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => data.json())
+        .then(res => {
+            console.log('La respuesta es',res);
+            if(res === 'El nickname ya existe' || res === 'El usuario ya tiene un player'){
+                setError({
+                    msg:res,
+                    error:true
+                })
+            }else{
+                createPlayer()            
+            }            
+        })
+        .catch(err => console.log(err))
+    }
 
+    const createPlayer = (e) => {  
+        errorhandler()
+        if(!error.error){
             Swal.fire({
                 title: '¿Estás seguro de que deseas crear tu Player?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: '¡Estoy seguro!',
               }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                  dispatch(postPlayer(player))
                   Swal.fire({
                     title:'¡Has creado tu Player con éxito!',
                     icon:'success',
                     confirmButtonText: 'Continuar'
                   })
-                  navigate('/')
+                  navigate('/')                
                 } else if (result.isDismissed) {
                 }
-              })
-
-            // swal({
-            //     title: `Player creado exitosamente!`,
-            //     icon: "success",
-            //     button: 'Continuar'
-            // }).then(function (isConfirm) {
-            //     if (isConfirm) {
-            //         navigate('/')
-            //     }
-            // })
-            
-            
+              })            
         }
     }
 
     useEffect(() => {
         errorhandler()
-        console.log(player)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [player])
+
+    useEffect(() => {console.log(userLogged);},[])
 
     return (
         <div className="create-player">
             <div className="banner-title">
                 <h1>Usa la imaginación y crea tu Player</h1>
             </div>
+
+            {error.error && error.msg}
 
             <div className="cmp-create-player">
                 <div className="cmp-create-player-avatar">
@@ -128,7 +141,7 @@ const CreatePlayer = () => {
                         <Gallery imagesList={avatarList} avatarSelected={(e) => handlePlayer(e)} />
                     </div>
                    
-                    <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={createPlayer}>CREAR PLAYER</button>
+                    <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={checkIfPlayerExists}>CREAR PLAYER</button>
 
                     {error && <p className="error-message" style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados, evita usar simbolos</p>}
                 </div>

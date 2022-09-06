@@ -19,14 +19,14 @@ const Profile = () => {
             </div>
         </div>        
         {/* <Admin /> */}
-           <div className="gallery-title">
+        {/* <div className="gallery-title">
             <h3 className="gallery-h3">Subí fotografías de tus FreeTrees!</h3>
         </div>
 
         <div className="gallery-section pb-5">
             <Upload />
             <Gallery />
-        </div>
+        </div> */}
     </div>
 }
 

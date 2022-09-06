@@ -8,9 +8,17 @@ import { BrowserRouter } from "react-router-dom";
 import store from '../../redux/store'
 import { errorMock } from "../mocks/resolvers";
 
+
+const {rerender} = render(
+        <Provider store={store}>
+            <BrowserRouter>
+                <Ranking />
+            </BrowserRouter>
+        </Provider>)
+
 beforeEach(() => {
     // eslint-disable-next-line testing-library/no-render-in-setup
-    render(
+   render(
         <Provider store={store}>
             <BrowserRouter>
                 <Ranking />
@@ -21,21 +29,16 @@ beforeEach(() => {
 describe('Testing Ranking Component', () => {
 
     test.only('should throw an error if there is no players to paginate', async () => {
+  
         server.resetHandlers(
-            rest.get(`${process.env.REACT_APP_API_URL}/players?page=0&size=10&orderby=dsc`,errorMock))
+            rest.get(`${process.env.REACT_APP_API_URL}/players?page=0&size=10&orderby=dsc`, (req, res, ctx)=> 
+                res(ctx.status(500))))
 
-        // SHOULD RE-RENDER TO SIMULATE THE ERROR
-        render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <Ranking />
-                </BrowserRouter>
-            </Provider>)
-
+    
         await waitFor(async () => {
-            const rankedPlayers = await screen.findByText(/no se encontraron players$/i)
-            expect(rankedPlayers).toBeInTheDocument()
-        },{timeout: 4000})
+            const rankedPlayers = screen.getByTestId('error')
+            expect(rankedPlayers).toBeInTheDocument(1)
+        },{timeout:3000})
     })
 
     test('Should filter players by name', async () => {

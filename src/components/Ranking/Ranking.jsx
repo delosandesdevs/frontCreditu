@@ -14,7 +14,6 @@ const Ranking = () => {
     const dispatch = useDispatch()
 
     const playersPaginated = useSelector(state => state.pagination)
-
     
     const [page, setPage] = useState(0)
     const [order, setOrder] = useState('desc')
@@ -22,6 +21,7 @@ const Ranking = () => {
     const [error, setError] = useState(false)    
     const calcToPaginate = Math.round(playersPaginated.total/10)+1;
 
+    //Paginate and setError()
     useEffect(() => {
         // dispatch(getPlayersPaginated(page, order, 5))    
         setLoading(true)
@@ -52,22 +52,17 @@ const Ranking = () => {
     }
 
     const fillSearch = (e) => {
-        console.log(e.target)
         setSearch(e.target.value)
     }
 
-    const playerPosition = (player) => {
-        // return allPlayers.findIndex(p => { return p.nickname === player }) + 1
-    }
-
+    //Pagination fn's
     const handlePages = (page) => {
         setPage(page)
     }
-
     const handleOrder = () => {
         setOrder(order === 'desc' ? 'asc' : 'desc')
     }
-
+    //--------------
 
     return <div className="tree-wallpaper">
         <div className="mt-4">
@@ -112,7 +107,7 @@ const Ranking = () => {
                             </div>
                         </>
                         : <>
-                            {playersPaginated && playersPaginated.players.length > 0 && playersPaginated.players.map(p => {
+                            {playersPaginated && playersPaginated.players && playersPaginated.players.length > 0 && playersPaginated.players.map(p => {
                                 return <RankingCard
                                     position={p.ranking}
                                     playername={p.nickname}

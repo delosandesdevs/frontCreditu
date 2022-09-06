@@ -22,7 +22,7 @@ const About = () => {
                     <img src={threeLogo} alt="three_logo_img" className='three-logo' />
                     <img src={aboutLogo} alt="home_logo_img" className='about-logo' />
                 </div>
-                <div className='about-text_container' data-aos="fade-up" >
+                <div className='about-text_container' data-aos="fade-up" data-testid={'about'} >
                     <div className='text'>
                         <p>
                             Atravesamos constantemente una lucha ecológica para evitar destruir el planeta de nuestros hijos, y desde nuestro humilde lugar quisimos ayudar

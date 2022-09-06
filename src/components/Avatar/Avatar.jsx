@@ -42,7 +42,7 @@ const Avatar = ({ pic, displayName }) => {
     }
 
     return <div className="avatar">
-        <img src={randomName()} alt={`${displayName}_img`} className='avatar-img glass-effect' />
+        <img src={randomName()} alt={`${displayName}_devimg`} className='avatar-img glass-effect' />
         <span>{displayName}</span>
     </div>
 }

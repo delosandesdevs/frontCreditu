@@ -1,7 +1,13 @@
 export const mockRanking = (req, res, ctx) => {
+  const page = req.url.searchParams.get('page')
+  const size = req.url.searchParams.get('size')
+  const orderby = req.url.searchParams.get('orderby')
     return res(
         ctx.status(200),
         ctx.json([
+            page,
+            size,
+            orderby,
             { nickname: 'Cande',      avatar: '' ,  score:2},
             { nickname: 'Carlos',     avatar: '' ,  score:3},
             { nickname: 'Juano',      avatar: '',   score:1 },
@@ -44,12 +50,15 @@ export const mockRanking = (req, res, ctx) => {
     );
   }
 
-  export const errorMock = (req, res, ctx) =>
+  export const errorMock = (req, res, ctx) =>{
+  const page = req.url.searchParams.get('page')
+  const size = req.url.searchParams.get('size')
+  const orderby = req.url.searchParams.get('orderby')
   res(
-    ctx.status(403),
+    ctx.status(500),
     ctx.json({
-      error: 'No players were found'
+      page,size,orderby
     })
   
-  )
+  )}
   

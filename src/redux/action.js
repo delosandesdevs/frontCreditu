@@ -50,10 +50,9 @@ export function getTenPlayers(){
         try {
             const data = await fetch(`${process.env.REACT_APP_API_URL}/players?page=0&size=11&orderby=dsc`)
             const res = await data.json()
-            console.log('action creator allplayers', res)
             dispatch({
                 type: GET_TOPTEN_PLAYERS,
-                payload: res
+                payload: res.players
             })
         } catch (e) {
             return console.log('ERROR!', e)
@@ -66,9 +65,10 @@ export function getPlayersPaginated(pageNumber, orderBy, size){
         return fetch(`${process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             dispatch({
                 type: GET_PAGINATION,
-                payload: data
+                payload: data.players
             })
         })
     }

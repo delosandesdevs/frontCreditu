@@ -120,7 +120,7 @@ const CreatePlayer = () => {
 
                     <div className="create-player-form-field">
                         <label className="cmp-create-player-label" htmlFor="name">Nickname</label>
-                        <input type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} />
+                        <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} />
                     </div>
 
                     <div className="create-player-form-field">
@@ -130,7 +130,7 @@ const CreatePlayer = () => {
                    
                     <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={createPlayer}>CREAR PLAYER</button>
 
-                    {error && <p style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados</p>}
+                    {error && <p className="error-message" style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados, evita usar simbolos</p>}
                 </div>
             </div>
             <div id='create-player-text'>

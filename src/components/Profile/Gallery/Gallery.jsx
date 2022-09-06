@@ -20,7 +20,7 @@ const Gallery = ({ imagesList, avatarSelected }) => {
 
       <ImageListItem key={item} >
         {id++}
-        <button style={{ backgroundImage: `url(${item})`, height: '150px', backgroundSize: 'cover', backgroundPosition: "center", border: "none", backgroundColor: "transparent" }} aria-label={`${id}_avatar`} name='avatar' onClick={e => avatarSelected(e)} value={id}></button>
+        <button className={`avatar${id}`} style={{ backgroundImage: `url(${item})`, height: '150px', backgroundSize: 'cover', backgroundPosition: "center", border: "none", backgroundColor: "transparent" }} aria-label={`${id}_avatar`} name='avatar' onClick={e => avatarSelected(e)} value={id}></button>
       </ImageListItem>
     ))}
   </ImageList>

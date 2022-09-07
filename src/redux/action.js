@@ -1,4 +1,4 @@
-import {API_URL,GET_TEST, ADD_TEST, GET_TOPTEN_PLAYERS, GET_PAGINATION, GET_ALL_PLAYERS, LOGIN_OR_CREATE,} from "./constans"
+import { API_URL, GET_TEST, ADD_TEST, SEARCH_PLAYER, GET_TOPTEN_PLAYERS, GET_PAGINATION, GET_ALL_PLAYERS, LOGIN_OR_CREATE, } from "./constans"
 
 
 export function actionTest() {
@@ -14,13 +14,13 @@ export function actionTest() {
     }
 }
 
-export function addTest(test){
-    return function (dispatch){
-        return fetch(`${API_URL}/test1`,{
-            method : 'POST',
-            body : JSON.stringify(test),
-            headers : {
-                'Content-Type' : 'application/json'
+export function addTest(test) {
+    return function (dispatch) {
+        return fetch(`${API_URL}/test1`, {
+            method: 'POST',
+            body: JSON.stringify(test),
+            headers: {
+                'Content-Type': 'application/json'
             }
         })
     }
@@ -30,7 +30,7 @@ export function findOrCreateUser(name, email) {
     return function (dispatch) {
         return fetch(`${API_URL}/user`, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify({name, email}), // data can be `string` or {object}!
+            body: JSON.stringify({ name, email }), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -45,8 +45,8 @@ export function findOrCreateUser(name, email) {
     }
 }
 
-export function getTenPlayers(){
-    return async function(dispatch){
+export function getTenPlayers() {
+    return async function (dispatch) {
         try {
             const data = await fetch(`${process.env.REACT_APP_API_URL}/players?page=0&size=11&orderby=dsc`)
             const res = await data.json()
@@ -60,25 +60,41 @@ export function getTenPlayers(){
     }
 }
 
-export function getPlayersPaginated(pageNumber, orderBy, size){
-    return function(dispatch){
+export function getPlayersPaginated(pageNumber, orderBy, size) {
+    return function (dispatch) {
         return fetch(`${process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            dispatch({
-                type: GET_PAGINATION,
-                payload: data.players
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                dispatch({
+                    type: GET_PAGINATION,
+                    payload: data.players
+                })
             })
-        })
     }
 }
 
-export function postPlayer(player){
-    return function(){
-        return fetch(`${process.env.REACT_APP_API_URL}/players`,{
-            method : 'POST',
-            body : JSON.stringify(player),
+
+export function getSearchPlayer(nickname) {
+    return function (dispatch) {
+        return fetch(`${process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                dispatch({
+                    type: SEARCH_PLAYER,
+                    payload: data.players
+                })
+            })
+    }
+}
+
+
+export function postPlayer(player) {
+    return function () {
+        return fetch(`${process.env.REACT_APP_API_URL}/players`, {
+            method: 'POST',
+            body: JSON.stringify(player),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -86,23 +102,24 @@ export function postPlayer(player){
     }
 }
 
-export function getAllPlayers(){
-    return function(dispatch){
+export function getAllPlayers() {
+    return function (dispatch) {
         return fetch(`${process.env.REACT_APP_API_URL}/players`)
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: GET_ALL_PLAYERS,
-                payload: data
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: GET_ALL_PLAYERS,
+                    payload: data
+                })
             })
-        })        
-}}
+    }
+}
 
-export function postGallery(image){
-    return function(){
-        return fetch(`${process.env.REACT_APP_API_URL}/profile`,{
-            method : 'POST',
-            body : JSON.stringify(image),
+export function postGallery(image) {
+    return function () {
+        return fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+            method: 'POST',
+            body: JSON.stringify(image),
             headers: {
                 'Content-Type': 'application/json'
             }

@@ -4,7 +4,7 @@ import Pagination from '../Pagination/Pagination'
 import Position from '../Position/Position'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllPlayers, getPlayersPaginated } from '../../redux/action'
+import { getAllPlayers, getPlayersPaginated, getSearchPlayer } from '../../redux/action'
 import Pages from '../Pagination/Pages/Pages'
 import { API_URL, GET_PAGINATION } from '../../redux/constans'
 import Loader from '../Loader/Loader'
@@ -14,12 +14,12 @@ const Ranking = () => {
     const dispatch = useDispatch()
 
     const playersPaginated = useSelector(state => state.pagination)
-    
+
     const [page, setPage] = useState(0)
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)    
-    const calcToPaginate = Math.round(playersPaginated.total/10)+1;
+    const [error, setError] = useState(false)
+    const calcToPaginate = Math.round(playersPaginated.total / 10) + 1;
 
     //Paginate and setError()
     useEffect(() => {
@@ -44,11 +44,12 @@ const Ranking = () => {
 
     }, [page, order])
 
-    const [search, setSearch] = useState('')    
+    const [search, setSearch] = useState('')
 
     const handleSearchPlayer = (e) => {
-        e.preventDefault()        
-
+        e.preventDefault()
+        dispatch(getSearchPlayer(search))
+        console.log(playersPaginated)
     }
 
     const fillSearch = (e) => {
@@ -64,6 +65,8 @@ const Ranking = () => {
     }
     //--------------
 
+
+
     return <div className="tree-wallpaper">
         <div className="mt-4">
             <Position toBeUsed={'ranking'} />
@@ -72,12 +75,12 @@ const Ranking = () => {
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
             <label htmlFor="player" hidden>Player Name</label>
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} />
-            <button className='btn btn-ff'>Buscar</button>
+            <button className='btn btn-ff' >Buscar</button>
         </form>
         {/* <Pagination /> */}
         <div className="ranking-table" >
             {error
-                ? <div data-testid='error' style={{color:'red'}}>Error</div>
+                ? <div data-testid='error' style={{ color: 'red' }}>Error</div>
                 : null
             }
 

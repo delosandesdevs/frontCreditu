@@ -56,6 +56,13 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 pagination: {players : action.payload , total:action.payload.length}
             }
+        
+        // case SEARCH_PLAYERS_BY_STATUS:
+        //     return {
+        //          ...state,
+        //          pagination: 
+        //     }
+        
 
         default:
             return state

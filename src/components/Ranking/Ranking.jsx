@@ -8,6 +8,7 @@ import { getAllPlayers, getPlayersPaginated, getSearchPlayer } from '../../redux
 import Pages from '../Pagination/Pages/Pages'
 import { API_URL, GET_PAGINATION } from '../../redux/constans'
 import Loader from '../Loader/Loader'
+import BasicSelect from './SelectMUI/SelectMUI'
 
 const Ranking = () => {
 
@@ -15,7 +16,11 @@ const Ranking = () => {
 
     const playersPaginated = useSelector(state => state.pagination)
 
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(0)    
+    const [search, setSearch] = useState({
+        nickname:'',
+        status:''
+    })
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -44,7 +49,6 @@ const Ranking = () => {
 
     }, [page, order])
 
-    const [search, setSearch] = useState('')
 
     const handleSearchPlayer = (e) => {
         e.preventDefault()
@@ -53,7 +57,7 @@ const Ranking = () => {
     }
 
     const fillSearch = (e) => {
-        setSearch(e.target.value)
+        setSearch({nickname:e.target.value})
     }
 
     //Pagination fn's
@@ -65,7 +69,9 @@ const Ranking = () => {
     }
     //--------------
 
-
+    const statusSelected = (age) => {
+        setSearch({status: age})
+    }
 
     return <div className="tree-wallpaper">
         <div className="mt-4">
@@ -76,6 +82,7 @@ const Ranking = () => {
             <label htmlFor="player" hidden>Player Name</label>
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} />
             <button className='btn btn-ff' >Buscar</button>
+            <BasicSelect statusSelected={statusSelected} />
         </form>
         {/* <Pagination /> */}
         <div className="ranking-table" >

@@ -37,7 +37,7 @@ const Navbar = () => {
 
   useEffect(() => {
     checkIfHasPlayer()
-  })
+  }, [userLogged])
 
 
   const handleOpenNavMenu = (event) => {

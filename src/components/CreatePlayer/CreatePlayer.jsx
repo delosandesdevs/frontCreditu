@@ -11,14 +11,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { findOrCreateUser, postPlayer, updatePlayer } from "../../redux/action";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CreatePlayer = () => {
 
-    const {action} = useParams()
+    const { action } = useParams()
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userLogged = useSelector(store => store.loggedUser)
+    const { user } = useAuth0();
 
     const [player, setPlayer] = useState({
         nickname: '',
@@ -72,19 +74,20 @@ const CreatePlayer = () => {
                         error: true
                     })
                     return false
-                } 
-                return true                
+                }
+                return true
             })
             .catch(err => {
-                console.log(err) 
-                return false})
+                console.log(err)
+                return false
+            })
     }
 
-    const createPlayer = () => {
+    const createPlayer = async () => {
 
-        if(action==='edit'){
+        if (action === 'edit') {
             updateThePlayer()
-        }else{
+        } else {
             errorhandler()
             if (!error.error) {
                 Swal.fire({
@@ -93,42 +96,43 @@ const CreatePlayer = () => {
                     showCancelButton: true,
                     confirmButtonText: '¡Estoy seguro!',
                 }).then((result) => {
-                    if (result.isConfirmed) {                    
-                        if(postPlayer()){
-                            Swal.fire({
-                                title: '¡Has creado tu Player con éxito!',
-                                icon: 'success',
-                                confirmButtonText: 'Continuar'
-                            })                    
-                            navigate('/')
-                        }
-    
-                    } else if (result.isDismissed) {
+                    if (result.isConfirmed) {
+                        postPlayer()
+                        Swal.fire({
+                            title: '¡Has creado tu Player con éxito!',
+                            icon: 'success',
+                            confirmButtonText: 'Continuar'
+                        }).then((result) => {
+                            if (result.isConfirmed) postCreate()
+                        })
                     }
                 })
             }
         }
     }
 
+    const postCreate = async () => {
+        await dispatch(findOrCreateUser(user.name, user.email))
+        navigate('/')
+    }
+
     const updateThePlayer = () => {
         errorhandler()
-        if (!error.error){
+        if (!error.error) {
             Swal.fire({
                 title: '¿Estás seguro de que deseas actualizar tu Player?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: '¡Estoy seguro!',
             }).then((result) => {
-                if (result.isConfirmed) {                    
+                if (result.isConfirmed) {
                     dispatch(updatePlayer(player))
-                        Swal.fire({
-                            title: '¡Has editado tu Player con éxito!',
-                            icon: 'success',
-                            confirmButtonText: 'Continuar'
-                        })                    
-                        navigate('/')
-
-                } else if (result.isDismissed) {
+                    Swal.fire({
+                        title: '¡Has editado tu Player con éxito!',
+                        icon: 'success',
+                        confirmButtonText: 'Continuar'
+                    })
+                    navigate('/')
                 }
             })
         }
@@ -136,25 +140,25 @@ const CreatePlayer = () => {
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    },[])
+    }, [])
 
     useEffect(() => {
         errorhandler()
         console.log('EL PLAYER A EDITAR', player);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [player])
-    
+
     // CHECK IF IS CREATING OR EDITING
-    useEffect(() => {        
-        if(userLogged.player.nickname)
+    useEffect(() => {
+        if (userLogged.player.nickname)
             setPlayer({
-                nickname : userLogged.player.nickname,
+                nickname: userLogged.player.nickname,
                 avatar: userLogged.player.avatar,
                 score: userLogged.player.score,
                 id: userLogged.player.id,
                 user_id: userLogged.createdUser.id
             })
-            
+
     }, [userLogged])
 
     return (
@@ -193,7 +197,7 @@ const CreatePlayer = () => {
 
                     <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={createPlayer}>
                         {action === 'edit' ? 'EDITAR' : 'CREAR'} PLAYER
-                        </button>
+                    </button>
 
                     {error && <p className="error-message" style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados, evita usar simbolos</p>}
                 </div>

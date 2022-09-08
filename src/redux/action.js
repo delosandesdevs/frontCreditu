@@ -65,7 +65,7 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
         return fetch(`${process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`)
             .then(res => res.json())
             .then(data => {
-                             dispatch({
+                dispatch({
                     type: GET_PAGINATION,
                     payload: data.players
                 })
@@ -74,15 +74,15 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
 }
 
 
-export function getSearchPlayer({nickname, status}) {
+export function getSearchPlayer({ nickname, status }) {
     return function (dispatch) {
-        
-        if(nickname==='') return getPlayersPaginated(0,'desc',10)
+
+        if (nickname === '') return getPlayersPaginated(0, 'desc', 10)
 
         return fetch(`${process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}?status=${status}`)
             .then(res => res.json())
             .then(data => {
-                             dispatch({
+                dispatch({
                     type: SEARCH_PLAYER,
                     payload: data.players
                 })
@@ -128,13 +128,27 @@ export function postGallery(image) {
     }
 }
 
+export function updatePlayer(player) {
+    return function () {        
+        return fetch(`${process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`, {
+            method: 'PUT',
+            body: JSON.stringify(player),
+            headers: {
+                'Content-Type': 'application/json'
+            }            
+        })
+        .then(data => data.json())
+        .then(res => console.log(res))
+    }
+}
+
 // export function getPlayersByStatus({status}){
 //     return function(dispatch){
 //         return fetch(`${process.env.REACT_APP_API_URL}/filterByStatus?status=${status}`)
 //         .then(res => res.json())
 //         .then(data => {
 //             dispatch({
-//                 type: 
+//                 type:
 //             })
 //         })
 // }

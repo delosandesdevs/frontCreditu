@@ -2,6 +2,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 
+
 const Pages = ({pages, handlePages}) => {
 
   const [page, setPage] = useState(0);
@@ -12,7 +13,9 @@ const Pages = ({pages, handlePages}) => {
 
   return (
     <Stack spacing={2} >
-      <Pagination count={pages} variant="outlined" color="secondary" page={page} onChange={handleChange} />
+      <Pagination 
+       sx={{button:{color: '#ffffff', borderColor:'#ffffff' } }}
+      count={pages} variant="outlined" color="error" page={page} onChange={handleChange} />
     </Stack>
   );
 }

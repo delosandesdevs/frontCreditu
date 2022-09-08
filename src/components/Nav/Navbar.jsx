@@ -33,7 +33,7 @@ const Navbar = () => {
     if (isAuthenticated) {
       dispatch(findOrCreateUser(user.name, user.email))
     }
-     }, [isAuthenticated])
+  }, [isAuthenticated])
 
   useEffect(() => {
     checkIfHasPlayer()
@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   const checkIfHasPlayer = () => {
-     if (userLogged && !userLogged.player) return null
+    if (userLogged && !userLogged.player) return null
     else {
       return (
         <MenuItem onClick={handleCloseNavMenu} >
@@ -124,13 +124,7 @@ const Navbar = () => {
             <MenuItem onClick={handleCloseNavMenu} >
               <NavLinkCmp path={''} title={'Inicio'} />
             </MenuItem>
-
             {checkIfHasPlayer()}
-            {/* <MenuItem onClick={handleCloseNavMenu} >
-                  <NavLinkCmp path={'create-player'} title={'Crear Player'} />
-                </MenuItem>
-                             */}
-
             <MenuItem onClick={handleCloseNavMenu} >
               <NavLinkCmp path={'ranking'} title={'Ranking'} />
             </MenuItem>
@@ -212,7 +206,7 @@ const Navbar = () => {
           >
 
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">
+              <Typography textAlign="center" component={'span'} variant={'body2'}>
                 <NavLinkCmp path={'profile'} title={'Perfil'} />
               </Typography>
             </MenuItem>
@@ -222,7 +216,6 @@ const Navbar = () => {
                   : <LoginButton data-cy="log" />
               }
             </MenuItem>
-
           </Menu>
         </Box>
       </Toolbar>

@@ -109,9 +109,9 @@ td {
 .tree-wallpaper {
     background-image: url('../../assets/miscellaneous/doodle.png');
     margin-top: -15px;
-    // height: 100vh;
     display: flex;
     flex-direction: column;
+    height: auto;
 }
 
 .pages{

@@ -8,6 +8,7 @@
 
 .create-player {
     width: 100%;
+    height:auto ;
     background-image: url('../../assets/miscellaneous/doodle.png');
     padding-top: 20px;
     margin-top: -13px;
@@ -122,6 +123,14 @@ select {
     color: #0F5156;
     background-color: #FE9C84;
 }
+
+
+.create-player-submit:hover {
+    background-color: #0F5156;
+    color: #FE9C84;
+    transition: 1s;
+  }
+  
 
 #create-player-text {
     color: rgb(151, 151, 151);

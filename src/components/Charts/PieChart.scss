@@ -1,37 +1,37 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
-.chart{    
+.chart {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.pie-chart{
+.pie-chart {
     margin: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
+
     text-align: center;
 }
 
-.pie-chart p{
+.pie-chart p {
     color: rgb(192, 192, 192);
 }
 
-.pie-chart h3{
+.pie-chart h3 {
     color: white;
 }
 
-.shadow{
+.shadow {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-#chart-section{
-    
+#chart-section {
+
     @include respond-to('medium') {
         display: flex;
         justify-content: center;
@@ -40,20 +40,34 @@
     }
 }
 
-#chart-section h4{
-    
+#chart-section h4 {
     text-align: right;
     font-size: 40px;
     background: -webkit-linear-gradient(#eee, rgb(101, 209, 101));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.596));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.596));
 }
 
-.circular-chart{
+.circular-chart {
     width: 30%;
 }
 
-#chart-oxigen-text{
+#chart-oxigen-text {
     width: 100px;
+}
+
+
+@media screen and (max-width: 525px) {
+    #chart-section h4 {
+        text-align: center;
+        font-size: 25px;
+        max-width: 350px;
+        margin: auto;
+    }
+
+    .col-sm-6 {
+        max-width: 99%;
+        margin-bottom: 15px;
+    }
 }

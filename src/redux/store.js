@@ -5,17 +5,18 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, } fr
 
 
 const persistConfig = {
-    key: 'counter', 
+    key: 'counter',
+    version: 1,
     storage,
 };
-const reducers = reducer 
+const reducers = reducer
 const persistedReducer = persistReducer(persistConfig, reducers);
 export default configureStore({
     reducer: persistedReducer,
-    middlewware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        })
+        }),
 })

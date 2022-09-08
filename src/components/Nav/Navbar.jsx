@@ -27,13 +27,13 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const userLogged = useSelector(store => store.loggedUser)
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(findOrCreateUser(user.name, user.email))
-    }
-     }, [isAuthenticated])
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     dispatch(findOrCreateUser(user.name, user.email))
+  //   }
+  //    }, [])
 
   useEffect(() => {
     checkIfHasPlayer()
@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   const checkIfHasPlayer = () => {
-     if (userLogged && !userLogged.player) return null
+    if (userLogged && !userLogged.player) return null
     else {
       return (
         <MenuItem onClick={handleCloseNavMenu} >

@@ -10,55 +10,26 @@ import Hero from '../Hero/Hero';
 import { useSelector } from 'react-redux'
 import 'aos/dist/aos.css'
 import { useDispatch } from 'react-redux'
-import { getTenPlayers } from "../../redux/action"
-
+import { findOrCreateUser, getTenPlayers } from "../../redux/action"
+import { useAuth0 } from "@auth0/auth0-react";
 const Home = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getTenPlayers());
-    }, [])
-
     const topten = useSelector(state => (state.topten.slice(4, 11)));
     const topthree = useSelector(state => (state.topten.slice(0, 3)));
+    const { isAuthenticated, user } = useAuth0();
 
-    useEffect(() => {
+    useEffect(() => {        
         Aos.init({ duration: 1000, once: true })
+        dispatch(getTenPlayers());
+        
+        if (isAuthenticated)
+            dispatch(findOrCreateUser(user.name, user.email))
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-
-    ////////////////////////TESTING, NO BORRAR/////////////////////////////////
-
-    // const [topten, setTopten] = useState(useSelector(state => (state.topten.slice(4, 11))));
-    // const [topthree, setTopthree] = useState(useSelector(state => (state.topten.slice(0, 3))));
-
-    // const [errorThree, setErrorThree] = useState(false)
-    // const [errorTen, setErrorTen] = useState(false)
-
-    //TESTING, NO BORRAR
-    // const testingTopThree = () => {
-    //     fetch(`http://localhost:${API_PORT}/topthree`)
-    //         .then(data => data.json())
-    //         .then(res => setTopthree(res))
-    //         .catch(e => setErrorThree(true))
-    // }
-
-    // //TESTING, NO BORRAR
-    // const testingTopTen = () => {
-    //     fetch(`http://localhost:${API_PORT}/topten`)
-    //         .then(data => data.json())
-    //         .then(res => setTopten(res))
-    //         .catch(e => setErrorTen(true))
-    // }
-
-    // useEffect(() => {
-    //     //TESTING, NO BORRAR
-    //     testingTopThree()
-    //     testingTopTen()
-    // }, [])
-    ///////////////////////////////////////////////////////////
 
     return (
         <div className='home_container'>

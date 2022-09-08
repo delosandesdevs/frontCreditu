@@ -23,7 +23,7 @@ const CreatePlayer = () => {
         nickname: "",
         avatar: '',
         score: '0',
-        user_id: userLogged ? userLogged.createdUser.id : 0
+        user_id: userLogged.createdUser.id
     })
 
     const [error, setError] = useState({

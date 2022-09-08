@@ -172,7 +172,7 @@ const Navbar = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+              <NavLinkCmp datqa-cy="crear" path={'create-player'} title={'Crear Player'} />
             </Button>
             : null
           }

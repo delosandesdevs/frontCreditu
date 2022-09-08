@@ -16,25 +16,48 @@ const Ranking = () => {
 
     const playersPaginated = useSelector(state => state.pagination)
     const userInfo = useSelector(state => state.loggedUser)
-    const [page, setPage] = useState(0)    
+    const [page, setPage] = useState(0)
     const [search, setSearch] = useState({
-        nickname:'',
-        status:''
+        nickname: '',
+        status: 'todos'
     })
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const calcToPaginate = Math.round(playersPaginated.total / 10) + 1;
 
-    //Paginate and setError()
-    useEffect(() => {
-        // dispatch(getPlayersPaginated(page, order, 5))    
-        setLoading(true)
-        setError(false)
-        fetch(`${process.env.REACT_APP_API_URL}/players?page=${page}&size=10&orderby=${order}`)
+    const getPlayersAndSearchs = () => {
+
+        const allResults = `players?page=${page}&orderby=${order}`
+        const specificSearch = `searchPlayer?nickname=${search.nickname}&page=${page}&orderby=${order}&status=${search.status}`
+        const statusSearch = `filterByStatus?status=${search.status}&page=${page}&orderby=${order}`
+        let dynamicSearchPath = allResults
+
+        if(search.nickname === ''){
+            console.log('por status')
+            console.log(search)
+            dynamicSearchPath = statusSearch
+        } 
+
+        if(search.nickname === '' && search.status === 'Todos'){
+            console.log('por todos')
+            dynamicSearchPath =  allResults
+        } 
+
+        if(search.nickname !== ''){
+            console.log('por combinación')
+            console.log(search)
+            console.log(process.env.REACT_APP_API_URL)
+            dynamicSearchPath = specificSearch
+        }
+        
+        console.log(dynamicSearchPath)
+        fetch(`${process.env.REACT_APP_API_URL}/${dynamicSearchPath}`)
             .then(res => res.json())
             .then(data => {
-                             dispatch({
+                console.log('Ruta ejecutada: ', dynamicSearchPath)
+                console.log('Busqueda: ',data)
+                dispatch({
                     type: GET_PAGINATION,
                     payload: data
                 })
@@ -45,17 +68,38 @@ const Ranking = () => {
                 setError(true)
                 console.log(err)
             })
+    }
 
+    //Paginate and setError()
+    useEffect(() => {
+        setLoading(true)
+        setError(false)
+        getPlayersAndSearchs()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, order])
 
+    useEffect(() => {
+        getPlayersAndSearchs()
+    },[])
 
     const handleSearchPlayer = (e) => {
         e.preventDefault()
-        dispatch(getSearchPlayer(search))
-       }
+        getPlayersAndSearchs()
+        // dispatch(getSearchPlayer(search))
+    }
 
     const fillSearch = (e) => {
-        setSearch({nickname:e.target.value})
+        setSearch({
+            ...search,
+            nickname: e.target.value
+        })
+    }
+
+    const statusSelected = (value) => {
+        setSearch({
+            ...search,
+            status: value
+        })
     }
 
     //Pagination fn's
@@ -67,13 +111,10 @@ const Ranking = () => {
     }
     //--------------
 
-    const statusSelected = (age) => {
-        setSearch({status: age})
-    }
 
     return <div className="tree-wallpaper">
         <div className="mt-4">
-           {userInfo && userInfo.createdUser && userInfo.createdUser.player && userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
+            {userInfo && userInfo.createdUser && userInfo.createdUser.player && userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
         </div>
 
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
@@ -82,7 +123,6 @@ const Ranking = () => {
             <button className='btn btn-ff' >Buscar</button>
             <BasicSelect statusSelected={statusSelected} />
         </form>
-        {/* <Pagination /> */}
         <div className="ranking-table" >
             {error
                 ? <div data-testid='error' style={{ color: 'red' }}>Error</div>

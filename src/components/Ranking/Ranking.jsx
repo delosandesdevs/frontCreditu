@@ -73,7 +73,7 @@ const Ranking = () => {
 
     return <div className="tree-wallpaper">
         <div className="mt-4">
-           {userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
+           {userInfo && userInfo.createdUser && userInfo.createdUser.player && userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
         </div>
 
         <form className='ranking-search' onSubmit={handleSearchPlayer}>

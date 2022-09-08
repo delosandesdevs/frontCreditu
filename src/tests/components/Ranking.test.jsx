@@ -7,14 +7,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from '../../redux/store'
 import { errorMock } from "../mocks/resolvers";
+import RankingCard from "../../components/Ranking/RankingCard/RankingCard";
 
-
-const {rerender} = render(
-        <Provider store={store}>
-            <BrowserRouter>
-                <Ranking />
-            </BrowserRouter>
-        </Provider>)
 
 beforeEach(() => {
     // eslint-disable-next-line testing-library/no-render-in-setup
@@ -28,33 +22,43 @@ beforeEach(() => {
 
 describe('Testing Ranking Component', () => {
 
-    test.only('should throw an error if there is no players to paginate', async () => {
+    test('should throw an error if there is no players to paginate', async () => {
   
         server.resetHandlers(
-            rest.get(`${process.env.REACT_APP_API_URL}/players?page=0&size=10&orderby=dsc`, (req, res, ctx)=> 
-                res(ctx.status(500))))
-
+            rest.get(`${process.env.REACT_APP_API_URL}/players?page=0&size=10&orderby=dsc`, errorMock)
+            )
     
         await waitFor(async () => {
             const rankedPlayers = screen.getByTestId('error')
             expect(rankedPlayers).toBeInTheDocument(1)
-        },{timeout:3000})
+            expect(render(<RankingCard />)).toBeFalsy;            
+        })
     })
 
-    test('Should filter players by name', async () => {
+    test.skip('Should filter players by name', async () => {
 
         const inputPlayer = screen.getByPlaceholderText(/player a buscar$/i)
         const submitSearchBtn = screen.getByRole('button', { name: /buscar/i })
         userEvent.type(inputPlayer, 'juano')
         userEvent.click(submitSearchBtn)
 
-        const cards = await screen.findAllByTestId('testplayer')
+        waitFor(() => {
+            const cards = screen.getAllByTestId('testplayer')
+            expect(cards).toHaveLength(1)        
 
-        expect(cards).toHaveLength(1)
+        })
+
     })
 
     test('should show players paginated', async () => {
-        const playersPaginated = await screen.findAllByTestId('testplayer')
-        expect(playersPaginated).toHaveLength(10)
+        waitFor(() =>{
+            const playersPaginated = screen.getAllByTestId('testplayer')
+            expect(playersPaginated).toHaveLength(10)            
+        })
+    })
+    test('should show players paginated2', async () => {
+        waitFor(() =>{            
+            expect(render(<RankingCard />)).toBeTruthy;            
+        })
     })
 })

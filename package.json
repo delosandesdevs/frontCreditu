@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.0.0",
     "@uploadcare/react-widget": "^2.1.6",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
@@ -42,7 +43,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "coverage": "jest --collect-coverage"
   },
   "eslintConfig": {
     "extends": [

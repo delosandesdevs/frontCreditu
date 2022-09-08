@@ -24,13 +24,13 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} exact />
       <Route path='/user' element={<User />} />
-      <Route path='/create-player' element={<CreatePlayer />} />
+      <Route path='/create-player/:action' element={<CreatePlayer />} />
       <Route path='/ranking' element={<Ranking />} />
       <Route path='/profile' element={<Profile />}>
-        <Route index path='players' element={<Players />} />
+        {/* <Route index path='players' element={<Players />} />
         <Route path='renewed-air' element={<RenewedAir />} />
         <Route path='sellings' element={<Sellings />} />
-        <Route path='users' element={<Users />} />
+        <Route path='users' element={<Users />} /> */}
       </Route>
       <Route path='/about' element={<About />} />
     </Routes>

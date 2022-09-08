@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
 
-const NavLinkCmp = ({path, title}) => {
+const NavLinkCmp = ({path, title, action}) => {
     return  <div className='container-nav-button'>
-    <NavLink to={`/${path}`} className="nav-button">{title}</NavLink>
+        {action === 'edit'
+        ? <NavLink to={`/${path}/edit`} className="nav-button" style={{color:"white"}}>{title}</NavLink>
+        : <NavLink to={`/${path}`} className="nav-button">{title}</NavLink>
+    }
+    
 </div>
 }
 

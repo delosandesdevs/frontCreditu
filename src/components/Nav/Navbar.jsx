@@ -60,7 +60,7 @@ const Navbar = () => {
     else {
       return (
         <MenuItem onClick={handleCloseNavMenu} >
-          <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+          <NavLinkCmp path={'create-player/'} title={'Crear Player'} action={''} />
         </MenuItem>
       )
     }
@@ -170,7 +170,7 @@ const Navbar = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+              <NavLinkCmp path={'create-player/create'} title={'Crear Player'} action={''} />
             </Button>
             : null
           }

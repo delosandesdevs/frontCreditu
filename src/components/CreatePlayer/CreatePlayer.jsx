@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './CreatePlayer.scss'
 import defaultAvatar from '../../assets/avatars/default.png'
 import 'animate.css';
@@ -10,14 +10,18 @@ import { avatarList } from "../../functions/varsForDevelopment";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { findOrCreateUser, postPlayer } from "../../redux/action";
 
 const CreatePlayer = () => {
 
+    const {action} = useParams()
+
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const userLogged = useSelector(store => store.loggedUser)
 
     const [player, setPlayer] = useState({
-        nickname: "",
+        nickname: '',
         avatar: '',
         score: '0',
         user_id: userLogged.createdUser.id
@@ -74,7 +78,7 @@ const CreatePlayer = () => {
             .catch(err => console.log(err))
     }
 
-    const createPlayer = (e) => {
+    const createPlayer = () => {
         errorhandler()
         if (!error.error) {
             Swal.fire({
@@ -84,11 +88,12 @@ const CreatePlayer = () => {
                 confirmButtonText: '¡Estoy seguro!',
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // dispatch(postPlayer(player))
                     Swal.fire({
                         title: '¡Has creado tu Player con éxito!',
                         icon: 'success',
                         confirmButtonText: 'Continuar'
-                    })
+                    })                    
                     navigate('/')
                 } else if (result.isDismissed) {
                 }
@@ -97,16 +102,27 @@ const CreatePlayer = () => {
     }
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },[])
+
+    useEffect(() => {
         errorhandler()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [player])
-
-    useEffect(() => { }, [])
+    
+    // CHECK IF IS CREATING OR EDITING
+    useEffect(() => {        
+        if(userLogged.player.nickname)
+            setPlayer({
+                nickname : userLogged.player.nickname,
+                avatar: userLogged.player.avatar
+            })
+    }, [userLogged])
 
     return (
         <div className="create-player">
             <div className="banner-title">
-                <h1>Usa la imaginación y crea tu Player</h1>
+                <h1>Usa la imaginación y {action === 'edit' ? 'edita' : 'crea'} tu Player</h1>
             </div>
 
             {error.error && error.msg}
@@ -129,7 +145,7 @@ const CreatePlayer = () => {
 
                     <div className="create-player-form-field">
                         <label className="cmp-create-player-label" htmlFor="name">Nickname</label>
-                        <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} />
+                        <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} value={player.nickname} />
                     </div>
 
                     <div className="create-player-form-field">
@@ -137,7 +153,9 @@ const CreatePlayer = () => {
                         <Gallery imagesList={avatarList} avatarSelected={(e) => handlePlayer(e)} />
                     </div>
 
-                    <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={checkIfPlayerExists}>CREAR PLAYER</button>
+                    <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={checkIfPlayerExists}>
+                        {action === 'edit' ? 'EDITAR' : 'CREAR'} PLAYER
+                        </button>
 
                     {error && <p className="error-message" style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados, evita usar simbolos</p>}
                 </div>

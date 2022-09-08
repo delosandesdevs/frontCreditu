@@ -6,26 +6,26 @@ import store from './redux/store'
 import "./index.css";
 import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
-// import reportWebVitals from './reportWebVitals';
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+let persistor = persistStore(store)
+
 root.render(
-  <Provider store ={store}>
-    <BrowserRouter>
-      <React.StrictMode>
-        <Auth0Provider
-          domain="dev-mz28f1dv.us.auth0.com"
-          clientId="bs0g9z6kqdPLW4HIArVuLAOgdOBvuezO"
-          redirectUri={window.location.origin}
-        >
-          <App />
-        </Auth0Provider>
-      </React.StrictMode>
-    </BrowserRouter>
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <BrowserRouter>
+        <React.StrictMode>
+          <Auth0Provider
+            domain={`${process.env.REACT_APP_AUTH0_DOMAIN}`}
+            clientId={`${process.env.REACT_APP_AUTH0_CLIENT_ID}`}
+            redirectUri={window.location.origin}
+          >
+            <App />
+          </Auth0Provider>
+        </React.StrictMode>
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

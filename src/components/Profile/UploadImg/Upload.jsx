@@ -1,10 +1,9 @@
-import upload from '../../../assets/miscellaneous/upload_img.png'
 import { Button } from '@mui/material'
 import { Widget } from "@uploadcare/react-widget";
 import './Upload.scss'
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { postGallery } from '../../../redux/action';
+
 
 const Upload = () => {
 
@@ -23,9 +22,7 @@ const Upload = () => {
                     id="file"
                     name="photos"
                     onChange={ image => {
-                        console.log(image.cdnUrl)
-                        //dispatch(postGallery(image.cdnUrl))
-                    }}
+                                     }}
                 />
             </div>
         </Button>

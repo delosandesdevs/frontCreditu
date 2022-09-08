@@ -48,8 +48,7 @@ const Players = () => {
       },[])
 
       useEffect(() => {
-        console.log(allPlayers)
-        setCountPlayers(allPlayers.length)
+            setCountPlayers(allPlayers.length)
       },[allPlayers])
 
       const fakeUsers = [
@@ -102,7 +101,6 @@ const Players = () => {
       const fake2 = allPlayers.reduce((r, o) => r + +!Object.values(o).includes(null), 0)
       
       const labels = ["Stats"];
-      console.log(countPlayers)
        const data = {
         labels,
         datasets: [

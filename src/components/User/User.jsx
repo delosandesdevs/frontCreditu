@@ -13,8 +13,7 @@ const User = (props) => {
             [e.target.name] : e.target.value
         })
     }
-    console.log(data)
-
+ 
     return (
         <div>
             <form>

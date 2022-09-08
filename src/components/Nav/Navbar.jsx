@@ -20,27 +20,26 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useState, useEffect } from 'react';
 import juano from '../../assets/avatars/juano.png'
 import { useAuth0 } from "@auth0/auth0-react";
-import {useDispatch, useSelector} from 'react-redux'
-import{findOrCreateUser} from '../../redux/action'
+import { useDispatch, useSelector } from 'react-redux'
+import { findOrCreateUser } from '../../redux/action'
 
 const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = useState(null);
-    const [anchorElUser, setAnchorElUser] = useState(null);
-    const { isAuthenticated, user } = useAuth0();
-    const dispatch = useDispatch();
-    const userLogged = useSelector(store => store.loggedUser)    
-  useEffect(()=>{
-    if(isAuthenticated){
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const { isAuthenticated, user } = useAuth0();
+  const dispatch = useDispatch();
+  const userLogged = useSelector(store => store.loggedUser)
+  useEffect(() => {
+    if (isAuthenticated) {
       dispatch(findOrCreateUser(user.name, user.email))
     }
-    console.log(userLogged);
-  },[isAuthenticated])
+     }, [isAuthenticated])
 
   useEffect(() => {
     checkIfHasPlayer()
   })
 
-    
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -57,23 +56,22 @@ const Navbar = () => {
   };
 
   const checkIfHasPlayer = () => {
-    console.log(userLogged);
-    if(userLogged && !userLogged.player) return null
-    else{
-      return(
-      <MenuItem onClick={handleCloseNavMenu} >
-                  <NavLinkCmp path={'create-player'} title={'Crear Player'} />
-                </MenuItem>
-                )
+     if (userLogged && !userLogged.player) return null
+    else {
+      return (
+        <MenuItem onClick={handleCloseNavMenu} >
+          <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+        </MenuItem>
+      )
     }
   }
 
-    return <AppBar position="fixed" 
+  return <AppBar position="fixed"
     style={{
-        backgroundColor:"#FEF1EE",
-        color:"black"
-        }}
-    >
+      backgroundColor: "#FEF1EE",
+      color: "black"
+    }}
+  >
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         <Typography
@@ -88,7 +86,7 @@ const Navbar = () => {
             fontWeight: 700,
             letterSpacing: '.3rem',
             color: 'inherit',
-            textDecoration: 'none'            
+            textDecoration: 'none'
           }}
         >
           <img src={logo} alt="logo_nav" id='logo-nav' />
@@ -120,25 +118,25 @@ const Navbar = () => {
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
             sx={{
-              display: { xs: 'block', md: 'none' }              
+              display: { xs: 'block', md: 'none' }
             }}
           >
-              <MenuItem onClick={handleCloseNavMenu} >
-                <NavLinkCmp path={''} title={'Inicio'} />
-              </MenuItem>
+            <MenuItem onClick={handleCloseNavMenu} >
+              <NavLinkCmp path={''} title={'Inicio'} />
+            </MenuItem>
 
-              {checkIfHasPlayer()}
-               {/* <MenuItem onClick={handleCloseNavMenu} >
+            {checkIfHasPlayer()}
+            {/* <MenuItem onClick={handleCloseNavMenu} >
                   <NavLinkCmp path={'create-player'} title={'Crear Player'} />
                 </MenuItem>
                              */}
 
-              <MenuItem onClick={handleCloseNavMenu} >
-                <NavLinkCmp path={'ranking'} title={'Ranking'} />
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu} >
-                <NavLinkCmp path={'about'} title={'Acerca de'} />
-              </MenuItem>
+            <MenuItem onClick={handleCloseNavMenu} >
+              <NavLinkCmp path={'ranking'} title={'Ranking'} />
+            </MenuItem>
+            <MenuItem onClick={handleCloseNavMenu} >
+              <NavLinkCmp path={'about'} title={'Acerca de'} />
+            </MenuItem>
           </Menu>
         </Box>
         <Typography
@@ -160,40 +158,40 @@ const Navbar = () => {
           <img src={logo} alt="logo_nav" id='logo-nav' />
         </Typography>
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-         
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              <NavLinkCmp path={''} title={'Inicio'} />
-            </Button>
-            { userLogged && userLogged.player===false
-            ? <Button
+
+          <Button
             onClick={handleCloseNavMenu}
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
-             <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+            <NavLinkCmp path={''} title={'Inicio'} />
           </Button>
-            : null            
-            }
-            <Button
+          {userLogged && userLogged.player === false
+            ? <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              <NavLinkCmp path={'ranking'} title={'Ranking'} />
+              <NavLinkCmp path={'create-player'} title={'Crear Player'} />
             </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              <NavLinkCmp path={'about'} title={'Acerca de'} />
-            </Button>
+            : null
+          }
+          <Button
+            onClick={handleCloseNavMenu}
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            <NavLinkCmp path={'ranking'} title={'Ranking'} />
+          </Button>
+          <Button
+            onClick={handleCloseNavMenu}
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            <NavLinkCmp path={'about'} title={'Acerca de'} />
+          </Button>
         </Box>
 
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt={isAuthenticated ? user.name : "Juano_icon"} src={isAuthenticated ? user.picture : juano} />
+              <Avatar data-cy="login" alt={isAuthenticated ? user.name : "Juano_icon"} src={isAuthenticated ? user.picture : juano} />
             </IconButton>
           </Tooltip>
           <Menu
@@ -212,24 +210,24 @@ const Navbar = () => {
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
           >
-            
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                    <NavLinkCmp path={'profile'} title={'Perfil'} />
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                {
-                  isAuthenticated ? <LogoutButton/>
-                  : <LoginButton/>
-                }
-              </MenuItem>
-            
+
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography textAlign="center">
+                <NavLinkCmp path={'profile'} title={'Perfil'} />
+              </Typography>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              {
+                isAuthenticated ? <LogoutButton />
+                  : <LoginButton data-cy="log" />
+              }
+            </MenuItem>
+
           </Menu>
         </Box>
       </Toolbar>
     </Container>
   </AppBar>
-} 
+}
 
 export default Navbar;

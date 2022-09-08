@@ -4,22 +4,27 @@ import Pagination from '../Pagination/Pagination'
 import Position from '../Position/Position'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllPlayers, getPlayersPaginated } from '../../redux/action'
+import { getAllPlayers, getPlayersPaginated, getSearchPlayer } from '../../redux/action'
 import Pages from '../Pagination/Pages/Pages'
 import { API_URL, GET_PAGINATION } from '../../redux/constans'
 import Loader from '../Loader/Loader'
+import BasicSelect from './SelectMUI/SelectMUI'
 
 const Ranking = () => {
 
     const dispatch = useDispatch()
 
     const playersPaginated = useSelector(state => state.pagination)
-    
-    const [page, setPage] = useState(0)
+    const userInfo = useSelector(state => state.loggedUser)
+    const [page, setPage] = useState(0)    
+    const [search, setSearch] = useState({
+        nickname:'',
+        status:''
+    })
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)    
-    const calcToPaginate = Math.round(playersPaginated.total/10)+1;
+    const [error, setError] = useState(false)
+    const calcToPaginate = Math.round(playersPaginated.total / 10) + 1;
 
     //Paginate and setError()
     useEffect(() => {
@@ -29,8 +34,7 @@ const Ranking = () => {
         fetch(`${process.env.REACT_APP_API_URL}/players?page=${page}&size=10&orderby=${order}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data.players);
-                dispatch({
+                             dispatch({
                     type: GET_PAGINATION,
                     payload: data
                 })
@@ -44,15 +48,14 @@ const Ranking = () => {
 
     }, [page, order])
 
-    const [search, setSearch] = useState('')    
 
     const handleSearchPlayer = (e) => {
-        e.preventDefault()        
-
-    }
+        e.preventDefault()
+        dispatch(getSearchPlayer(search))
+       }
 
     const fillSearch = (e) => {
-        setSearch(e.target.value)
+        setSearch({nickname:e.target.value})
     }
 
     //Pagination fn's
@@ -64,20 +67,25 @@ const Ranking = () => {
     }
     //--------------
 
+    const statusSelected = (age) => {
+        setSearch({status: age})
+    }
+
     return <div className="tree-wallpaper">
         <div className="mt-4">
-            <Position toBeUsed={'ranking'} />
+           {userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
         </div>
 
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
             <label htmlFor="player" hidden>Player Name</label>
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} />
-            <button className='btn btn-ff'>Buscar</button>
+            <button className='btn btn-ff' >Buscar</button>
+            <BasicSelect statusSelected={statusSelected} />
         </form>
         {/* <Pagination /> */}
         <div className="ranking-table" >
             {error
-                ? <div data-testid='error' style={{color:'red'}}>Error</div>
+                ? <div data-testid='error' style={{ color: 'red' }}>Error</div>
                 : null
             }
 

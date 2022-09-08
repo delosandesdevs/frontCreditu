@@ -8,16 +8,13 @@ import { objHasNull } from "../../functions/validateForm";
 import Gallery from "../Profile/Gallery/Gallery";
 import { avatarList } from "../../functions/varsForDevelopment";
 import { useDispatch, useSelector } from "react-redux";
-import { postPlayer } from "../../redux/action";
-// import party from "party-js";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 
 const CreatePlayer = () => {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
-    const userLogged = useSelector(store => store.loggedUser)    
+    const userLogged = useSelector(store => store.loggedUser)
 
     const [player, setPlayer] = useState({
         nickname: "",
@@ -33,13 +30,13 @@ const CreatePlayer = () => {
 
     // FUNCTION TO MATCH THE IMAGE NAME => avatar-01, avatar-02, ... , avatar-10
     const checkIfAvatar = (e) => {
-        if(e.target.name === 'avatar'){
-            if(e.target.value < 10)
-            return '/images/avatar-0'+e.target.value+'.png'
+        if (e.target.name === 'avatar') {
+            if (e.target.value < 10)
+                return '/images/avatar-0' + e.target.value + '.png'
             else
-            return '/images/avatar-'+e.target.value+'.png'
+                return '/images/avatar-' + e.target.value + '.png'
         }
-        return e.target.value        
+        return e.target.value
     }
 
     const handlePlayer = (e) => {
@@ -56,47 +53,46 @@ const CreatePlayer = () => {
     }
 
     const checkIfPlayerExists = () => {
-        fetch(`${process.env.REACT_APP_API_URL}/players`,{
-            method : 'POST',
-            body : JSON.stringify(player),
+        fetch(`${process.env.REACT_APP_API_URL}/players`, {
+            method: 'POST',
+            body: JSON.stringify(player),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(data => data.json())
-        .then(res => {
-            console.log('La respuesta es',res);
-            if(res === 'El nickname ya existe' || res === 'El usuario ya tiene un player'){
-                setError({
-                    msg:res,
-                    error:true
-                })
-            }else{
-                createPlayer()            
-            }            
-        })
-        .catch(err => console.log(err))
+            .then(data => data.json())
+            .then(res => {
+                if (res === 'El nickname ya existe' || res === 'El usuario ya tiene un player') {
+                    setError({
+                        msg: res,
+                        error: true
+                    })
+                } else {
+                    createPlayer()
+                }
+            })
+            .catch(err => console.log(err))
     }
 
-    const createPlayer = (e) => {  
+    const createPlayer = (e) => {
         errorhandler()
-        if(!error.error){
+        if (!error.error) {
             Swal.fire({
                 title: '¿Estás seguro de que deseas crear tu Player?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: '¡Estoy seguro!',
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                  Swal.fire({
-                    title:'¡Has creado tu Player con éxito!',
-                    icon:'success',
-                    confirmButtonText: 'Continuar'
-                  })
-                  navigate('/')                
+                    Swal.fire({
+                        title: '¡Has creado tu Player con éxito!',
+                        icon: 'success',
+                        confirmButtonText: 'Continuar'
+                    })
+                    navigate('/')
                 } else if (result.isDismissed) {
                 }
-              })            
+            })
         }
     }
 
@@ -105,7 +101,7 @@ const CreatePlayer = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [player])
 
-    useEffect(() => {console.log(userLogged);},[])
+    useEffect(() => { }, [])
 
     return (
         <div className="create-player">
@@ -119,13 +115,13 @@ const CreatePlayer = () => {
                 <div className="cmp-create-player-avatar">
                     <div className="cmp-create-player-avatar-background">
                         {player.avatar === '' ?
-                         <img src={defaultAvatar} alt="default_avatar_img" /> 
-                        :
-                        <div className="avatar-movement" id='avatar-movement'>
-                            <Avatar pic={player.avatar} displayName={''} />
-                        </div>
-                    }
-                    <span>{player.nickname}</span>
+                            <img src={defaultAvatar} alt="default_avatar_img" />
+                            :
+                            <div className="avatar-movement" id='avatar-movement'>
+                                <Avatar pic={player.avatar} displayName={''} />
+                            </div>
+                        }
+                        <span>{player.nickname}</span>
                     </div>
                 </div>
 
@@ -137,10 +133,10 @@ const CreatePlayer = () => {
                     </div>
 
                     <div className="create-player-form-field">
-                        <label className="cmp-create-player-label" htmlFor="status">Selecciona tu avatar</label>                      
+                        <label className="cmp-create-player-label" htmlFor="status">Selecciona tu avatar</label>
                         <Gallery imagesList={avatarList} avatarSelected={(e) => handlePlayer(e)} />
                     </div>
-                   
+
                     <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={checkIfPlayerExists}>CREAR PLAYER</button>
 
                     {error && <p className="error-message" style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>Todos los campos deben ser llenados, evita usar simbolos</p>}

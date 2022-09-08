@@ -33,8 +33,7 @@ const Navbar = () => {
     if (isAuthenticated) {
       dispatch(findOrCreateUser(user.name, user.email))
     }
-    console.log(userLogged);
-  }, [isAuthenticated])
+     }, [isAuthenticated])
 
   useEffect(() => {
     checkIfHasPlayer()
@@ -57,8 +56,7 @@ const Navbar = () => {
   };
 
   const checkIfHasPlayer = () => {
-    console.log(userLogged);
-    if (userLogged && !userLogged.player) return null
+     if (userLogged && !userLogged.player) return null
     else {
       return (
         <MenuItem onClick={handleCloseNavMenu} >

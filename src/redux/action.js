@@ -65,8 +65,7 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
         return fetch(`${process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                dispatch({
+                             dispatch({
                     type: GET_PAGINATION,
                     payload: data.players
                 })
@@ -83,8 +82,7 @@ export function getSearchPlayer({nickname, status}) {
         return fetch(`${process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}?status=${status}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                dispatch({
+                             dispatch({
                     type: SEARCH_PLAYER,
                     payload: data
                 })

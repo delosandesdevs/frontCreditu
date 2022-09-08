@@ -15,7 +15,7 @@ const Ranking = () => {
     const dispatch = useDispatch()
 
     const playersPaginated = useSelector(state => state.pagination)
-
+    const userInfo = useSelector(state => state.loggedUser)
     const [page, setPage] = useState(0)    
     const [search, setSearch] = useState({
         nickname:'',
@@ -34,8 +34,7 @@ const Ranking = () => {
         fetch(`${process.env.REACT_APP_API_URL}/players?page=${page}&size=10&orderby=${order}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data.players);
-                dispatch({
+                             dispatch({
                     type: GET_PAGINATION,
                     payload: data
                 })
@@ -53,8 +52,7 @@ const Ranking = () => {
     const handleSearchPlayer = (e) => {
         e.preventDefault()
         dispatch(getSearchPlayer(search))
-        console.log(playersPaginated)
-    }
+       }
 
     const fillSearch = (e) => {
         setSearch({nickname:e.target.value})
@@ -75,7 +73,7 @@ const Ranking = () => {
 
     return <div className="tree-wallpaper">
         <div className="mt-4">
-            <Position toBeUsed={'ranking'} />
+           {userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
         </div>
 
         <form className='ranking-search' onSubmit={handleSearchPlayer}>

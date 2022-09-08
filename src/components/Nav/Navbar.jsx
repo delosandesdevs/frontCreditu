@@ -27,13 +27,21 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const userLogged = useSelector(store => store.loggedUser)
+<<<<<<< HEAD
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(findOrCreateUser(user.name, user.email))
     }
   }, [isAuthenticated])
+=======
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     dispatch(findOrCreateUser(user.name, user.email))
+  //   }
+  //    }, [])
+>>>>>>> develop
 
   useEffect(() => {
     checkIfHasPlayer()

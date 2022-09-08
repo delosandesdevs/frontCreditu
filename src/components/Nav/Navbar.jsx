@@ -29,19 +29,11 @@ const Navbar = () => {
   const { isAuthenticated, user } = useAuth0();
   // const dispatch = useDispatch();
   const userLogged = useSelector(store => store.loggedUser)
-<<<<<<< HEAD
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(findOrCreateUser(user.name, user.email))
-    }
-  }, [isAuthenticated])
-=======
   // useEffect(() => {
   //   if (isAuthenticated) {
   //     dispatch(findOrCreateUser(user.name, user.email))
   //   }
   //    }, [])
->>>>>>> develop
 
   useEffect(() => {
     checkIfHasPlayer()
@@ -132,7 +124,13 @@ const Navbar = () => {
             <MenuItem onClick={handleCloseNavMenu} >
               <NavLinkCmp path={''} title={'Inicio'} />
             </MenuItem>
+
             {checkIfHasPlayer()}
+            {/* <MenuItem onClick={handleCloseNavMenu} >
+                  <NavLinkCmp path={'create-player'} title={'Crear Player'} />
+                </MenuItem>
+                             */}
+
             <MenuItem onClick={handleCloseNavMenu} >
               <NavLinkCmp path={'ranking'} title={'Ranking'} />
             </MenuItem>
@@ -214,7 +212,7 @@ const Navbar = () => {
           >
 
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center" component={'span'} variant={'body2'}>
+              <Typography textAlign="center">
                 <NavLinkCmp path={'profile'} title={'Perfil'} />
               </Typography>
             </MenuItem>
@@ -224,6 +222,7 @@ const Navbar = () => {
                   : <LoginButton data-cy="log" />
               }
             </MenuItem>
+
           </Menu>
         </Box>
       </Toolbar>

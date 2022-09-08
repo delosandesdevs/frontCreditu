@@ -10,7 +10,7 @@ import { avatarList } from "../../functions/varsForDevelopment";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
-import { findOrCreateUser, postPlayer } from "../../redux/action";
+import { findOrCreateUser, postPlayer, updatePlayer } from "../../redux/action";
 
 const CreatePlayer = () => {
 
@@ -56,7 +56,7 @@ const CreatePlayer = () => {
             setError(true)
     }
 
-    const checkIfPlayerExists = () => {
+    const postPlayer = () => {
         fetch(`${process.env.REACT_APP_API_URL}/players`, {
             method: 'POST',
             body: JSON.stringify(player),
@@ -71,30 +71,63 @@ const CreatePlayer = () => {
                         msg: res,
                         error: true
                     })
-                } else {
-                    createPlayer()
-                }
+                    return false
+                } 
+                return true                
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err) 
+                return false})
     }
 
     const createPlayer = () => {
+
+        if(action==='edit'){
+            updateThePlayer()
+        }else{
+            errorhandler()
+            if (!error.error) {
+                Swal.fire({
+                    title: '¿Estás seguro de que deseas crear tu Player?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: '¡Estoy seguro!',
+                }).then((result) => {
+                    if (result.isConfirmed) {                    
+                        if(postPlayer()){
+                            Swal.fire({
+                                title: '¡Has creado tu Player con éxito!',
+                                icon: 'success',
+                                confirmButtonText: 'Continuar'
+                            })                    
+                            navigate('/')
+                        }
+    
+                    } else if (result.isDismissed) {
+                    }
+                })
+            }
+        }
+    }
+
+    const updateThePlayer = () => {
         errorhandler()
-        if (!error.error) {
+        if (!error.error){
             Swal.fire({
-                title: '¿Estás seguro de que deseas crear tu Player?',
+                title: '¿Estás seguro de que deseas actualizar tu Player?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: '¡Estoy seguro!',
             }).then((result) => {
-                if (result.isConfirmed) {
-                    // dispatch(postPlayer(player))
-                    Swal.fire({
-                        title: '¡Has creado tu Player con éxito!',
-                        icon: 'success',
-                        confirmButtonText: 'Continuar'
-                    })                    
-                    navigate('/')
+                if (result.isConfirmed) {                    
+                    dispatch(updatePlayer(player))
+                        Swal.fire({
+                            title: '¡Has editado tu Player con éxito!',
+                            icon: 'success',
+                            confirmButtonText: 'Continuar'
+                        })                    
+                        navigate('/')
+
                 } else if (result.isDismissed) {
                 }
             })
@@ -107,6 +140,7 @@ const CreatePlayer = () => {
 
     useEffect(() => {
         errorhandler()
+        console.log('EL PLAYER A EDITAR', player);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [player])
     
@@ -115,8 +149,12 @@ const CreatePlayer = () => {
         if(userLogged.player.nickname)
             setPlayer({
                 nickname : userLogged.player.nickname,
-                avatar: userLogged.player.avatar
+                avatar: userLogged.player.avatar,
+                score: userLogged.player.score,
+                id: userLogged.player.id,
+                user_id: userLogged.createdUser.id
             })
+            
     }, [userLogged])
 
     return (
@@ -153,7 +191,7 @@ const CreatePlayer = () => {
                         <Gallery imagesList={avatarList} avatarSelected={(e) => handlePlayer(e)} />
                     </div>
 
-                    <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={checkIfPlayerExists}>
+                    <button className="create-player-submit" disabled={error ? 'disabled' : ''} onClick={createPlayer}>
                         {action === 'edit' ? 'EDITAR' : 'CREAR'} PLAYER
                         </button>
 

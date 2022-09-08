@@ -16,7 +16,7 @@ const AdminMenu = () => {
     setValue(newValue);
   };
 
-  useEffect(() => {console.log('valor',value)},[])
+  useEffect(() => {},[])
 
     return  <Tabs value={value} aria-label="icon label tabs example">
     <NavLink to={'players'} >

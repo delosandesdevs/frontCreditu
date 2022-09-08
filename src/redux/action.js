@@ -28,7 +28,7 @@ export function addTest(test) {
 
 export function findOrCreateUser(name, email) {
     return function (dispatch) {
-        return fetch(`${API_URL}/user`, {
+        return fetch(`${process.env.REACT_APP_API_URL}/user`, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify({ name, email }), // data can be `string` or {object}!
             headers: {
@@ -84,7 +84,7 @@ export function getSearchPlayer({nickname, status}) {
             .then(data => {
                              dispatch({
                     type: SEARCH_PLAYER,
-                    payload: data
+                    payload: data.players
                 })
             })
     }

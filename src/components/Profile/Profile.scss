@@ -7,9 +7,13 @@
   justify-content: center;
 }
 
-
 .profile-container {
-  background: linear-gradient(180deg, #c65f72 0%, #2a855b63 50%, #0f51568a 100%);
+  background: linear-gradient(
+    180deg,
+    #c65f72 0%,
+    #2a855b63 50%,
+    #0f51568a 100%
+  );
   border-radius: 10px;
   width: 90%;
   margin: auto;
@@ -65,19 +69,16 @@
   border: none;
   position: relative;
   z-index: 1;
-  color: #0F5156;
-  background-color: #FE9C84;
+  color: #0f5156;
+  background-color: #fe9c84;
   transition: 1s;
 }
-
 
 .profile-button:hover {
-  background-color: #0F5156;
-  color: #FE9C84;
+  background-color: #0f5156;
+  color: #fe9c84;
   transition: 1s;
 }
-
-
 
 .profile-container-notplayer {
   width: 100%;

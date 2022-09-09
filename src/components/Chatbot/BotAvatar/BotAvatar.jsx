@@ -1,9 +1,9 @@
-import './BotAvatar.css'
+import './BotAvatar.css';
 
-export function BotAvatar(){
-    return <div>
-        <div className="bot-avatar">
-            
-        </div>
-    </div>
-}
+export const BotAvatar = () => (
+  <div>
+    <div className="bot-avatar" />
+  </div>
+);
+
+export default BotAvatar;

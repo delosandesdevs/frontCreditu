@@ -1,7 +1,3 @@
-const RenewedAir = () => {
-    return <div>
-        vientito
-    </div>
-}
+const RenewedAir = () => <div>vientito</div>;
 
 export default RenewedAir;

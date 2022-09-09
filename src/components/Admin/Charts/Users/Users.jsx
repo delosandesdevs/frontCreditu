@@ -1,7 +1,3 @@
-const Users = () => {
-    return <div>
-        Listado de usuarios
-    </div>
-}
+const Users = () => <div>Listado de usuarios</div>;
 
 export default Users;

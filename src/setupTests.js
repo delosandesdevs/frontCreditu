@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
@@ -5,8 +6,8 @@
 import '@testing-library/jest-dom';
 import { server } from './tests/mocks/server';
 
-beforeAll(() => server.listen())
+beforeAll(() => server.listen());
 
-afterEach(() => server.resetHandlers())
+afterEach(() => server.resetHandlers());
 
-afterAll(() => server.close())
+afterAll(() => server.close());

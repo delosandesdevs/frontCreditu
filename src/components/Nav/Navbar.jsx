@@ -26,6 +26,7 @@ const Navbar = () => {
   const { isAuthenticated, user } = useAuth0();
   // const dispatch = useDispatch();
   const userLogged = useSelector((store) => store.loggedUser);
+  console.log(userLogged);
   // useEffect(() => {
   //   if (isAuthenticated) {
   //     dispatch(findOrCreateUser(user.name, user.email))

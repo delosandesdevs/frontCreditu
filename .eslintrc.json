@@ -23,10 +23,10 @@
       2,
       { "namedComponents": "arrow-function" }
     ],
-    "react/react-in-jsx-scope": 0,
-    "react/jsx-uses-react": 0,
-    "react/prop-types": 0,
-    "react/button-has-type": 0,
+    "react/react-in-jsx-scope": 1,
+    "react/jsx-uses-react": 1,
+    "react/prop-types": 1,
+    "react/button-has-type": 1,
     "jsx-a11y/label-has-associated-control": 0
   }
 }

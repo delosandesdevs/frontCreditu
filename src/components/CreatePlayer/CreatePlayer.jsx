@@ -12,6 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { findOrCreateUser, postPlayer, updatePlayer } from "../../redux/action";
 import { useAuth0 } from "@auth0/auth0-react";
+import { fetchPlayer } from "../../functions/fetchPlayer";
 
 const CreatePlayer = () => {
 
@@ -58,7 +59,7 @@ const CreatePlayer = () => {
             setError(true)
     }
 
-    const postPlayer = () => {
+/*     const postPlayer = () => {
         fetch(`${process.env.REACT_APP_API_URL}/players`, {
             method: 'POST',
             body: JSON.stringify(player),
@@ -81,10 +82,9 @@ const CreatePlayer = () => {
                 console.log(err)
                 return false
             })
-    }
+    } */
 
     const createPlayer = async () => {
-
         if (action === 'edit') {
             updateThePlayer()
         } else {
@@ -97,13 +97,13 @@ const CreatePlayer = () => {
                     confirmButtonText: '¡Estoy seguro!',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        postPlayer()
+                        fetchPlayer(player, setError)
                         Swal.fire({
                             title: '¡Has creado tu Player con éxito!',
                             icon: 'success',
                             confirmButtonText: 'Continuar'
                         }).then((result) => {
-                            if (result.isConfirmed) postCreate()
+                            if (result.isConfirmed) afterCreate()
                         })
                     }
                 })
@@ -111,7 +111,7 @@ const CreatePlayer = () => {
         }
     }
 
-    const postCreate = async () => {
+    const afterCreate = async() => {
         await dispatch(findOrCreateUser(user.name, user.email))
         navigate('/')
     }
@@ -131,8 +131,9 @@ const CreatePlayer = () => {
                         title: '¡Has editado tu Player con éxito!',
                         icon: 'success',
                         confirmButtonText: 'Continuar'
+                    }).then((result) => {
+                        if(result.isConfirmed) navigate('/')
                     })
-                    navigate('/')
                 }
             })
         }

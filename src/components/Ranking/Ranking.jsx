@@ -10,6 +10,7 @@ import { API_URL, GET_PAGINATION } from '../../redux/constans'
 import Loader from '../Loader/Loader'
 import BasicSelect from './SelectMUI/SelectMUI'
 import imgLoading from '../../assets/miscellaneous/loading.gif'
+import Title from '../Title/Title'
 const Ranking = () => {
 
     const dispatch = useDispatch()
@@ -40,7 +41,8 @@ const Ranking = () => {
       getPlayersAndSearchs()
     }
 
-    const getPlayersAndSearchs = () => {        
+    const getPlayersAndSearchs = () => {     
+        setLoading(true)   
         const allResults = `players?page=${page}&orderby=${order}`
         const specificSearch = `searchPlayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}`
         const statusSearch = `filterByStatus?status=${search.status}&page=${page}&orderby=${order}&size=10`
@@ -63,8 +65,9 @@ const Ranking = () => {
         
         console.log(dynamicSearchPath)
         fetch(`http://localhost:8080/${dynamicSearchPath}`)
-            .then(res => res.json())
-            .then(data => {
+        .then(res => res.json())
+        .then(data => {
+                
                 console.log('Ruta ejecutada: ', dynamicSearchPath)
                 console.log('Busqueda: ',data)                
                 dispatch({
@@ -122,7 +125,8 @@ const Ranking = () => {
 
 
     return <div className="tree-wallpaper">
-        <div className="mt-4">
+        <Title text={'Ranking'} />
+        <div>
             {userInfo && userInfo.createdUser && userInfo.createdUser.player && userInfo.createdUser.player === true && <Position toBeUsed={userInfo} />}
         </div>
 
@@ -133,6 +137,10 @@ const Ranking = () => {
             <button className='btn btn-ff' >Buscar</button>
             <button onClick={resetFilters} id='reset-btn'><span class="material-symbols-outlined">restart_alt</span></button> 
         </form>
+        {loading 
+            ? <div className='loading-container'><Loader /></div>
+            : null
+        }
         <div className="ranking-table" >
             {error
                 ? <div data-testid='error' style={{ color: 'red' }}>Error</div>
@@ -157,25 +165,15 @@ const Ranking = () => {
                     </tr>
                 </thead>
                 <tbody style={{  }}>
-
-                    {loading
-                        ? <div id='loading-container'>
-                            <img src={imgLoading} alt="" />
-                            </div>
-                        : <>
-                            {players && players.players && players.players.length > 0 ? players.players.map(p => {
-                                return <RankingCard
-                                    position={p.ranking}
-                                    playername={p.nickname}
-                                    status={p.status}
-                                    score={p.score}
-                                    key={p.ranking}
-                                />
-                            })
-                            : 'No se encontraron players'
-                          }
-                        </>
-                    }
+                    {players && players.players && players.players.length > 0 && players.players.map(p => {
+                        return <RankingCard
+                            position={p.ranking}
+                            playername={p.nickname}
+                            status={p.status}
+                            score={p.score}
+                            key={p.ranking}
+                        />
+                    })}                    
                 </tbody>
             </table>
 

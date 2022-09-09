@@ -46,7 +46,13 @@
 .playerCard_text_container p {
   font-weight: 400;
   font-size: 22px;
-  color: #fff;
+  color: #fff;  
+}
+
+.playerCard_text_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .one {
@@ -70,4 +76,47 @@
 
 .small {
   transform: scale(80%, 80%);
+}
+
+.reflect-gold {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    float: left;
+    background: linear-gradient(120deg, #d6b600 30%, #fad91c 38%, #ffe868 
+    40%, #d6b600 48%);
+    border-radius: 50%;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
+}
+.reflect-silver {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    float: left;
+    background: linear-gradient(120deg, #949494 30%, #d4d4d4 38%, #d4d4d4 
+    40%, #949494 48%);
+    border-radius: 50%;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
+}
+.reflect-bronze {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    float: left;
+    background: linear-gradient(120deg, #c9743c 30%, #e79056 38%, #e79056 
+    40%, #c9743c 48%);
+    border-radius: 50%;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
+}
+
+@keyframes load89234 {
+  100% {
+    background-position: -100% 0;
+  }
 }

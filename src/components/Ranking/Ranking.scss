@@ -19,7 +19,7 @@
 }
 
 .ranking-search {
-    padding: 40px;
+    
     color: white;
     display: flex;
     justify-content: center;
@@ -155,13 +155,11 @@ td {
     box-shadow: rgb(0, 0, 0) 0px 10px 15px -3px;
 }
 
-#loading-container{
-    width: 200%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.loading-container{
+  display: flex;
+  justify-content: center;  
 }
 
 #loading-container img{
-    width: 200px;
+    width: 600px;
 }

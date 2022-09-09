@@ -1,13 +1,7 @@
 import './Loader.scss';
 
 const Loader = () => (
-  <div className="spinner">
-    <div className="dot" />
-    <div className="dot" />
-    <div className="dot" />
-    <div className="dot" />
-    <div className="dot" />
-  </div>
+  <div class="loader"></div>
 );
 
 export default Loader;

@@ -4,6 +4,7 @@ import threeLogo from '../../assets/miscellaneous/three_white.png';
 import aboutLogo from '../../assets/miscellaneous/logo_white.png';
 import './About.scss';
 import Avatar from '../Avatar/Avatar';
+import Title from '../Title/Title';
 
 const About = () => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const About = () => {
     return (
         <div className='about'>
             <div className='about_container'>
+                <Title text={'Acerca de'} />
                 <div className="about_logo">
                     <img src={threeLogo} alt="three_logo_img" className='three-logo' />
                     <img src={aboutLogo} alt="home_logo_img" className='about-logo' />

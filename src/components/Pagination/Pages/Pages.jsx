@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 
 
-const Pages = ({pages, handlePages}) => {
+const Pages = ({ pages, handlePages }) => {
 
   const [page, setPage] = useState(0);
   const handleChange = (event, value) => {
@@ -12,10 +12,10 @@ const Pages = ({pages, handlePages}) => {
   };
 
   return (
-    <Stack spacing={2} >
+    <Stack spacing={20} >
       <Pagination 
        sx={{button:{color: '#ffffff', borderColor:'#ffffff' } }}
-      count={pages} variant="outlined" color="error" page={page} onChange={handleChange} />
+      count={pages} variant="outlined" color="error" page={page} onChange={handleChange} shape="rounded" />
     </Stack>
   );
 }

@@ -164,7 +164,7 @@ const Ranking = () => {
                         <th scope="col">Puntos</th>
                     </tr>
                 </thead>
-                <tbody style={{  }}>
+                <tbody style={{height:'667px'}}>
                     {players && players.players && players.players.length > 0 && players.players.map(p => {
                         return <RankingCard
                             position={p.ranking}

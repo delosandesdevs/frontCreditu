@@ -5,6 +5,8 @@ import Avatar from '../Avatar/Avatar';
 import Position from '../Position/Position';
 import './Profile.scss';
 import NavLinkCmp from '../Nav/NavLink/NavLinkCmp';
+import Title from '../Title/Title';
+import Gallery from '../Gallery/Gallery';
 
 const Profile = () => {
   const userInfo = useSelector((state) => state.loggedUser);
@@ -13,6 +15,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
+      <Title text={'Perfil'} />
       <div className="profile-container mb-5">
         {userInfo.player && (
           <div className="profile-info ">
@@ -39,6 +42,12 @@ const Profile = () => {
             </NavLink>
           </div>
         )}
+      </div>
+
+      <h2 id='profile-thanks'>Gracias</h2>
+      <p id='profile-thanks-p'>Gracias a tus contribuciones, hemos podido plantar <strong>4</strong> árboles en zonas necesitadas de la provincia. Continúa así para subir de ranking y participar por grandes premios...¡Aunque ya estamos ganando todos?</p>
+      <div className="profile-gallery">
+        <Gallery />
       </div>
     </div>
   );

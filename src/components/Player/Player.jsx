@@ -3,10 +3,10 @@ import './Player.scss';
 const Player = ({ position, name, img, ranking, alt, size }) => (
   <div className={`playerCard_container ${size && 'small'}`}>
     <div
-      className={`playerCard_img_container ${size && 'small'} ${
-        (position === 1 && 'one') ||
-        (position === 2 && 'two') ||
-        (position === 3 && 'three')
+      className={`playerCard_img_container  ${size && 'small'} ${
+        (position === 1 && 'one reflect-gold') ||
+        (position === 2 && 'two reflect-silver') ||
+        (position === 3 && 'three reflect-bronze')
       }`}
     >
       <img src={img} alt={`${name}_${alt}`} />

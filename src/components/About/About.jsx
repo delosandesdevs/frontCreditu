@@ -10,6 +10,7 @@ const About = () => {
 
     useEffect(() => {
         Aos.init({ duration: 1000, once: true })
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

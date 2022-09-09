@@ -10,7 +10,7 @@ const RankingCard = ({position, playername, status, score}) => {
         if(status === 'bronce') return <img src={bronze} alt={`${status}_icon`} className='ranking-status' />
     }
 
-    return  <tr>
+    return  <tr style={{}}>
     <th scope="row" style={{textAlign:"center"}}>{position}</th>
     <td data-testid={'testplayer'}>{playername}</td>
     <td>{setImage()}</td>

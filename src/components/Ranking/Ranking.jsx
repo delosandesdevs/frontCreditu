@@ -9,12 +9,13 @@ import Pages from '../Pagination/Pages/Pages'
 import { API_URL, GET_PAGINATION } from '../../redux/constans'
 import Loader from '../Loader/Loader'
 import BasicSelect from './SelectMUI/SelectMUI'
-
+import imgLoading from '../../assets/miscellaneous/loading.gif'
 const Ranking = () => {
 
     const dispatch = useDispatch()
 
     const playersPaginated = useSelector(state => state.pagination)
+    const [players, setPlayers] = useState(playersPaginated)
     const userInfo = useSelector(state => state.loggedUser)
     const [page, setPage] = useState(0)
     const [search, setSearch] = useState({
@@ -24,44 +25,54 @@ const Ranking = () => {
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
-    const calcToPaginate = Math.round(playersPaginated.total / 10) + 1;
+    const calcToPaginate = Math.round(players.total / 10);
 
-    const getPlayersAndSearchs = () => {
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },[])
 
+    const resetFilters = () => {
+      setPage(0)
+      setSearch({
+        nickname:'',
+        status:'todos'
+      })
+      getPlayersAndSearchs()
+    }
+
+    const getPlayersAndSearchs = () => {        
         const allResults = `players?page=${page}&orderby=${order}`
-        const specificSearch = `searchPlayer?nickname=${search.nickname}&page=${page}&orderby=${order}&status=${search.status}`
-        const statusSearch = `filterByStatus?status=${search.status}&page=${page}&orderby=${order}`
+        const specificSearch = `searchPlayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}`
+        const statusSearch = `filterByStatus?status=${search.status}&page=${page}&orderby=${order}&size=10`
         let dynamicSearchPath = allResults
 
-        if(search.nickname === ''){
-            console.log('por status')
-            console.log(search)
-            dynamicSearchPath = statusSearch
-        } 
-
-        if(search.nickname === '' && search.status === 'Todos'){
+        if(search.nickname === '' && search.status === 'todos'){
             console.log('por todos')
             dynamicSearchPath =  allResults
         } 
 
-        if(search.nickname !== ''){
+        if(search.nickname !== ''){   
+            if(players.total)       
             console.log('por combinación')
             console.log(search)
-            console.log(process.env.REACT_APP_API_URL)
             dynamicSearchPath = specificSearch
         }
+
+        if(search.nickname === '')
+          dynamicSearchPath = statusSearch
         
         console.log(dynamicSearchPath)
-        fetch(`${process.env.REACT_APP_API_URL}/${dynamicSearchPath}`)
+        fetch(`http://localhost:8080/${dynamicSearchPath}`)
             .then(res => res.json())
             .then(data => {
                 console.log('Ruta ejecutada: ', dynamicSearchPath)
-                console.log('Busqueda: ',data)
+                console.log('Busqueda: ',data)                
                 dispatch({
                     type: GET_PAGINATION,
                     payload: data
                 })
-                setLoading(false)
+                setLoading(false)                
+                setPlayers(data)
             })
             .catch(err => {
                 setLoading(false)
@@ -78,11 +89,7 @@ const Ranking = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, order])
 
-    useEffect(() => {
-        getPlayersAndSearchs()
-    },[])
-
-    const handleSearchPlayer = (e) => {
+     const handleSearchPlayer = (e) => {
         e.preventDefault()
         getPlayersAndSearchs()
         // dispatch(getSearchPlayer(search))
@@ -93,6 +100,7 @@ const Ranking = () => {
             ...search,
             nickname: e.target.value
         })
+        setPage(0)
     }
 
     const statusSelected = (value) => {
@@ -100,6 +108,7 @@ const Ranking = () => {
             ...search,
             status: value
         })
+        setPage(0)
     }
 
     //Pagination fn's
@@ -119,9 +128,10 @@ const Ranking = () => {
 
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
             <label htmlFor="player" hidden>Player Name</label>
-            <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} />
-            <button className='btn btn-ff' >Buscar</button>
+            <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} value={search.nickname} />
             <BasicSelect statusSelected={statusSelected} />
+            <button className='btn btn-ff' >Buscar</button>
+            <button onClick={resetFilters} id='reset-btn'><span class="material-symbols-outlined">restart_alt</span></button> 
         </form>
         <div className="ranking-table" >
             {error
@@ -146,24 +156,24 @@ const Ranking = () => {
                         <th scope="col">Puntos</th>
                     </tr>
                 </thead>
-                <tbody style={{ height: '700px' }}>
+                <tbody style={{  }}>
 
                     {loading
-                        ? <>
-                            <div className="loader">
-                                <Loader />
+                        ? <div id='loading-container'>
+                            <img src={imgLoading} alt="" />
                             </div>
-                        </>
                         : <>
-                            {playersPaginated && playersPaginated.players && playersPaginated.players.length > 0 && playersPaginated.players.map(p => {
+                            {players && players.players && players.players.length > 0 ? players.players.map(p => {
                                 return <RankingCard
                                     position={p.ranking}
                                     playername={p.nickname}
                                     status={p.status}
                                     score={p.score}
-                                    key={p.nickname}
+                                    key={p.ranking}
                                 />
-                            })}
+                            })
+                            : 'No se encontraron players'
+                          }
                         </>
                     }
                 </tbody>

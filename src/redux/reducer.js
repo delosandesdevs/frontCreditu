@@ -41,6 +41,7 @@ export const reducer = (state = initialState, action) => {
             }
 
         case GET_PAGINATION:
+            console.log('REDUCER',action.payload);
             return {
                 ...state,
                 pagination: action.payload
@@ -56,7 +57,10 @@ export const reducer = (state = initialState, action) => {
             console.log('el payload',action.payload)
             return {
                 ...state,
-                pagination: {players : action.payload , total:action.payload.length}
+                pagination: {
+                    players : action.payload, 
+                    total:action.payload.length
+                }
             }
         
         // case SEARCH_PLAYERS_BY_STATUS:

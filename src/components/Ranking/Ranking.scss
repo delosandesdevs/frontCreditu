@@ -37,64 +37,61 @@
 }
 
 .ranking-table {
-    width: 70%;
-    
-    margin: auto;
-padding: auto;
-    opacity: 0.8;
-    transition: 1s;
+  width: 70%;
+
+  margin: auto;
+  padding: auto;
+  opacity: 0.8;
+  transition: 1s;
 }
 
 .ranking-t {
-    background-color: #386C70;
-    color: white;
+  background-color: #386c70;
+  color: white;
 }
 
 .ranking th,
 td {
-    color: white;
-    text-align: center;
-    padding: 20px;
-    cursor: default;
-    font-size: 20px;
-    font-weight: bold;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  cursor: default;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-
 .ranking-header {
-    background: linear-gradient(90deg, #C65F72 0%, #2A855A 50%, #0F5156 100%);
-    border-radius: 0px 5px 5px 0px;
-    height: 50px;
-    text-align: center;
+  background: linear-gradient(90deg, #c65f72 0%, #2a855a 50%, #0f5156 100%);
+  border-radius: 0px 5px 5px 0px;
+  height: 50px;
+  text-align: center;
 }
 
 .ranking tr:hover {
-    background-color: #37aab3;
+  background-color: #37aab3;
 }
 
 .ranking-status {
-    width: 100px;
+  width: 100px;
 }
 
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-    color: white;
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  color: white;
 }
-
 
 #v-align {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    color: white;
-     margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  margin: auto;
   width: 320px;
   
 }
@@ -106,12 +103,12 @@ td {
 
 
 .pagination-button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #wallpaper-ranking {
-    z-index: 0;
-    position: absolute;
+  z-index: 0;
+  position: absolute;
 }
 
 .tree-wallpaper {
@@ -121,22 +118,22 @@ td {
     flex-direction: column;
 }
 
-.pages{
-    width: 100%;
-    display: flex;
-    justify-content: center;    
-    background-color: white;
-    padding: 10px;
-    border-radius: 15px 15px 0px 0px;
+.pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px 15px 0px 0px;
 }
 
-#order-by-toggle{
-    cursor: pointer;
+#order-by-toggle {
+  cursor: pointer;
 }
 
-.loader{
-    width: 325%;
-    padding-top: 40px;
+.loader {
+  width: 325%;
+  padding-top: 40px;
 }
 
 @media screen and (max-width: 525px) {

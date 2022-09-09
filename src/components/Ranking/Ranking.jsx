@@ -181,7 +181,7 @@ const Ranking = () => {
 
 
         </div>
-    </div>
-}
+    </div> 
+};
 
 export default Ranking;

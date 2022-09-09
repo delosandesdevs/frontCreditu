@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/function-component-definition */
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';

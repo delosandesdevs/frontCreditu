@@ -2,90 +2,85 @@
 @import '../../../scss/breakpoints.scss';
 @import '../../../scss/mixins.scss';
 
-
-.scroll{
-  
-display: none;
+.scroll {
+  display: none;
   @include respond-to('medium') {
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: row;     
+    flex-direction: row;
     top: 420px;
-}
+  }
 }
 
 .scrolldown {
-    --color: rgb(16, 99, 51);
-    --sizeX: 60px;
-    --sizeY: 100px;
-    width: var(--sizeX);
-    height: var(--sizeY);
-    margin-left: var(sizeX / 2);
-    box-sizing: border-box;
-  }
-  
-  
-  @keyframes scrolldown-anim {
-    0% {
-      opacity: 0;
-      height: 6px;
-    }
-  
-    40% {
-      opacity: 1;
-      height: 10px;
-    }
-  
-    80% {
-      transform: translate(0, 20px);
-      height: 10px;
-      opacity: 0;
-    }
-  
-    100% {
-      height: 3px;
-      opacity: 0;
-    }
-  }
-  
-  .chevrons {
-    padding: 6px 0 0 0;
-    margin-left: -3px;
-    
-    width: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .chevrondown {
-    margin-top: -65px;
-    position: relative;
-    border: 1px solid white;
-    border-width: 0 5px 5px 0;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    transform: rotate(45deg);
-  }
-  
-  .chevrondown:nth-child(odd) {
-    animation: pulse54012 500ms ease infinite alternate;
-  }
-  
-  .chevrondown:nth-child(even) {
-    animation: pulse54012 500ms ease infinite alternate 250ms;
-  }
-  
-  @keyframes pulse54012 {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
+  --color: rgb(16, 99, 51);
+  --sizeX: 60px;
+  --sizeY: 100px;
+  width: var(--sizeX);
+  height: var(--sizeY);
+  margin-left: var(sizeX / 2);
+  box-sizing: border-box;
+}
+
+@keyframes scrolldown-anim {
+  0% {
+    opacity: 0;
+    height: 6px;
   }
 
+  40% {
+    opacity: 1;
+    height: 10px;
+  }
 
+  80% {
+    transform: translate(0, 20px);
+    height: 10px;
+    opacity: 0;
+  }
+
+  100% {
+    height: 3px;
+    opacity: 0;
+  }
+}
+
+.chevrons {
+  padding: 6px 0 0 0;
+  margin-left: -3px;
+
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chevrondown {
+  margin-top: -65px;
+  position: relative;
+  border: 1px solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+.chevrondown:nth-child(odd) {
+  animation: pulse54012 500ms ease infinite alternate;
+}
+
+.chevrondown:nth-child(even) {
+  animation: pulse54012 500ms ease infinite alternate 250ms;
+}
+
+@keyframes pulse54012 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

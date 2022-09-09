@@ -1,7 +1,3 @@
-const Sellings = () => {
-    return <div>
-        Sellings
-    </div>
-}
+const Sellings = () => <div>Sellings</div>;
 
 export default Sellings;

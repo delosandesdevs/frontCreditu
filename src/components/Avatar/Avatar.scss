@@ -13,12 +13,17 @@
   position: relative;
   border-radius: 100%;
   float: right;
-  background: linear-gradient(120deg, #e5e5e573 30%, #f0f0f0b2 38%, #f0f0f0b2 40%, #e5e5e573 48%);
+  background: linear-gradient(
+    120deg,
+    #e5e5e573 30%,
+    #f0f0f0b2 38%,
+    #f0f0f0b2 40%,
+    #e5e5e573 48%
+  );
   margin-top: 10px;
   background-size: 200% 100%;
   background-position: 100% 0;
   animation: load89234 2s infinite;
-
 }
 
 .avatar-name {
@@ -29,7 +34,6 @@
 .avatar {
   text-align: center;
 }
-
 
 @keyframes load89234 {
   100% {

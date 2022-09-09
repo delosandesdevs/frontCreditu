@@ -1,9 +1,19 @@
 import { useEffect } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, ArcElement, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  ArcElement,
+  Tooltip,
+  Legend
+} from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import Aos from 'aos'
-import 'aos/dist/aos.css'
-import './PieChart.scss'
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import './PieChart.scss';
 
 ChartJS.register(
   ArcElement,
@@ -17,10 +27,9 @@ ChartJS.register(
 );
 
 const PieChart = () => {
-
   useEffect(() => {
-    Aos.init({ duration: 1000, once: true })
-  }, [])
+    Aos.init({ duration: 1000, once: true });
+  }, []);
 
   const data = {
     labels: ['Aire en el planeta', 'Aire renovado'],
@@ -28,34 +37,35 @@ const PieChart = () => {
       {
         label: ['90%', '10%'],
         data: [90, 10],
-        backgroundColor: [
-          '#6DCC5E',
-          '#C65F72',
-        ],
-        borderColor: [
-          'white',
-          'white',
-        ],
-        borderWidth: 2,
-
-      },
-    ],
+        backgroundColor: ['#6DCC5E', '#C65F72'],
+        borderColor: ['white', 'white'],
+        borderWidth: 2
+      }
+    ]
   };
 
   return (
     <div className="chart">
-      <div className='pie-chart'>
-
+      <div className="pie-chart">
         <div>
-          <div className='centered-line'>
-            <h3><span className="material-symbols-outlined">forest</span> ¡Aire renovado
-              gracias a Free Forest! <span className="material-symbols-outlined">forest</span></h3>
+          <div className="centered-line">
+            <h3>
+              <span className="material-symbols-outlined">forest</span> ¡Aire
+              renovado gracias a Free Forest!{' '}
+              <span className="material-symbols-outlined">forest</span>
+            </h3>
           </div>
-          <p>En este juego ganamos todos.<br />Gracias a nuestros players, estamos generando una mejora en el cambio climático, logrando que se renueve el aire por los nuevos FreeTrees!</p>
+          <p>
+            En este juego ganamos todos.
+            <br />
+            Gracias a nuestros players, estamos generando una mejora en el
+            cambio climático, logrando que se renueve el aire por los nuevos
+            FreeTrees!
+          </p>
         </div>
 
         <hr />
-        <div className="row" id='chart-section'>
+        <div className="row" id="chart-section">
           <div className="col-sm-6">
             <Pie data={data} />
           </div>
@@ -67,8 +77,7 @@ const PieChart = () => {
         </div>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default PieChart;

@@ -1,12 +1,15 @@
-import threeLogo from '../../assets/miscellaneous/three_white.png'
-import aboutLogo from '../../assets/miscellaneous/logo_white.png'
-import aboutTeam from '../../assets/avatars/profile.png'
-import './About.scss'
-import Avatar from '../Avatar/Avatar'
-import { useEffect } from 'react'
-import Aos from 'aos'
+import { useEffect } from 'react';
+import Aos from 'aos';
+import threeLogo from '../../assets/miscellaneous/three_white.png';
+import aboutLogo from '../../assets/miscellaneous/logo_white.png';
+import './About.scss';
+import Avatar from '../Avatar/Avatar';
 
 const About = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
     useEffect(() => {
         Aos.init({ duration: 1000, once: true })
@@ -54,8 +57,8 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        </div>      
+  );
+};
 
-export default About
+export default About;

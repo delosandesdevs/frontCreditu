@@ -1,15 +1,13 @@
-/* eslint-disable consistent-return */
-/* eslint-disable func-names */
-/* eslint-disable radix */
 import {
   API_URL,
   GET_TEST,
+  ADD_TEST,
   SEARCH_PLAYER,
   GET_TOPTEN_PLAYERS,
   GET_PAGINATION,
   GET_ALL_PLAYERS,
-  LOGIN_OR_CREATE
-} from './constans';
+  LOGIN_OR_CREATE,
+} from "./constans";
 
 export function actionTest() {
   return function (dispatch) {
@@ -18,20 +16,20 @@ export function actionTest() {
       .then((data) => {
         dispatch({
           type: GET_TEST,
-          payload: data
+          payload: data,
         });
       });
   };
 }
 
 export function addTest(test) {
-  return function () {
+  return function (dispatch) {
     return fetch(`${API_URL}/test1`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(test),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
   };
 }
@@ -39,17 +37,17 @@ export function addTest(test) {
 export function findOrCreateUser(name, email) {
   return function (dispatch) {
     return fetch(`${process.env.REACT_APP_API_URL}/user`, {
-      method: 'POST', // or 'PUT'
+      method: "POST", // or 'PUT'
       body: JSON.stringify({ name, email }), // data can be `string` or {object}!
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
         dispatch({
           type: LOGIN_OR_CREATE,
-          payload: data
+          payload: data,
         });
       });
   };
@@ -64,10 +62,10 @@ export function getTenPlayers() {
       const res = await data.json();
       dispatch({
         type: GET_TOPTEN_PLAYERS,
-        payload: res.players
+        payload: res.players,
       });
     } catch (e) {
-      return console.log('ERROR!', e);
+      return console.log("ERROR!", e);
     }
   };
 }
@@ -81,7 +79,7 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
       .then((data) => {
         dispatch({
           type: GET_PAGINATION,
-          payload: data.players
+          payload: data.players,
         });
       });
   };
@@ -89,16 +87,18 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
 
 export function getSearchPlayer({ nickname, status }) {
   return function (dispatch) {
-    if (nickname === '') return getPlayersPaginated(0, 'desc', 10);
-
+    console.log("El nickname es vacío?");
+    if (nickname === "") return getPlayersPaginated(0, "desc", 10);
+    console.log("Pasé validación de nickname vacío");
     return fetch(
       `${process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log("La data de searchPlayer", data);
         dispatch({
-          type: SEARCH_PLAYER,
-          payload: data.players
+          type: GET_PAGINATION,
+          payload: data,
         });
       });
   };
@@ -107,11 +107,11 @@ export function getSearchPlayer({ nickname, status }) {
 export function postPlayer(player) {
   return function () {
     return fetch(`${process.env.REACT_APP_API_URL}/players`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(player),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
   };
 }
@@ -122,8 +122,8 @@ export function getAllPlayers() {
       .then((res) => res.json())
       .then((data) => {
         dispatch({
-          type: GET_ALL_PLAYERS,
-          payload: data
+          type: GET_PAGINATION,
+          payload: data,
         });
       });
   };
@@ -132,11 +132,11 @@ export function getAllPlayers() {
 export function postGallery(image) {
   return function () {
     return fetch(`${process.env.REACT_APP_API_URL}/profile`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(image),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
   };
 }
@@ -146,11 +146,11 @@ export function updatePlayer(player) {
     return fetch(
       `${process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`,
       {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify(player),
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       }
     )
       .then((data) => data.json())
@@ -158,13 +158,17 @@ export function updatePlayer(player) {
   };
 }
 
-// export function getPlayersByStatus({status}){
-//     return function(dispatch){
-//         return fetch(`${process.env.REACT_APP_API_URL}/filterByStatus?status=${status}`)
-//         .then(res => res.json())
-//         .then(data => {
-//             dispatch({
-//                 type:
-//             })
-//         })
-// }
+export function getPlayersByStatus({ status }) {
+  return function (dispatch) {
+    return fetch(
+      `${process.env.REACT_APP_API_URL}/filterByStatus?status=${status}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: GET_PAGINATION,
+          payload: data,
+        });
+      });
+  };
+}

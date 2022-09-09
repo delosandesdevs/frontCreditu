@@ -5,25 +5,22 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState } from 'react';
 
-export default function BasicSelect({ statusSelected }) {
-  const [age] = useState('');
-
+export default function BasicSelect({statusSelected}) {
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120, marginLeft:2, backgroundColor: 'white', borderRadius: '10px', color:'black', boxShadow:'rgb(0, 0, 0) 0px 10px 15px -3px;' }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Status</InputLabel>
         <Select
           labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
+          id="demo-simple-select"          
           label="Status"
-          onChange={(age) => statusSelected(age)}
+          onChange={(e) => statusSelected(e.target.value)}          
         >
-          <MenuItem value="oro">Oro</MenuItem>
-          <MenuItem value="plata">Plata</MenuItem>
-          <MenuItem value="bronce">Bronce</MenuItem>
+          <MenuItem value='todos'>Todos</MenuItem>
+          <MenuItem value='oro'>Oro</MenuItem>
+          <MenuItem value='plata'>Plata</MenuItem>
+          <MenuItem value='bronce'>Bronce</MenuItem>
         </Select>
       </FormControl>
     </Box>

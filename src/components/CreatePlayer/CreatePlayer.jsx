@@ -22,7 +22,11 @@ const CreatePlayer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userLogged = useSelector(store => store.loggedUser)
-    const [error, setError] = useState(true)
+    const [created, setCreated] = useState(false)
+    const [error, setError] = useState({
+        msg: '',
+        error: true
+    })
     const [player, setPlayer] = useState({
         nickname: '',
         avatar: '',
@@ -43,32 +47,29 @@ const CreatePlayer = () => {
     }
 
     const createPlayer = async () => {
-            if (!error.error) {
-                Swal.fire({
-                    title: `¿Estás seguro de que deseas ${action === 'edit' ? 'editar' : 'crear' } tu Player?`,
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonText: '¡Estoy seguro!',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        action === 'edit' ? dispatch(updatePlayer(player)) : fetchPlayer(player)
-                        Swal.fire({
-                            title: `¡Has ${action === 'edit' ? 'editado' : 'creado' } tu Player con éxito!`,
-                            icon: 'success',
-                            confirmButtonText: 'Continuar'
-                        }).then((result) => {
-                            if (result.isConfirmed) action === 'edit' ? navigate('/') : afterCreate()
-                        })
-                    }
-                })
-            }
-        
+        if (action === 'edit') {
+            await dispatch(updatePlayer(player))
+            Swal.fire({
+                title: `¡Has editado tu Player con éxito!`,
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            }).then((result) => {
+                if (result.isConfirmed) navigate('/')
+            })
+            return
+        }
+        else {
+            fetchPlayer(player, setCreated)
+        }
     }
 
-    const afterCreate = async() => {
-        await dispatch(findOrCreateUser(user.name, user.email))
-        navigate('/')
+    const afterCreate = () => {
+        if(created) navigate('/')
     }
+
+    useEffect(() => {
+        if (action !== 'edit' && created) afterCreate()
+    }, [created])
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -92,6 +93,7 @@ const CreatePlayer = () => {
                 <h1>Usa la imaginación y {action === 'edit' ? 'edita' : 'crea'} tu Player</h1>
             </div>
 
+            {error && error.msg}
             <div className="cmp-create-player">
                 <div className="cmp-create-player-avatar">
                     <div className="cmp-create-player-avatar-background">
@@ -110,7 +112,7 @@ const CreatePlayer = () => {
 
                     <div className="create-player-form-field">
                         <label className="cmp-create-player-label" htmlFor="name">Nickname</label>
-                        <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} value={player.nickname} autoComplete="off"/>
+                        <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} value={player.nickname} autoComplete="off" />
                     </div>
 
                     <div className="create-player-form-field">
@@ -123,10 +125,10 @@ const CreatePlayer = () => {
                     </button>
                     {error && <p className="error-message" style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>
                         {
-                        action === 'edit' ?
-                            'Al menos un campo debe ser editado, evita usar simbolos'
-                            :
-                            'Todos los campos deben ser llenados, evita usar simbolos'
+                            action === 'edit' ?
+                                'Al menos un campo debe ser editado, evita usar simbolos'
+                                :
+                                'Todos los campos deben ser llenados, evita usar simbolos'
                         }
                     </p>}
                 </div>

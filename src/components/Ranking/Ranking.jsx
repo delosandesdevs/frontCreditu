@@ -170,7 +170,7 @@ const Ranking = () => {
                     </tr>
                 </thead>
                 <tbody style={{ height: '667px' }}>
-                    {players && players.players && players.players.length > 0 && players.players.map(p => {
+                    {players && players.players && players.players.length > 0 ? players.players.map(p => {
                         return <RankingCard
                             position={p.ranking}
                             id={p.id}
@@ -179,7 +179,9 @@ const Ranking = () => {
                             score={p.score}
                             key={p.ranking}
                         />
-                    })}
+                    })
+                    : 'No se encontraron players'
+                }
                 </tbody>
             </table>
 

@@ -1,13 +1,6 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
-.top-players {
-  width: 100%;
-  height: auto;
-  margin-top: 50px;
-  // background-color: #105157;
-}
-
 .top-players_container {
   width: 90%;
   height: fit-content;
@@ -18,17 +11,7 @@
   align-items: center;
 }
 
-.top-three {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 7px;
-}
-
-.top-three-title {
+.top-players-title {
   font-family: 'Kanit', sans-serif;
   color: #fff;
   font-weight: 500;
@@ -38,9 +21,11 @@
   transition: 1s;
 }
 
-.top-three_container {
-  width: 100%;
+.top-players {
+  width: 80%;
+  max-width: 1000px;
   height: 100%;
+  margin: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

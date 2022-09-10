@@ -12,15 +12,13 @@ import { findOrCreateUser, getTenPlayers } from '../../redux/action';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const topten = useSelector((state) => state.topten.slice(4, 11));
-  const topthree = useSelector((state) => state.topten.slice(0, 3));
+  const topPlayers = useSelector((state) => state.topten.slice(0,10));
   const { isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });
     dispatch(getTenPlayers());
     if (isAuthenticated) dispatch(findOrCreateUser(user.name, user.email));
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -30,7 +28,7 @@ const Home = () => {
       <div style={{ backgroundColor: 'white' }}>
         <Hero />
       </div>
-      <TopPlayers topthree={topthree} topten={topten} />
+      <TopPlayers topten={topPlayers} />
       <PieChart />
     </div>
   );

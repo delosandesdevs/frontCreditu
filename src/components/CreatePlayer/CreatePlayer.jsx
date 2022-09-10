@@ -31,15 +31,14 @@ const CreatePlayer = () => {
     })
 
     const handlePlayer = (e) => {
-        const target = e.target.name === 'avatar' ? (e.target.value < 10 ? '/images/avatar-0' + e.target.value + '.png': '/images/avatar-' + e.target.value + '.png') : e.target.value
-        console.log(e)
+        const target = e.target.name === 'avatar' ? `/images/avatar-${e.target.value < 10 ? '0' : ''}` + e.target.value + '.png' : e.target.value;
         setPlayer({
             ...player,
             [e.target.name]: target
         })
         setError(objHasNull({
-                ...player,
-                [e.target.name]: target
+            ...player,
+            [e.target.name]: target
         }))
     }
 
@@ -75,7 +74,6 @@ const CreatePlayer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [])
 
-    // CHECK IF IS CREATING OR EDITING
     useEffect(() => {
         if (userLogged.player.nickname)
             setPlayer({

@@ -29,52 +29,52 @@ const Ranking = () => {
     const calcToPaginate = Math.round(players.total / 10);
 
     useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    },[])
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [])
 
     const resetFilters = () => {
-      setPage(0)
-      setSearch({
-        nickname:'',
-        status:'todos'
-      })
-      getPlayersAndSearchs()
+        setPage(0)
+        setSearch({
+            nickname: '',
+            status: 'todos'
+        })
+        getPlayersAndSearchs()
     }
 
-    const getPlayersAndSearchs = () => {     
-        setLoading(true)   
+    const getPlayersAndSearchs = () => {
+        setLoading(true)
         const allResults = `players?page=${page}&orderby=${order}`
         const specificSearch = `searchPlayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}`
         const statusSearch = `filterByStatus?status=${search.status}&page=${page}&orderby=${order}&size=10`
         let dynamicSearchPath = allResults
 
-        if(search.nickname === '' && search.status === 'todos'){
+        if (search.nickname === '' && search.status === 'todos') {
             console.log('por todos')
-            dynamicSearchPath =  allResults
-        } 
+            dynamicSearchPath = allResults
+        }
 
-        if(search.nickname !== ''){   
-            if(players.total)       
-            console.log('por combinación')
+        if (search.nickname !== '') {
+            if (players.total)
+                console.log('por combinación')
             console.log(search)
             dynamicSearchPath = specificSearch
         }
 
-        if(search.nickname === '')
-          dynamicSearchPath = statusSearch
-        
+        if (search.nickname === '')
+            dynamicSearchPath = statusSearch
+
         console.log(dynamicSearchPath)
         fetch(`${process.env.REACT_APP_API_URL}/${dynamicSearchPath}`)
-        .then(res => res.json())
-        .then(data => {
-                
+            .then(res => res.json())
+            .then(data => {
+
                 console.log('Ruta ejecutada: ', dynamicSearchPath)
-                console.log('Busqueda: ',data)                
+                console.log('Busqueda: ', data)
                 dispatch({
                     type: GET_PAGINATION,
                     payload: data
                 })
-                setLoading(false)                
+                setLoading(false)
                 setPlayers(data)
             })
             .catch(err => {
@@ -89,10 +89,10 @@ const Ranking = () => {
         setLoading(true)
         setError(false)
         getPlayersAndSearchs()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, order])
 
-     const handleSearchPlayer = (e) => {
+    const handleSearchPlayer = (e) => {
         e.preventDefault()
         getPlayersAndSearchs()
         // dispatch(getSearchPlayer(search))
@@ -135,9 +135,9 @@ const Ranking = () => {
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} value={search.nickname} />
             <BasicSelect statusSelected={statusSelected} />
             <button className='btn btn-ff' >Buscar</button>
-            <button onClick={resetFilters} id='reset-btn'><span class="material-symbols-outlined">restart_alt</span></button> 
+            <button onClick={resetFilters} id='reset-btn'><span class="material-symbols-outlined">restart_alt</span></button>
         </form>
-        {loading 
+        {loading
             ? <div className='loading-container'><Loader /></div>
             : null
         }
@@ -159,27 +159,33 @@ const Ranking = () => {
                                 <span className="material-symbols-outlined">arrow_downward</span>Posición
                             </div>
                         </th>
+                        <th scope="col">ID</th>
                         <th scope="col">Nickname</th>
                         <th scope="col">Status</th>
                         <th scope="col">Puntos</th>
+                        {userInfo && userInfo.createdUser.role === 'admin'
+                            ? <th scope='col'>ADMIN</th>
+                            : null
+                        }
                     </tr>
                 </thead>
-                <tbody style={{height:'667px'}}>
+                <tbody style={{ height: '667px' }}>
                     {players && players.players && players.players.length > 0 && players.players.map(p => {
                         return <RankingCard
                             position={p.ranking}
+                            id={p.id}
                             playername={p.nickname}
                             status={p.status}
                             score={p.score}
                             key={p.ranking}
                         />
-                    })}                    
+                    })}
                 </tbody>
             </table>
 
 
         </div>
-    </div> 
+    </div>
 };
 
 export default Ranking;

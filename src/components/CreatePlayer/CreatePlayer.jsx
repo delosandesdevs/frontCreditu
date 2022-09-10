@@ -46,9 +46,9 @@ const CreatePlayer = () => {
         }))
     }
 
-    const createPlayer = async () => {
+    const createPlayer = () => {
         if (action === 'edit') {
-            await dispatch(updatePlayer(player))
+            dispatch(updatePlayer(player))
             Swal.fire({
                 title: `¡Has editado tu Player con éxito!`,
                 icon: 'success',

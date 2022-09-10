@@ -2,7 +2,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
 export const fetchPlayer = (player,setCreated) => {
-    console.log('llama')
     fetch(`${process.env.REACT_APP_API_URL}/players`, {
         method: 'POST',
         body: JSON.stringify(player),

@@ -1,4 +1,4 @@
-export const fetchPlayer = (player, setError) => {
+export const fetchPlayer = (player) => {
     fetch(`${process.env.REACT_APP_API_URL}/players`, {
         method: 'POST',
         body: JSON.stringify(player),
@@ -9,10 +9,6 @@ export const fetchPlayer = (player, setError) => {
         .then(data => data.json())
         .then(res => {
             if (res === 'El nickname ya existe' || res === 'El usuario ya tiene un player') {
-                setError({
-                    msg: res,
-                    error: true
-                })
                 return false
             }
             return true

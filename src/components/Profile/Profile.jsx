@@ -19,6 +19,10 @@ const Profile = () => {
     user_id: userInfo.createdUser.id 
   })
 
+  useEffect(() => {
+    console.log(userInfo)
+  },[userInfo])
+
   const handleDeletePlayer = () => {
     Swal.fire({
       title: '¿Desea borrar su player?',

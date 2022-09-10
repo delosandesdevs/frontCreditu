@@ -91,3 +91,15 @@ grid-template-columns: repeat(3, 1fr);
 gap: 98px;
 width: 90%;
 }
+
+.delete-player-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#delete-player-btn{
+  color: red;
+  margin-top: 20px;
+}

@@ -17,11 +17,14 @@ const Home = () => {
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });
-    dispatch(getTenPlayers());
-    if (isAuthenticated) dispatch(findOrCreateUser(user.name, user.email));
+    dispatch(getTenPlayers());    
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) dispatch(findOrCreateUser(user.name, user.email));
+  },[isAuthenticated])
 
   return (
     <div className="home_container">

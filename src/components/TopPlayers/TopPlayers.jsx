@@ -3,9 +3,9 @@ import './TopPlayers.scss';
 
 const TopPlayers = ({ topten }) => {
   return (
-    <div className="top-players_container">
+    <div className="top-players">
       <h1 className="top-players-title">TOP 10</h1>
-      <div className="top-players">
+      <div className="top-players_container">
         {topten &&
           topten.map((p, i) => (
             <Player

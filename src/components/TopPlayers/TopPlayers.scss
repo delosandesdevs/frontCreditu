@@ -1,7 +1,7 @@
 @import '../../scss/breakpoints.scss';
 @import '../../scss/mixins.scss';
 
-.top-players_container {
+.top-players {
   width: 90%;
   height: fit-content;
   text-align: center;
@@ -21,7 +21,7 @@
   transition: 1s;
 }
 
-.top-players {
+.top-players_container {
   width: 80%;
   max-width: 1000px;
   height: 100%;

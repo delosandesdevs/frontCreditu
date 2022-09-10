@@ -1,3 +1,4 @@
+import { fetchPlayer } from "../functions/fetchPlayer";
 import {
   API_URL,
   GET_TEST,
@@ -171,4 +172,17 @@ export function getPlayersByStatus({ status }) {
         });
       });
   };
+}
+
+export function deletePlayer(player){
+  return function () {
+    return fetch(`${process.env.REACT_APP_API_URL}/players`,{
+      method: "DELETE",
+      body: JSON.stringify(player),
+      headers: {
+          "Content-Type": "application/json",
+        }
+    })
+    .catch(err => console.log('Error deleting player', err))
+  }
 }

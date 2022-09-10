@@ -64,7 +64,7 @@ const Ranking = () => {
           dynamicSearchPath = statusSearch
         
         console.log(dynamicSearchPath)
-        fetch(`http://localhost:8080/${dynamicSearchPath}`)
+        fetch(`${process.env.REACT_APP_API_URL}/${dynamicSearchPath}`)
         .then(res => res.json())
         .then(data => {
                 

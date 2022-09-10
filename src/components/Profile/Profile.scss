@@ -1,10 +1,9 @@
 .profile {
   background-image: url('../../assets/miscellaneous/doodle.png');
-  margin-top: -15px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  
 }
 
 .profile-container {
@@ -28,27 +27,12 @@
   flex-wrap: wrap;
   padding: 20px;
   transition: 1s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.gallery-section {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 40px;
-  width: 90%;
-  flex-wrap: wrap;
-  margin: auto;
-}
-
-.gallery-title {
-  width: 100%;
+.profile-gallery{
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.gallery-h3 {
-  color: aliceblue;
 }
 
 .profile-h3 {
@@ -86,4 +70,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#profile-thanks{
+  font-size: 70px;
+    margin: auto;
+    color: #699b61;
+}
+
+#profile-thanks-p{
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 20px;  
+}
+
+#grid-gallery {
+grid-template-columns: repeat(3, 1fr);
+gap: 98px;
+width: 90%;
 }

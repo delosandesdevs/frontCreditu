@@ -1,12 +1,12 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
-    <Typography textAlign="center" onClick={() => loginWithRedirect()}>
+    <Button sx={{ my: 2, color: '#4F8844', display: 'block' }} onClick={() => loginWithRedirect()}>
       Iniciar Sesion
-    </Typography>
+    </Button>
   );
 };
 

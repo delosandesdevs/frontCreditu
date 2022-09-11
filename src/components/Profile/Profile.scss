@@ -1,0 +1,105 @@
+.profile {
+  background-image: url('../../assets/miscellaneous/doodle.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+.profile-container {
+  background: linear-gradient(
+    180deg,
+    #c65f72 0%,
+    #2a855b63 50%,
+    #0f51568a 100%
+  );
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  transition: 1s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.profile-gallery{
+  display: flex;
+  justify-content: center;
+}
+
+.profile-h3 {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.profile-button {
+  margin: 30px auto 50px auto;
+  width: 100%;
+  padding: 15px;
+  height: 3em;
+  border-radius: 4px;
+  font-size: 20px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  z-index: 1;
+  color: #0f5156;
+  background-color: #fe9c84;
+  transition: 1s;
+}
+
+.profile-button:hover {
+  background-color: #0f5156;
+  color: #fe9c84;
+  transition: 1s;
+}
+
+.profile-container-notplayer {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#profile-thanks{
+  font-size: 70px;
+    margin: auto;
+    color: #699b61;
+}
+
+#profile-thanks-p{
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 20px;  
+}
+
+#grid-gallery {
+grid-template-columns: repeat(3, 1fr);
+gap: 98px;
+width: 90%;
+}
+
+.delete-player-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#delete-player-btn{
+  color: red;
+  margin-top: 20px;
+}

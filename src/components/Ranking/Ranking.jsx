@@ -11,10 +11,9 @@ import Loader from '../Loader/Loader'
 import BasicSelect from './SelectMUI/SelectMUI'
 import imgLoading from '../../assets/miscellaneous/loading.gif'
 import Title from '../Title/Title'
+
 const Ranking = () => {
-
     const dispatch = useDispatch()
-
     const playersPaginated = useSelector(state => state.pagination)
     const [players, setPlayers] = useState(playersPaginated)
     const userInfo = useSelector(state => state.loggedUser)
@@ -26,10 +25,10 @@ const Ranking = () => {
     const [order, setOrder] = useState('desc')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
-    const calcToPaginate = Math.round(players.total / 10);
+    const calcToPaginate = ((players.total / 10) % 1) ? Math.floor(players.total / 10)+ 1 : (players.total / 10)
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });       
     }, [])
 
     const resetFilters = () => {
@@ -38,38 +37,16 @@ const Ranking = () => {
             nickname: '',
             status: 'todos'
         })
+        console.log(search.status)
         getPlayersAndSearchs()
     }
 
     const getPlayersAndSearchs = () => {
         setLoading(true)
-        const allResults = `players?page=${page}&orderby=${order}`
-        const specificSearch = `searchPlayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}`
-        const statusSearch = `filterByStatus?status=${search.status}&page=${page}&orderby=${order}&size=10`
-        let dynamicSearchPath = allResults
-
-        if (search.nickname === '' && search.status === 'todos') {
-            console.log('por todos')
-            dynamicSearchPath = allResults
-        }
-
-        if (search.nickname !== '') {
-            if (players.total)
-                console.log('por combinación')
-            console.log(search)
-            dynamicSearchPath = specificSearch
-        }
-
-        if (search.nickname === '')
-            dynamicSearchPath = statusSearch
-
-        console.log(dynamicSearchPath)
-        fetch(`${process.env.REACT_APP_API_URL}/${dynamicSearchPath}`)
+       
+        fetch(`${process.env.REACT_APP_API_URL}/searchplayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}&size=10`)
             .then(res => res.json())
             .then(data => {
-
-                console.log('Ruta ejecutada: ', dynamicSearchPath)
-                console.log('Busqueda: ', data)
                 dispatch({
                     type: GET_PAGINATION,
                     payload: data
@@ -94,6 +71,7 @@ const Ranking = () => {
 
     const handleSearchPlayer = (e) => {
         e.preventDefault()
+        setPage(0)
         getPlayersAndSearchs()
         // dispatch(getSearchPlayer(search))
     }
@@ -110,7 +88,7 @@ const Ranking = () => {
         setSearch({
             ...search,
             status: value
-        })
+        })        
         setPage(0)
     }
 
@@ -133,7 +111,7 @@ const Ranking = () => {
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
             <label htmlFor="player" hidden>Player Name</label>
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} value={search.nickname} />
-            <BasicSelect statusSelected={statusSelected}  />
+            <BasicSelect statusSelected={statusSelected} />
             <button className='btn btn-ff' >Buscar</button>
             <button onClick={resetFilters} id='reset-btn'><span class="material-symbols-outlined">restart_alt</span></button>
         </form>
@@ -163,7 +141,7 @@ const Ranking = () => {
                         <th scope="col">Nickname</th>
                         <th scope="col">Status</th>
                         <th scope="col">Puntos</th>
-                        {userInfo && userInfo.createdUser.role === 'admin'
+                        {userInfo && userInfo.createdUser && userInfo.createdUser.role === 'admin'
                             ? <th scope='col'>ADMIN</th>
                             : null
                         }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { findOrCreateUser, updatePlayer } from "../../redux/action";
+import { findOrCreateUser, updatePlayer, getSinglePlayer } from "../../redux/action";
 import { avatarList } from "../../functions/varsForDevelopment";
 import { objHasNull } from "../../functions/validateForm";
 import { fetchPlayer } from "../../functions/fetchPlayer";
@@ -18,10 +18,21 @@ const CreatePlayer = () => {
 
     const { action } = useParams()
     const { user } = useAuth0();
-
+    const location = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const queryParams = new URLSearchParams(location.search)
+    const singleValue= queryParams.get('id')
+
+    useEffect(() => {
+        if(singleValue){
+            dispatch(getSinglePlayer(singleValue))
+        }
+    }, [])
+
+    
     const userLogged = useSelector(store => store.loggedUser)
+    const userToEdit = useSelector(store => store.player)
     const [created, setCreated] = useState(false)
     const [error, setError] = useState({
         msg: '',
@@ -33,6 +44,17 @@ const CreatePlayer = () => {
         score: '0',
         user_id: userLogged.createdUser.id
     })
+    
+    useEffect(() => {
+        if(singleValue){
+        setPlayer({
+            nickname: userToEdit.nickname,
+            avatar: userToEdit.avatar,
+            score: userToEdit.score,
+            id: userToEdit.id,
+            user_id: userLogged.createdUser.id
+        })}
+    }, [userToEdit])
 
     const handlePlayer = (e) => {
         const target = e.target.name === 'avatar' ? `/images/avatar-${e.target.value < 10 ? '0' : ''}` + e.target.value + '.png' : e.target.value;
@@ -114,6 +136,14 @@ const CreatePlayer = () => {
                         <label className="cmp-create-player-label" htmlFor="name">Nickname</label>
                         <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} value={player.nickname} autoComplete="off" />
                     </div>
+                    
+                    {userLogged && userLogged.createdUser.role === 'admin'
+                    ? <div className="create-player-form-field">
+                        <label className="cmp-create-player-label" htmlFor="name">Score</label>
+                        <input className="input-nickname" type="number" placeholder="Ingresar score del player" onChange={handlePlayer} name="score" value={player.score} id="name" autoComplete="off" />
+                    </div>
+                    : null
+                    }                    
 
                     <div className="create-player-form-field">
                         <label className="cmp-create-player-label" htmlFor="status">Selecciona tu avatar</label>

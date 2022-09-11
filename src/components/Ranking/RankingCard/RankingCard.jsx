@@ -2,8 +2,14 @@
 import gold from '../../../assets/miscellaneous/oro.png';
 import silver from '../../../assets/miscellaneous/plata.png';
 import bronze from '../../../assets/miscellaneous/bronce.png';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const RankingCard = ({ position, playername, status, score }) => {
+const RankingCard = ({ id, position, playername, status, score }) => {
+
+  const userInfo = useSelector(store => store.loggedUser)
+
   const setImage = () => {
     if (status === 'oro')
       return (
@@ -19,12 +25,21 @@ const RankingCard = ({ position, playername, status, score }) => {
       );
   };
 
-    return  <tr style={{}}>
-    <th scope="row" style={{textAlign:"center"}}>{position}</th>
+  return <tr>
+    <th scope="row" style={{ textAlign: "center", color: "lightgreen" }}>{position}</th>
+    <th scope="row" style={{ textAlign: "center" }}>{id}</th>
     <td data-testid={'testplayer'}>{playername}</td>
     <td>{setImage()}</td>
     <td>{score}</td>
-    </tr>  
+    {userInfo && userInfo.createdUser.role === 'admin'
+      ? <td>
+        <NavLink to={`/create-player/edit?id=${id}`}>
+          <span class="material-symbols-outlined admin-edit">edit</span>
+        </NavLink>
+      </td>
+      : null
+    }
+  </tr>
 };
 
 export default RankingCard;

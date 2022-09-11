@@ -163,3 +163,14 @@ td {
 #loading-container img{
     width: 600px;
 }
+
+.admin-edit{
+  cursor: pointer;  
+  color: white;
+}
+
+.admin-edit:hover{  
+  color: black;
+  transition: 0.2s;
+}
+

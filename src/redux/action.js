@@ -8,6 +8,8 @@ import {
   GET_PAGINATION,
   GET_ALL_PLAYERS,
   LOGIN_OR_CREATE,
+  EDIT_PLAYER,
+  GET_PLAYER_BY_ID,
 } from "./constans";
 
 export function actionTest() {
@@ -180,9 +182,27 @@ export function deletePlayer(player){
       method: "DELETE",
       body: JSON.stringify(player),
       headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         }
     })
     .catch(err => console.log('Error deleting player', err))
   }
+}
+
+export function getSinglePlayer(id){
+  return function(dispatch){
+    return fetch(`${process.env.REACT_APP_API_URL}/players/${id}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+  })
+  .then(data => data.json())
+  .then(res => {
+    dispatch({
+      type: GET_PLAYER_BY_ID,
+      payload: res
+    })
+  })
+}
 }

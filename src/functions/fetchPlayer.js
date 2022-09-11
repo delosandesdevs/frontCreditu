@@ -13,14 +13,14 @@ export const fetchPlayer = (player,setCreated) => {
         .then(res => {
             if (res === 'El nickname ya existe' || res === 'El usuario ya tiene un player') {
                 Swal.fire({
-                    title: `'El nickname ya existe'`,
+                    title: 'El nickname ya existe',
                     icon: 'warning',
-                    confirmButtonText: 'Continuar'
+                    confirmButtonText: 'Aceptar'
                 })
                 return
             }
             Swal.fire({
-                title: `¡Has creado tu Player con éxito!`,
+                title: '¡Has creado tu Player con éxito!',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
             }).then((result) => {

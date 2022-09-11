@@ -49,4 +49,4 @@ jobs:
         with:
           command: npm run cypress
           start: npm start
-          wait-on: http://delosandescredituback-env.eba-wzve42yd.sa-east-1.elasticbeanstalk.com
+          wait-on: http://localhost:3000

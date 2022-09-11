@@ -57,7 +57,7 @@ const Profile = () => {
               action="edit"
             />
               <div className='container-nav-button' onClick={handleDeletePlayer}>
-                <div className='nav-button' id='delete-player-btn'>
+                <div data-cy="delete" className='nav-button' id='delete-player-btn'>
                   BORRAR PLAYER
                 </div>
               </div>

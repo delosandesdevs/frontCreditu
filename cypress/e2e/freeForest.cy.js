@@ -1,16 +1,10 @@
 /// <reference types="cypress" />
 
-describe('FreeForest', () => {
-    it('should see home view', () => {
-        cy.visit('/')
-        cy.contains('TOP 10')
-    })
-})
 
-describe('User should can login', () => {
+describe('user should can login', () => {
     it('login', () => {
-        cy.get("[data-cy='login']").click()
-        cy.contains('Iniciar Sesion').click()
+        cy.visit('/')
+        cy.contains("Iniciar sesión").click()
         cy.get("#username").type(`${Cypress.env('auth_username')}`)
         cy.get("#password").type(`${Cypress.env('auth_password')}`)
         cy.get("[type='submit']").contains("Iniciar sesión").click()
@@ -19,7 +13,7 @@ describe('User should can login', () => {
 })
 
 describe('Chatbot should be functional', () => {
-    it('respond correctly to "help", "about", "contact" and "game"', () => {
+    it('should respond correctly to "help", "about", "contact" and "game"', () => {
         cy.get('.chat-button').click()
         cy.get('.react-chatbot-kit-chat-input').type('ayuda')
         cy.get('.react-chatbot-kit-chat-btn-send').click()
@@ -54,15 +48,32 @@ describe('Create player', () => {
         cy.get("[src='/static/media/avatar-01.df97a60589dab19d9384.png']").should("be.visible")
     })
 
-    xit('should allow to create player', () => {
+    it('should denied create player if nickname already exists', () => {
+        cy.get(".input-nickname").type("Lila", { force: true })
+        cy.get(".create-player-submit").click()
+        cy.contains("El nickname ya existe").should("be.visible")
+        cy.wait(1000)
+        cy.get(".swal2-confirm").click()
+        cy.get(".input-nickname").type("dos", { force: true })
+    })
 
-        //cy.intercept("POST","http://localhost:8080/players",{ fixture: "createPlayer.json" }).as('createPlayer')
+    it('should allow to create player', () => {
+        cy.get(".create-player-submit").click()
+        cy.wait(1000)
+        cy.get(".swal2-confirm").click()
+        cy.wait(2000)
+        cy.scrollTo('top')
+    })
+})
 
-        cy.get(".input-nickname").type('Luis18', { force: true })
-        cy.get(".avatar1").click()
-        //cy.get(".create-player-submit").click()
-        //cy.get(".swal2-confirm").click()
-        //cy.get(".swal2-confirm").click()
+describe('Delete player', () => {
+    it('user should be able to delete his player', () => {
+        cy.get("[data-cy='login']").click()
+        cy.contains("Perfil").click()
+        cy.wait(2000)
+        cy.contains("BORRAR PLAYER").click({force: true})
+        cy.get(".swal2-confirm").click()
+        cy.get(".swal2-confirm").click()
     })
 })
 

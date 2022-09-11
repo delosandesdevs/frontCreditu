@@ -12,7 +12,7 @@ describe('user should can login', () => {
     })
 })
 
-describe('Chatbot should be functional', () => {
+describe('Chatbot', () => {
     it('should respond correctly to "help", "about", "contact" and "game"', () => {
         cy.get('.chat-button').click()
         cy.get('.react-chatbot-kit-chat-input').type('ayuda')

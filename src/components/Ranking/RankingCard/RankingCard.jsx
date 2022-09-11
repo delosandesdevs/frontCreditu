@@ -25,13 +25,13 @@ const RankingCard = ({ id, position, playername, status, score }) => {
       );
   };
 
-  return <tr>
+  return <tr >
     <th scope="row" style={{ textAlign: "center", color: "lightgreen" }}>{position}</th>
     <th scope="row" style={{ textAlign: "center" }}>{id}</th>
     <td data-testid={'testplayer'}>{playername}</td>
     <td>{setImage()}</td>
     <td>{score}</td>
-    {userInfo && userInfo.createdUser.role === 'admin'
+    {userInfo && userInfo.createdUser && userInfo.createdUser.role === 'admin'
       ? <td>
         <NavLink to={`/create-player/edit?id=${id}`}>
           <span class="material-symbols-outlined admin-edit">edit</span>

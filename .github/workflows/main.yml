@@ -2,9 +2,9 @@ name: Test Pipeline
 
 on:
   push:
-    branches: [develop]
+    branches: [pre-production]
   pull_request:
-    branches: [develop]
+    branches: [pre-production]
     types: [opened, synchronize]
   
 jobs:

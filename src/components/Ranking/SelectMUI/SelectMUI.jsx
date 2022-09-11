@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 
 export default function BasicSelect({statusSelected}) {
   return (
-    <Box sx={{ minWidth: 120, marginLeft:2, backgroundColor: 'white', borderRadius: '10px', color:'black', boxShadow:'rgb(0, 0, 0) 0px 10px 15px -3px;' }}>
+    <Box sx={{ minWidth: 120, marginLeft:2, backgroundColor: 'white', borderRadius: '10px', color:'black', boxShadow:'none' }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Status</InputLabel>
         <Select

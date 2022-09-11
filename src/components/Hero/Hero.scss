@@ -23,11 +23,11 @@
 }
 
 #home-oxigen-text {
-  margin-top: 300px;
+  margin-top: 50vh;
   color: white;
 
   @include respond-to('medium') {
-    margin-top: 300px;
+    margin-top: 55vh;
     color: white;
     left: -10px;
   }
@@ -37,7 +37,7 @@
   font-size: 40px;
   width: fit-content;
   margin-left: 20px;
-  background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(101, 209, 101));
+  background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -45,7 +45,7 @@
     font-size: 40px;
     width: fit-content;
     margin-left: 60px;
-    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(101, 209, 101));
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

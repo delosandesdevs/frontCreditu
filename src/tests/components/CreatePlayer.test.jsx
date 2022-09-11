@@ -16,7 +16,7 @@ beforeEach(() => render(
 ))
 
 describe('Testing UI Create Player component', () => {
-    test('Should have an input to enter player name', () => {
+    test.only('Should have an input to enter player name', () => {
         const inputs = screen.getByRole('textbox', {name:/nickname/i})
         expect(inputs).toBeInTheDocument()
     })
@@ -33,7 +33,7 @@ describe('Testing UI Create Player component', () => {
 })
 
 
-describe('Testing Form Error handlers', () => {
+xdescribe('Testing Form Error handlers', () => {
     test('Should throw an error if the fields are empty on submit', () => {
         // const submitBtn = screen.getByRole('button', {name: /crear player/i})
         const errorHandler = screen.queryByText("Todos los campos deben ser llenados")

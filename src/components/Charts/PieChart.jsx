@@ -66,7 +66,7 @@ const PieChart = () => {
 
         <hr />
         <div className="row" id="chart-section">
-          <div className="col-sm-6">
+          <div className="col-sm-6" data-testid='air-chart'>
             <Pie data={data} />
           </div>
           <div className="col-sm-6">

@@ -133,7 +133,7 @@ const Ranking = () => {
         <form className='ranking-search' onSubmit={handleSearchPlayer}>
             <label htmlFor="player" hidden>Player Name</label>
             <input type="text" id='player' placeholder='Ingrese player a buscar' onChange={fillSearch} value={search.nickname} />
-            <BasicSelect statusSelected={statusSelected} />
+            <BasicSelect statusSelected={statusSelected}  />
             <button className='btn btn-ff' >Buscar</button>
             <button onClick={resetFilters} id='reset-btn'><span class="material-symbols-outlined">restart_alt</span></button>
         </form>
@@ -191,3 +191,6 @@ const Ranking = () => {
 };
 
 export default Ranking;
+
+
+

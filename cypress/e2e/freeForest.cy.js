@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 
-describe('user should can login', () => {
+/* describe('user should can login', () => {
     it('login', () => {
         cy.visit('/')
         cy.contains("Iniciar sesión").click()
@@ -10,9 +10,9 @@ describe('user should can login', () => {
         cy.get("[type='submit']").contains("Iniciar sesión").click()
         cy.contains('TOP 10').should("be.visible")
     })
-})
+}) */
 
-describe('Chatbot', () => {
+/* describe('Chatbot', () => {
     it('should respond correctly to "help", "about", "contact" and "game"', () => {
         cy.get('.chat-button').click()
         cy.get('.react-chatbot-kit-chat-input').type('ayuda')
@@ -32,9 +32,9 @@ describe('Chatbot', () => {
         cy.contains('Juguemos').should("be.visible")
         cy.get('.chat-button').click()
     })
-})
+}) */
 
-describe('Create player', () => {
+/* describe('Create player', () => {
     
     it('should display "Todos los campos deben ser llenados, evita usar simbolos" when includes symbols or avatar is missing', () => {
         cy.contains("Crear Player").click()
@@ -64,9 +64,9 @@ describe('Create player', () => {
         cy.wait(2000)
         cy.scrollTo('top')
     })
-})
+}) */
 
-describe('Delete player', () => {
+/* describe('Delete player', () => {
     it('user should be able to delete his player', () => {
         cy.get("[data-cy='login']").click()
         cy.contains("Perfil").click()
@@ -75,11 +75,11 @@ describe('Delete player', () => {
         cy.get(".swal2-confirm").click()
         cy.get(".swal2-confirm").click()
     })
-})
+}) */
 
-describe('User should can logout', () => {
+/* describe('User should can logout', () => {
     it('logout', () => {
         cy.get("[data-cy='login']").click()
         cy.contains('Salir').click()
     })
-})
+}) */

@@ -1,14 +1,12 @@
-import { fetchPlayer } from "../functions/fetchPlayer";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+
 import {
   API_URL,
   GET_TEST,
-  ADD_TEST,
-  SEARCH_PLAYER,
   GET_TOPTEN_PLAYERS,
   GET_PAGINATION,
-  GET_ALL_PLAYERS,
   LOGIN_OR_CREATE,
-  EDIT_PLAYER,
   GET_PLAYER_BY_ID,
 } from "./constans";
 
@@ -144,8 +142,9 @@ export function postGallery(image) {
   };
 }
 
-export function updatePlayer(player) {
+export function updatePlayer(player, setUpdated) {
   return function () {
+    console.log('NODE_ENV',process.env.NODE_ENV);
     return fetch(
       `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`,
       {
@@ -155,9 +154,21 @@ export function updatePlayer(player) {
           "Content-Type": "application/json",
         },
       }
-    )
+      )
       .then((data) => data.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        Swal.fire({
+          title: res.message === 'El nickname ya existe' ? 'El nickname ya existe, por favor elija otro' :`¡Has editado tu Player con éxito!`,
+          icon: res.message === 'El nickname ya existe' ? 'warning' : 'success',
+          confirmButtonText: 'Continuar'
+      }).then((result) => {            
+            console.log('EL RES',res);
+           if (result.isConfirmed && res.message !== 'El nickname ya existe'){
+            setUpdated(true)
+           }
+      })
+      })
+      .catch(err => console.log('Error al actualizar el player',err))
   };
 }
 

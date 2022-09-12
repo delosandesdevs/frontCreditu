@@ -105,7 +105,7 @@ export function getSearchPlayer({ nickname, status }) {
   };
 }
 
-export function postPlayer(player) {
+export function postPlayer(player, setCreated) {
   return function () {
     return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`, {
       method: "POST",
@@ -113,7 +113,21 @@ export function postPlayer(player) {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+    .then((data) => data.json())
+      .then((res) => {
+        Swal.fire({
+          title: res.message === 'El nickname ya existe' ? 'El nickname ya existe, por favor elija otro' :`¡Has creado tu Player con éxito!`,
+          icon: res.message === 'El nickname ya existe' ? 'warning' : 'success',
+          confirmButtonText: 'Continuar'
+      }).then((result) => {            
+            console.log('EL RES',res);
+           if (result.isConfirmed && res.message !== 'El nickname ya existe'){
+            setCreated(true)
+           }
+      })
+      })
+      .catch(err => console.log('Error al crear el player',err))
   };
 }
 

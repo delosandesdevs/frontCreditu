@@ -37,7 +37,7 @@ export function addTest(test) {
 
 export function findOrCreateUser(name, email) {
   return function (dispatch) {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/user`, {
+    return fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/user`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify({ name, email }), // data can be `string` or {object}!
       headers: {
@@ -58,7 +58,7 @@ export function getTenPlayers() {
   return async function (dispatch) {
     try {
       const data = await fetch(
-        `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players?page=0&size=11&orderby=dsc`
+        `http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players?page=0&size=11&orderby=dsc`
       );
       const res = await data.json();
       dispatch({
@@ -74,7 +74,7 @@ export function getTenPlayers() {
 export function getPlayersPaginated(pageNumber, orderBy, size) {
   return function (dispatch) {
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
+      `http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -92,7 +92,7 @@ export function getSearchPlayer({ nickname, status }) {
     if (nickname === "") return getPlayersPaginated(0, "desc", 10);
     console.log("Pasé validación de nickname vacío");
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}?status=${status}`
+      `http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/searchplayer?nickname=${nickname}?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -107,7 +107,7 @@ export function getSearchPlayer({ nickname, status }) {
 
 export function postPlayer(player) {
   return function () {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`, {
+    return fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players`, {
       method: "POST",
       body: JSON.stringify(player),
       headers: {
@@ -119,7 +119,7 @@ export function postPlayer(player) {
 
 export function getAllPlayers() {
   return function (dispatch) {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`)
+    return fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({
@@ -132,7 +132,7 @@ export function getAllPlayers() {
 
 export function postGallery(image) {
   return function () {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/profile`, {
+    return fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/profile`, {
       method: "POST",
       body: JSON.stringify(image),
       headers: {
@@ -146,7 +146,7 @@ export function updatePlayer(player, setUpdated) {
   return function () {
     console.log('NODE_ENV',process.env.NODE_ENV);
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`,
+      `http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players/${parseInt(player.id)}`,
       {
         method: "PUT",
         body: JSON.stringify(player),
@@ -175,7 +175,7 @@ export function updatePlayer(player, setUpdated) {
 export function getPlayersByStatus({ status }) {
   return function (dispatch) {
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/filterByStatus?status=${status}`
+      `http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/filterByStatus?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -189,7 +189,7 @@ export function getPlayersByStatus({ status }) {
 
 export function deletePlayer(player){
   return function () {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`,{
+    return fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players`,{
       method: "DELETE",
       body: JSON.stringify(player),
       headers: {
@@ -202,7 +202,7 @@ export function deletePlayer(player){
 
 export function getSinglePlayer(id){
   return function(dispatch){
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${id}`,{
+    return fetch(`http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com/players/${id}`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",

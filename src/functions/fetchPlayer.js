@@ -2,7 +2,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
 export const fetchPlayer = (player,setCreated) => {
-    fetch(`${process.env.REACT_APP_API_URL}/players`, {
+    console.log('La ruta',process.env.REACT_APP_API_URL);
+    fetch(`${process.env.REACT_APP_API_URL_LOCAL}/players`, {
         method: 'POST',
         body: JSON.stringify(player),
         headers: {

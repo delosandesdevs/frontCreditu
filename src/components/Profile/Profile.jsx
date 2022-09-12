@@ -14,9 +14,11 @@ import { deletePlayer, findOrCreateUser } from '../../redux/action';
 const Profile = () => {
   const userInfo = useSelector((state) => state.loggedUser);
   const dispatch = useDispatch()
-  const [player , setPlayer] = useState({
+  
+  
+  const [player] = useState({
     playerId: userInfo.player.id,
-    user_id: userInfo.createdUser.id 
+    user_id: userInfo.createdUser.id     
   })
 
   useEffect(() => {
@@ -43,6 +45,10 @@ const Profile = () => {
   return (
     <div className="profile">
       <Title text={'Perfil'} />
+        <div className="user-info">
+          <span>Usuario: <strong>{userInfo.createdUser.name}</strong></span>
+          <span>Email: <strong>{userInfo.createdUser.email}</strong></span>
+        </div>
       <div className="profile-container mb-5">
         {userInfo.player && (
           <div className="profile-info ">

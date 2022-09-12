@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { updatePlayer, getSinglePlayer } from "../../redux/action";
+import { updatePlayer, getSinglePlayer, postPlayer } from "../../redux/action";
 import { avatarList } from "../../functions/varsForDevelopment";
 import { objHasNull } from "../../functions/validateForm";
-import { fetchPlayer } from "../../functions/fetchPlayer";
 import defaultAvatar from '../../assets/avatars/default.png'
 import Avatar from "../Avatar/Avatar";
 import Gallery from "../Profile/Gallery/Gallery";
@@ -21,13 +20,23 @@ const CreatePlayer = () => {
     const queryParams = new URLSearchParams(location.search)
     const singleValue= queryParams.get('id')
 
+    const userLogged = useSelector(store => store.loggedUser)
+    const userToEdit = useSelector(store => store.player)
     const [updated, setUpdated] = useState(false)
-
+    const [created, setCreated] = useState(false)
+    const [error, setError] = useState(true)
+    const [player, setPlayer] = useState({
+        nickname: '',
+        avatar: '',
+        score: '0',
+        user_id: userLogged.createdUser && userLogged.createdUser.id ? userLogged.createdUser.id : 1
+    })
+    
     useEffect(() => {
-        if(updated)
+        if(updated || created)
         navigate('/')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[updated])
+    },[updated, created])
 
     useEffect(() => {
         if(singleValue){
@@ -35,20 +44,6 @@ const CreatePlayer = () => {
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const userLogged = useSelector(store => store.loggedUser)
-    const userToEdit = useSelector(store => store.player)
-    const [created, setCreated] = useState(false)
-    const [error, setError] = useState({
-        msg: '',
-        error: true
-    })
-    const [player, setPlayer] = useState({
-        nickname: '',
-        avatar: '',
-        score: '0',
-        user_id: userLogged.createdUser && userLogged.createdUser.id ? userLogged.createdUser.id : 1
-    })
     
     useEffect(() => {
         if(singleValue){
@@ -61,36 +56,7 @@ const CreatePlayer = () => {
         })}
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userToEdit])
-
-    const handlePlayer = (e) => {
-        const target = e.target.name === 'avatar' ? `/images/avatar-${e.target.value < 10 ? '0' : ''}` + e.target.value + '.png' : e.target.value;
-        setPlayer({
-            ...player,
-            [e.target.name]: target
-        })
-        setError(objHasNull({
-            ...player,
-            [e.target.name]: target
-        }))
-    }
-
-    const createPlayer = () => {
-        if (action === 'edit')
-            dispatch(updatePlayer(player, setUpdated))                    
-        else{
-            fetchPlayer(player, setCreated)            
-        }        
-    }
-
-    const afterCreate = () => {
-        if(created) navigate('/')
-    }
-
-    useEffect(() => {
-        if (action !== 'edit' && created) afterCreate()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [created])
-
+    
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [])
@@ -106,6 +72,24 @@ const CreatePlayer = () => {
             })
 
     }, [userLogged])
+    
+    const handlePlayer = (e) => {
+        const target = e.target.name === 'avatar' ? `/images/avatar-${e.target.value < 10 ? '0' : ''}` + e.target.value + '.png' : e.target.value;
+        setPlayer({
+            ...player,
+            [e.target.name]: target
+        })
+        setError(objHasNull({
+            ...player,
+            [e.target.name]: target
+        }))
+    }
+
+    const createPlayer = () => {
+        if (action === 'edit') dispatch(updatePlayer(player, setUpdated))                    
+        dispatch(postPlayer(player, setCreated))           
+    }
+
 
     return (
         <div className="create-player">
@@ -113,7 +97,6 @@ const CreatePlayer = () => {
                 <h1>Usa la imaginación y {action === 'edit' ? 'edita' : 'crea'} tu Player</h1>
             </div>
 
-            {error && error.msg}
             <div className="cmp-create-player">
                 <div className="cmp-create-player-avatar">
                     <div className="cmp-create-player-avatar-background">

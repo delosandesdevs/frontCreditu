@@ -11,7 +11,7 @@ export const fetchPlayer = (player,setCreated) => {
     })
         .then(data => data.json())
         .then(res => {
-            if (res === 'El nickname ya existe' || res === 'El usuario ya tiene un player') {
+            if (res.message === 'El nickname ya existe' || res === 'El usuario ya tiene un player') {
                 Swal.fire({
                     title: 'El nickname ya existe',
                     icon: 'warning',

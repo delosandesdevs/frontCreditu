@@ -47,7 +47,7 @@ const CreatePlayer = () => {
         nickname: '',
         avatar: '',
         score: '0',
-        user_id: userLogged.createdUser.id
+        user_id: userLogged.createdUser && userLogged.createdUser.id ? userLogged.createdUser.id : 1
     })
     
     useEffect(() => {
@@ -96,7 +96,7 @@ const CreatePlayer = () => {
     }, [])
 
     useEffect(() => {
-        if (userLogged.player.nickname)
+        if (userLogged.player && userLogged.player.nickname)
             setPlayer({
                 nickname: userLogged.player.nickname,
                 avatar: userLogged.player.avatar,
@@ -135,7 +135,7 @@ const CreatePlayer = () => {
                         <input className="input-nickname" type="text" placeholder="Ingresa el nickname de tu player" onChange={handlePlayer} name="nickname" id="name" maxLength={16} value={player.nickname} autoComplete="off" />
                     </div>
                     
-                    {userLogged && userLogged.createdUser.role === 'admin'
+                    {userLogged && userLogged.createdUser && userLogged.createdUser.role === 'admin'
                     ? <div className="create-player-form-field">
                         <label className="cmp-create-player-label" htmlFor="name">Score</label>
                         <input className="input-nickname" type="number" placeholder="Ingresar score del player" onChange={handlePlayer} name="score" value={player.score} id="name" autoComplete="off" />

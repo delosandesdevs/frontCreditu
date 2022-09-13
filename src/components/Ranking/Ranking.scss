@@ -1,3 +1,7 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
+
 .btn-ff {
   background-color: #fe9c84;
   color: black;
@@ -177,4 +181,18 @@ align-items: center;
 .admin-edit:hover {
   color: black;
   transition: 0.2s;
+}
+
+#ranking-text{
+  width: 80%;
+  text-align: center;
+    margin: auto;
+  color: white;
+  
+  @include respond-to('medium') {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    color: white;
+  }
 }

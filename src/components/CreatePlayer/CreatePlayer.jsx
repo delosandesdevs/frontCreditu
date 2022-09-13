@@ -114,6 +114,13 @@ const CreatePlayer = () => {
           Usa la imaginación y {action === 'edit' ? 'edita' : 'crea'} tu Player
         </h1>
       </div>
+        
+        {action !== 'edit' 
+        ? <p className="mb-5" id="ranking-text">Aquí comenzarás tu aventura en Free Forest! Crea tu Player para poder comenzar a cambiar el mundo donde vives. Luego de crearlo podrás cambiar Avatar y/o Nickname.</p>
+        : <p className="mb-5" id="ranking-text">Puedes editar tu Player. Si vas a cambiar el nickname, corrobora que ya no exista otro player que ya lo tenga.</p>
+      }
+          
+          
 
       <div className="cmp-create-player">
         <div className="cmp-create-player-avatar">

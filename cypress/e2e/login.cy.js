@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 
-describe('user should can login', () => {
+describe('user should log in', () => {
     it('login', () => {
         cy.visit('/')
         cy.contains("Iniciar Sesion").click()

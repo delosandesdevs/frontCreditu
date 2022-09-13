@@ -127,7 +127,7 @@ const Profile = () => {
         Gracias a tus contribuciones, hemos podido plantar <strong>4</strong>{' '}
         árboles en zonas necesitadas de la provincia. Continúa así para subir de
         ranking y participar por grandes premios...¡Aunque ya estamos ganando
-        todos?
+        todos!
       </p>
       <div className="profile-gallery">
         <Gallery />

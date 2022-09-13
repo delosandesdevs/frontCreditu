@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('editPlayer', () => {
-    it('User can be modify his player', () => {
+    it('User can modify his player', () => {
         cy.get("[data-cy='login']").click()
         cy.wait(1000)
         cy.get("[href='/profile']").contains("Perfil").click()

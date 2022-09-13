@@ -12,30 +12,6 @@ import {
   GET_PLAYER_BY_ID
 } from './constans';
 
-export function actionTest() {
-  return function (dispatch) {
-    return fetch(`${API_URL}/test`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_TEST,
-          payload: data
-        });
-      });
-  };
-}
-
-export function addTest(test) {
-  return function () {
-    return fetch(`${API_URL}/test1`, {
-      method: 'POST',
-      body: JSON.stringify(test),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  };
-}
 
 export function findOrCreateUser(name, email) {
   return function (dispatch) {
@@ -125,6 +101,7 @@ export function getSearchPlayer({ nickname, status }) {
 
 export function postPlayer(player, setCreated) {
   return function () {
+    console.log('>>>>>>>>>',player);
     return fetch(
       `${
         process.env.NODE_ENV !== 'production'
@@ -179,25 +156,6 @@ export function getAllPlayers() {
           payload: data
         });
       });
-  };
-}
-
-export function postGallery(image) {
-  return function () {
-    return fetch(
-      `${
-        process.env.NODE_ENV !== 'production'
-          ? process.env.REACT_APP_API_URL_LOCAL
-          : process.env.REACT_APP_API_URL
-      }/profile`,
-      {
-        method: 'POST',
-        body: JSON.stringify(image),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    );
   };
 }
 

@@ -151,9 +151,15 @@ const Ranking = () => {
             <tr>
               <th scope="col" onClick={handleOrder} id="order-by-toggle">
                 <div id="v-align">
-                  <span className="material-symbols-outlined">
-                    arrow_downward
-                  </span>
+                  {order === 'desc'
+                    ? <span className="material-symbols-outlined">
+                        arrow_downward
+                      </span>
+                    : <span className="material-symbols-outlined">
+                        arrow_upward
+                      </span>
+                  }
+                  
                   Posición
                 </div>
               </th>
@@ -172,7 +178,7 @@ const Ranking = () => {
             {players && players.players && players.players.length > 0
               ? players.players.map((p) => (
                   <RankingCard
-                    position={p.ranking}
+                    position={'# '+p.ranking}
                     id={p.id}
                     playername={p.nickname}
                     status={p.status}

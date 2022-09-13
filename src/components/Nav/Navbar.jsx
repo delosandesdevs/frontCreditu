@@ -104,6 +104,17 @@ const Navbar = () => {
               <MenuItem onClick={handleCloseNavMenu}>
                 <NavLinkCmp path="" title="Inicio" />
               </MenuItem>
+
+              {isAuthenticated && createCondition ? (
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <NavLinkCmp
+                    path="create-player/create"
+                    title="Crear Player"
+                    action=""
+                  />
+                </MenuItem>
+            ) : null}
+
               <MenuItem onClick={handleCloseNavMenu}>
                 <NavLinkCmp path="ranking" title="Ranking" />
               </MenuItem>

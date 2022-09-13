@@ -37,7 +37,6 @@
 }
 
 .playerCard_text_name {
-  text-align: left;
   font-weight: 400;
   font-size: 32px;
   color: #fff;
@@ -76,6 +75,7 @@
 
 .small {
   transform: scale(80%, 80%);
+  font-size: 30px;
 }
 
 .reflect-gold {

@@ -51,9 +51,10 @@ const CreatePlayer = () => {
       setPlayer({
         nickname:
           userToEdit && userToEdit.players && userToEdit.players[0].nickname,
-        avatar: userToEdit.players[0].avatar,
-        score: userToEdit.players[0].score,
-        id: userToEdit.players[0].id,
+        avatar:
+          userToEdit && userToEdit.players && userToEdit.players[0].avatar,
+        score: userToEdit && userToEdit.players && userToEdit.players[0].score,
+        id: userToEdit && userToEdit.players && userToEdit.players[0].id,
         user_id: userLogged.createdUser.id
       });
     }
@@ -62,6 +63,7 @@ const CreatePlayer = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -117,7 +119,7 @@ const CreatePlayer = () => {
               <img src={defaultAvatar} alt="default_avatar_img" />
             ) : (
               <div className="avatar-movement" id="avatar-movement">
-                <Avatar pic={player.avatar} displayName="" />
+                <Avatar pic={player.avatar} displayName="" score={player.score} />
               </div>
             )}
             <span>{player.nickname}</span>
@@ -152,6 +154,7 @@ const CreatePlayer = () => {
               <input
                 className="input-nickname"
                 type="number"
+                min="0"
                 placeholder="Ingresar score del player"
                 onChange={handlePlayer}
                 name="score"

@@ -101,9 +101,16 @@
 }
 
 #delete-player-btn {
-  color: red;
+  color: rgb(255, 128, 128);;
   margin-top: 20px;
 }
+#delete-player-btn:hover {
+  color: rgb(223, 32, 32);
+  margin-top: 20px;
+  transition: 0.6s;
+}
+
+
 
 .user-info {
   display: flex;

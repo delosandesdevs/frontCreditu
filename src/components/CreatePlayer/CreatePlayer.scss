@@ -58,6 +58,12 @@
   flex-direction: column;
   width: 220px;
   padding: 20px;
+
+  @include respond-to('medium') {
+    height: 500px;
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 .avatar-movement {
@@ -68,19 +74,16 @@
 
 .cmp-create-player-avatar-background {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 190px;
-  height: 225px;
-  background: rgb(255, 249, 198);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 249, 198, 1) 35%,
-    rgba(254, 208, 120, 1) 100%
-  );
-  border-radius: 20%;
-  padding: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 190px;
+    height: 100%;
+    background: rgb(255, 249, 198);
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,249,198,1) 63%);
+    border-radius: 20px;
+    padding: 20px;
 }
 
 .cmp-create-player-avatar img {

@@ -21,7 +21,7 @@ const User = () => {
         <input
           type="button"
           value="enviar"
-          onClick={() => dispatch(addTest(data))}
+          // onClick={() => dispatch(addTest(data))}
         />
       </form>
     </div>

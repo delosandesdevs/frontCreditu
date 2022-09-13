@@ -1,14 +1,12 @@
 /* eslint-disable consistent-return */
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import gold from '../../../assets/miscellaneous/oro.png';
 import silver from '../../../assets/miscellaneous/plata.png';
 import bronze from '../../../assets/miscellaneous/bronce.png';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
 const RankingCard = ({ id, position, playername, status, score }) => {
-
-  const userInfo = useSelector(store => store.loggedUser)
+  const userInfo = useSelector((store) => store.loggedUser);
 
   const setImage = () => {
     if (status === 'oro')
@@ -25,21 +23,28 @@ const RankingCard = ({ id, position, playername, status, score }) => {
       );
   };
 
-  return <tr >
-    <th scope="row" style={{ textAlign: "center", color: "lightgreen" }}>{position}</th>
-    <th scope="row" style={{ textAlign: "center" }}>{id}</th>
-    <td data-testid={'testplayer'}>{playername}</td>
-    <td>{setImage()}</td>
-    <td>{score}</td>
-    {userInfo && userInfo.createdUser && userInfo.createdUser.role === 'admin'
-      ? <td>
-        <NavLink to={`/create-player/edit?id=${id}`}>
-          <span class="material-symbols-outlined admin-edit">edit</span>
-        </NavLink>
-      </td>
-      : null
-    }
-  </tr>
+  return (
+    <tr>
+      <th scope="row" style={{ textAlign: 'center', color: 'lightgreen' }}>
+        {position}
+      </th>
+      <th scope="row" style={{ textAlign: 'center' }}>
+        {id}
+      </th>
+      <td data-testid="testplayer">{playername}</td>
+      <td>{setImage()}</td>
+      <td>{score}</td>
+      {userInfo &&
+      userInfo.createdUser &&
+      userInfo.createdUser.role === 'admin' ? (
+        <td>
+          <NavLink to={`/create-player/edit?id=${id}`}>
+            <span className="material-symbols-outlined admin-edit">edit</span>
+          </NavLink>
+        </td>
+      ) : null}
+    </tr>
+  );
 };
 
 export default RankingCard;

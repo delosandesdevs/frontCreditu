@@ -18,8 +18,8 @@ root.render(
       <BrowserRouter>
         <React.StrictMode>
           <Auth0Provider
-            domain='dev-mz28f1dv.us.auth0.com'
-            clientId='bs0g9z6kqdPLW4HIArVuLAOgdOBvuezO'
+            domain="dev-mz28f1dv.us.auth0.com"
+            clientId="bs0g9z6kqdPLW4HIArVuLAOgdOBvuezO"
             redirectUri={window.location.origin}
           >
             <App />

@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
@@ -21,12 +20,7 @@ const App = () => (
       <Route path="/user" element={<User />} />
       <Route path="/create-player/:action" element={<CreatePlayer />} />
       <Route path="/ranking" element={<Ranking />} />
-      <Route path="/profile" element={<Profile />}>
-        {/* <Route index path='players' element={<Players />} />
-        <Route path='renewed-air' element={<RenewedAir />} />
-        <Route path='sellings' element={<Sellings />} />
-        <Route path='users' element={<Users />} /> */}
-      </Route>
+      <Route path="/profile" element={<Profile />} />
       <Route path="/about" element={<About />} />
     </Routes>
     <ChatbotContainer />

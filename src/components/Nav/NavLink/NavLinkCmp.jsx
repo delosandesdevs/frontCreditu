@@ -5,14 +5,16 @@ const NavLinkCmp = ({ path, title, action }) => (
     {action === 'edit' ? (
       <NavLink
         to={`/${path}/edit`}
-        className="nav-button"
+        className="nav-button centered-line"
         style={{ color: 'white' }}
       >
         {title}
+        <span class="material-symbols-outlined">draw</span>
       </NavLink>
     ) : (
-      <NavLink to={`/${path}`} className="nav-button">
+      <NavLink to={`/${path}`} className="nav-button centered-line">
         {title}
+        
       </NavLink>
     )}
   </div>

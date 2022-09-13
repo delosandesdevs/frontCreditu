@@ -101,6 +101,7 @@ const Ranking = () => {
   return (
     <div className="tree-wallpaper">
       <Title text="Ranking" />
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum labore non quos repellendus harum, ratione, dolor, natus nisi pariatur dignissimos voluptatum odit blanditiis! Cupiditate atque saepe fugiat quod fuga labore!</p>
       <div>
         {userInfo &&
           userInfo.createdUser &&
@@ -122,7 +123,10 @@ const Ranking = () => {
           value={search.nickname}
         />
         <BasicSelect statusSelected={statusSelected} />
-        <button className="btn btn-ff">Buscar</button>
+        <button className="btn btn-ff centered-line">
+          Buscar
+          <span class="material-symbols-outlined">search</span>
+          </button>
         <button onClick={resetFilters} id="reset-btn">
           <span className="material-symbols-outlined">restart_alt</span>
         </button>
@@ -174,7 +178,7 @@ const Ranking = () => {
               ) : null}
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{height: "500px"}}>
             {players && players.players && players.players.length > 0
               ? players.players.map((p) => (
                   <RankingCard
@@ -186,7 +190,10 @@ const Ranking = () => {
                     key={p.ranking}
                   />
                 ))
-              : 'No se encontraron players'}
+              : <td colSpan={6}><span style={{marginTop:"40px"}} className="centered-line">
+                No se encontraron players
+                <span class="material-symbols-outlined">person_search</span>
+                </span></td>}
           </tbody>
         </table>
       </div>

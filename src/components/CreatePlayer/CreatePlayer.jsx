@@ -7,7 +7,7 @@ import { objHasNull } from '../../functions/validateForm';
 import defaultAvatar from '../../assets/avatars/default.png';
 import Avatar from '../Avatar/Avatar';
 import Gallery from '../Profile/Gallery/Gallery';
-
+import party from "party-js";
 import 'animate.css';
 import './CreatePlayer.scss';
 
@@ -96,12 +96,15 @@ const CreatePlayer = () => {
     );
   };
 
-  const createPlayer = () => {
+  const createPlayer = (e) => {
     if (action === 'edit') {
       dispatch(updatePlayer(player, setUpdated));
     } else {
       dispatch(postPlayer(player, setCreated));
     }
+    party.confetti(e.target, {
+      count: party.variation.range(20, 40),
+    });
   };
 
   return (
@@ -116,7 +119,7 @@ const CreatePlayer = () => {
         <div className="cmp-create-player-avatar">
           <div className="cmp-create-player-avatar-background">
             {player.avatar === '' ? (
-              <img src={defaultAvatar} alt="default_avatar_img" />
+              <img src={defaultAvatar} alt="default_avatar_img" className='floating' />
             ) : (
               <div className="avatar-movement" id="avatar-movement">
                 <Avatar pic={player.avatar} displayName="" score={player.score} />

@@ -12,19 +12,19 @@ import { findOrCreateUser, getTenPlayers } from '../../redux/action';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const topPlayers = useSelector((state) => state.topten.slice(0,10));
+  const topPlayers = useSelector((state) => state.topten.slice(0, 10));
   const { isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });
-    dispatch(getTenPlayers());    
+    dispatch(getTenPlayers());
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (isAuthenticated) dispatch(findOrCreateUser(user.name, user.email));
-  },[isAuthenticated])
+  }, [isAuthenticated]);
 
   return (
     <div className="home_container">

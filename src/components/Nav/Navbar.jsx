@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector } from 'react-redux';
 import juano from '../../assets/avatars/juano.png';
@@ -24,18 +24,7 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  // const dispatch = useDispatch();
   const userLogged = useSelector((store) => store.loggedUser);
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     dispatch(findOrCreateUser(user.name, user.email))
-  //   }
-  //    }, [])
-
-/*   useEffect(() => {
-    // eslint-disable-next-line no-use-before-define
-    checkIfHasPlayer();
-  }, [userLogged]); */
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -52,17 +41,7 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-  const checkIfHasPlayer = () => {
-    if (userLogged && !userLogged.player) return null;
-
-    return (
-      <MenuItem onClick={handleCloseNavMenu}>
-        <NavLinkCmp path="create-player/" title="Crear Player" action="" />
-      </MenuItem>
-    );
-  };
-
-  const createCondition = userLogged && userLogged.player === false
+  const createCondition = userLogged && userLogged.player === false;
 
   return (
     <AppBar
@@ -125,13 +104,6 @@ const Navbar = () => {
               <MenuItem onClick={handleCloseNavMenu}>
                 <NavLinkCmp path="" title="Inicio" />
               </MenuItem>
-
-              {/* {checkIfHasPlayer()} */}
-              {/* <MenuItem onClick={handleCloseNavMenu} >
-                  <NavLinkCmp path={'create-player'} title={'Crear Player'} />
-                </MenuItem>
-                             */}
-
               <MenuItem onClick={handleCloseNavMenu}>
                 <NavLinkCmp path="ranking" title="Ranking" />
               </MenuItem>
@@ -168,21 +140,18 @@ const Navbar = () => {
               <NavLinkCmp path="" title="Inicio" />
             </Button>
 
-            {
-              isAuthenticated && createCondition ?
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  <NavLinkCmp
-                    path="create-player/create"
-                    title="Crear Player"
-                    action=""
-                  />
-                </Button>
-                :
-                null
-            }
+            {isAuthenticated && createCondition ? (
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <NavLinkCmp
+                  path="create-player/create"
+                  title="Crear Player"
+                  action=""
+                />
+              </Button>
+            ) : null}
 
             <Button
               onClick={handleCloseNavMenu}
@@ -199,8 +168,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {
-              isAuthenticated &&
+            {isAuthenticated && (
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
@@ -210,41 +178,45 @@ const Navbar = () => {
                   />
                 </IconButton>
               </Tooltip>
-            }
+            )}
 
-            {
-              !isAuthenticated ?
-                <LoginButton data-cy="log" />
-                :
-                <Menu sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">
-                      <NavLinkCmp path="profile" title="Perfil" />
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <LogoutButton />
-                  </MenuItem>
-                </Menu>
-            }
+            {!isAuthenticated ? (
+              <LoginButton data-cy="log" />
+            ) : (
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography
+                    textAlign="center"
+                    component="span"
+                    variant="body2"
+                  >
+                    <NavLinkCmp path="profile" title="Perfil" />
+                  </Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <LogoutButton />
+                </MenuItem>
+              </Menu>
+            )}
           </Box>
         </Toolbar>
       </Container>
-    </AppBar >
+    </AppBar>
   );
 };
 

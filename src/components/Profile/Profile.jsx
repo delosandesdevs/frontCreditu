@@ -13,18 +13,15 @@ import { deletePlayer, findOrCreateUser } from '../../redux/action';
 
 const Profile = () => {
   const userInfo = useSelector((state) => state.loggedUser);
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const [player] = useState({
     playerId: userInfo.player.id,
     user_id: userInfo.createdUser.id
-  })
-
+  });
 
   useEffect(() => {
-    console.log(userInfo)
-  }, [userInfo])
+   }, [userInfo]);
 
   const handleDeletePlayer = () => {
     Swal.fire({
@@ -34,26 +31,42 @@ const Profile = () => {
       icon: 'warning',
       confirmButtonText: 'BORRAR',
       confirmButtonColor: '#fe9c84',
-      background: 'linear-gradient(0deg, #c65f72 0%, #2a855a 50%, #0f5156 100%)',
-      color: "white",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log('BORRANDO PLAYER')
-        dispatch(deletePlayer(player))
-        dispatch(findOrCreateUser(userInfo.createdUser.name, userInfo.createdUser.email))
-        Swal.fire('Borrado con éxito', '', 'success')
-      }
+      background:
+        'linear-gradient(0deg, #c65f72 0%, #2a855a 50%, #0f5156 100%)',
+      color: 'white'
     })
-      .then(data => dispatch(findOrCreateUser(userInfo.createdUser.name, userInfo.createdUser.email)))
-
-  }
+      .then((result) => {
+        if (result.isConfirmed) {
+          dispatch(deletePlayer(player));
+          dispatch(
+            findOrCreateUser(
+              userInfo.createdUser.name,
+              userInfo.createdUser.email
+            )
+          );
+          Swal.fire('Borrado con éxito', '', 'success');
+        }
+      })
+      .then(() =>
+        dispatch(
+          findOrCreateUser(
+            userInfo.createdUser.name,
+            userInfo.createdUser.email
+          )
+        )
+      );
+  };
 
   return (
     <div className="profile">
       <Title text={'Perfil'} />
       <div className="user-info">
-        <span>Usuario: <strong>{userInfo.createdUser.name}</strong></span>
-        <span>Email: <strong>{userInfo.createdUser.email}</strong></span>
+        <span>
+          Usuario: <strong>{userInfo.createdUser.name}</strong>
+        </span>
+        <span>
+          Email: <strong>{userInfo.createdUser.email}</strong>
+        </span>
       </div>
       <div className="profile-container mb-5">
         {userInfo.player && (
@@ -72,13 +85,15 @@ const Profile = () => {
                 title="Edita tu player"
                 action="edit"
               />
-              <div className='container-nav-button' onClick={handleDeletePlayer}>
-                <div className='nav-button' id='delete-player-btn'>
+              <div
+                className="container-nav-button"
+                onClick={handleDeletePlayer}
+              >
+                <div className="nav-button" id="delete-player-btn">
                   BORRAR PLAYER
                 </div>
               </div>
             </div>
-
           </div>
         )}
 
@@ -92,8 +107,13 @@ const Profile = () => {
         )}
       </div>
 
-      <h2 id='profile-thanks'>Gracias</h2>
-      <p id='profile-thanks-p'>Gracias a tus contribuciones, hemos podido plantar <strong>4</strong> árboles en zonas necesitadas de la provincia. Continúa así para subir de ranking y participar por grandes premios...¡Aunque ya estamos ganando todos?</p>
+      <h2 id="profile-thanks">Gracias</h2>
+      <p id="profile-thanks-p">
+        Gracias a tus contribuciones, hemos podido plantar <strong>4</strong>{' '}
+        árboles en zonas necesitadas de la provincia. Continúa así para subir de
+        ranking y participar por grandes premios...¡Aunque ya estamos ganando
+        todos?
+      </p>
       <div className="profile-gallery">
         <Gallery />
       </div>

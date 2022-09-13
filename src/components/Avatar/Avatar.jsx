@@ -11,7 +11,7 @@ import avatar10 from '../../assets/avatars/avatar-10.png';
 import juano from '../../assets/avatars/juano.png';
 import rodri from '../../assets/avatars/rodri.png';
 import rami from '../../assets/avatars/rami.png';
-import gian from '../../assets/avatars/gian.png'
+import gian from '../../assets/avatars/gian.png';
 import flor from '../../assets/avatars/flor.png';
 import './Avatar.scss';
 

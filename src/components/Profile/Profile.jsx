@@ -14,24 +14,28 @@ import { deletePlayer, findOrCreateUser } from '../../redux/action';
 const Profile = () => {
   const userInfo = useSelector((state) => state.loggedUser);
   const dispatch = useDispatch()
-  
-  
+
+
   const [player] = useState({
     playerId: userInfo.player.id,
-    user_id: userInfo.createdUser.id     
+    user_id: userInfo.createdUser.id
   })
+
 
   useEffect(() => {
     console.log(userInfo)
-  },[userInfo])
+  }, [userInfo])
 
   const handleDeletePlayer = () => {
     Swal.fire({
       title: '¿Desea borrar su player?',
       text: 'Realizando esto, su player se borrará por completo, teniendo que comenzar desde cero creando un player nuevo.',
       showCancelButton: true,
-      icon:'warning',
-      confirmButtonText: 'BORRAR'      
+      icon: 'warning',
+      confirmButtonText: 'BORRAR',
+      confirmButtonColor: '#fe9c84',
+      background: 'linear-gradient(0deg, #c65f72 0%, #2a855a 50%, #0f5156 100%)',
+      color: "white",
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('BORRANDO PLAYER')
@@ -40,15 +44,17 @@ const Profile = () => {
         Swal.fire('Borrado con éxito', '', 'success')
       }
     })
+      .then(data => dispatch(findOrCreateUser(userInfo.createdUser.name, userInfo.createdUser.email)))
+
   }
 
   return (
     <div className="profile">
       <Title text={'Perfil'} />
-        <div className="user-info">
-          <span>Usuario: <strong>{userInfo.createdUser.name}</strong></span>
-          <span>Email: <strong>{userInfo.createdUser.email}</strong></span>
-        </div>
+      <div className="user-info">
+        <span>Usuario: <strong>{userInfo.createdUser.name}</strong></span>
+        <span>Email: <strong>{userInfo.createdUser.email}</strong></span>
+      </div>
       <div className="profile-container mb-5">
         {userInfo.player && (
           <div className="profile-info ">
@@ -61,11 +67,11 @@ const Profile = () => {
             <Position toBeUsed={userInfo} />
 
             <div className="delete-player-container">
-            <NavLinkCmp
-              path="create-player"
-              title="Edita tu player"
-              action="edit"
-            />
+              <NavLinkCmp
+                path="create-player"
+                title="Edita tu player"
+                action="edit"
+              />
               <div className='container-nav-button' onClick={handleDeletePlayer}>
                 <div className='nav-button' id='delete-player-btn'>
                   BORRAR PLAYER

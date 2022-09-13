@@ -29,7 +29,7 @@ const CreatePlayer = () => {
         nickname: '',
         avatar: '',
         score: '0',
-        user_id: userLogged.createdUser && userLogged.createdUser.id ? userLogged.createdUser.id : 1
+        user_id: userLogged.createdUser && userLogged.createdUser.id ? userLogged.createdUser.id : null
     })
     
     useEffect(() => {
@@ -39,7 +39,7 @@ const CreatePlayer = () => {
     },[updated, created])
 
     useEffect(() => {
-        if(singleValue){
+        if(singleValue){            
             dispatch(getSinglePlayer(singleValue))
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,12 +48,13 @@ const CreatePlayer = () => {
     useEffect(() => {
         if(singleValue){
         setPlayer({
-            nickname: userToEdit.nickname,
-            avatar: userToEdit.avatar,
-            score: userToEdit.score,
-            id: userToEdit.id,
+            nickname: userToEdit && userToEdit.players && userToEdit.players[0].nickname,
+            avatar: userToEdit.players[0].avatar,
+            score: userToEdit.players[0].score,
+            id: userToEdit.players[0].id,
             user_id: userLogged.createdUser.id
         })}
+        console.log(userToEdit)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userToEdit])
     
@@ -70,7 +71,6 @@ const CreatePlayer = () => {
                 id: userLogged.player.id,
                 user_id: userLogged.createdUser.id
             })
-
     }, [userLogged])
     
     const handlePlayer = (e) => {
@@ -86,8 +86,13 @@ const CreatePlayer = () => {
     }
 
     const createPlayer = () => {
-        if (action === 'edit') dispatch(updatePlayer(player, setUpdated))                    
-        dispatch(postPlayer(player, setCreated))           
+        if (action === 'edit'){
+            console.log('EDITO')
+            dispatch(updatePlayer(player, setUpdated))                    
+        }else{
+            console.log('CREO')
+            dispatch(postPlayer(player, setCreated))           
+        }
     }
 
 

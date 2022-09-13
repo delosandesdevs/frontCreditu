@@ -1,13 +1,20 @@
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.001.png)
 
-Free Forest es un proyecto grupal que se desarrolló como prueba técnica de la empresa Creditú. El principal requisito a cumplir fue la puesta en escena de un dashboard de consulta de puntos en una aplicación web de un juego hipotético, el cual también tuvimos que desarrollar conceptualmente y está basado en la concientización del medio ambiente, enfocándonos con profundidad en la forestación, la cual te invitamos a visitarla en el siguiente enlace ………….. 
+</div>
 
+<p align="justify"> Free Forest es un proyecto grupal que se desarrolló como prueba técnica de la empresa Creditú. El principal requisito a cumplir fue la puesta en escena de un dashboard de consulta de puntos en una aplicación web de un juego hipotético, el cual también tuvimos que desarrollar conceptualmente y está basado en la concientización del medio ambiente, enfocándonos con profundidad en la forestación, la cual te invitamos a visitarla en el siguiente enlace. </p>  
 
-<h1> Primeros pasos </h1>
+https://develop.delosandes.xyz/players
+
+<br>
+<br>
+<h1> Primeros pasos 🚀 </h1>
 
 Con las siguientes instrucciones podrás poner en funcionamiento nuestro proyecto localmente .
 
-**Requerimientos**
+**📑    Requerimientos**
 
 Para poder poner a correr esta aplicación tendrás que tener instalado en tu ordenador con anterioridad la última versión de NPM y Node, puedes chequear en consola si la tienes instalada haciendo “npm -v” y “node-v”
 
@@ -15,13 +22,23 @@ Sino en el siguiente link puedes descargarla gratuitamente - <https://nodejs.org
 
 Copia el repositorio haciendo click en Fork, así obtendrás una copia del mismo en tu Github.
 
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.002.png)
+
+</div>
 
 A continuación haz click en Code, copiando el link del repositorio para clonarlo localmente mediante gitBash o puedes descargar el Zip para luego descomprimirlo en tu computadora.
 
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.003.png)
 
-<h1>Para instalar </h1>
+</div>
+
+<br>
+<br>
+<h1>Para instalar 🛠 </h1>
 
 Llegó el momento para ejecutar en tu ordenador nuestro proyecto.
 
@@ -37,29 +54,45 @@ Este comando busca y ejecuta los scripts contenidos en el archivo que se denomin
 
 Puedes realizar cambios en el código, y al ser guardados notarás que tu navegador se refrescará con los mismos.
 
-Ahora a navegar
+<br>
+<br>
+<h1>Ahora a navegar 🏄</h1>
 
 - **Home**
 
 Al iniciar la aplicación web te encontrarás con los 10 mejores jugadores de Free Forest.
 
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.004.png)
 
-
+</div>
 
 En la barra de navegación encontrarás el botón “INICIAR SESIÓN” , allí se abrirá una ventana de autenticación, la que recomendamos que completes, así podrás acceder a todas las funcionalidades de la app.
 
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.005.png)
+
+</div>
 
 - **Ranking**
 
 En la pestaña Ranking encontrarás a los jugadores de Free Forest ordenados por posiciones inicialmente. Nosotros te invitamos a que busques jugadores por su nombre, o su status en el juego.
 
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.006.png)
+
+</div>
 
 También puede buscar página por página los resultados.
 
+<div align="center">
+
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.007.png)
+
+</div>
 
 - **Acerca de**
 
@@ -69,7 +102,9 @@ En esta pestaña encontrarás toda la información del juego y los nombres de lo
 
 Si tocas tu avatar en la parte superior a la derecha, podrás encontrar el enlace hacia tu perfil en Free Forest, el cual si no tienes un jugador, te invita a crearlo, y si lo tienes mostrará tu progreso en el juego.
 
-Testeando app
+<br>
+<br>
+<h1>Testeando app 🕵</h1>
 
 - **Pruebas unitarias**
 
@@ -79,7 +114,9 @@ Mediante Jest ……..
 
 Mediante la tecnología Cypress….
 
-Tecnologías utilizadas
+<br>
+<br>
+<h1>Tecnologías utilizadas 👨‍💻</h1>
 
 - Para la comunicación en el trabajo en equipo utilizamos Trello, mediante la metodología SCRUM.
 - Para investigación UX y desarrollo conceptual del juego utilizamos Google Forms.
@@ -87,17 +124,20 @@ Tecnologías utilizadas
 - Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist, AWS, Cypress, Jest.
 - Para crear una imagen del proyecto utilizamos Docker. 
 
-Equipo de desarrollo
+<br>
+<br>
+<h1>Equipo de desarrollo 🌄</h1>
 
-- Florencia Taburelli - <https://github.com/orgs/delosandesdevs/people/FlorenciaTaburelli>
-- Juano Cataldo - <https://github.com/orgs/delosandesdevs/people/juanocataldo>
-- Ramiro Grisales - <https://github.com/orgs/delosandesdevs/people/orimarselasirg>
-- Rodrigo Pérez - <https://github.com/orgs/delosandesdevs/people/rodrigo0109>
-- Gianfranco Gobbi - <https://github.com/GianfrancoGobbi>
+- [Florencia Taburelli](<https://github.com/orgs/delosandesdevs/people/FlorenciaTaburelli>)
+- [Juano Cataldo](<https://github.com/orgs/delosandesdevs/people/juanocataldo>)
+- [Ramiro Grisales](<https://github.com/orgs/delosandesdevs/people/orimarselasirg>)
+- [Rodrigo Pérez](<https://github.com/orgs/delosandesdevs/people/rodrigo0109>)
+- [Gianfranco Gobbi](<https://github.com/GianfrancoGobbi>)
 
 
-
+<div align="center">
 
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.008.png)
 
 **De Los Andes development**
+</div>

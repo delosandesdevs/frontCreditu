@@ -44,7 +44,7 @@ const Ranking = () => {
     const getPlayersAndSearchs = () => {
         setLoading(true)
        
-        fetch(`${process.env.REACT_APP_API_URL}/searchplayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}&size=10`)
+        fetch(`${process.env.REACT_APP_API_URL_LOCAL}/searchplayer?nickname=${search.nickname}&status=${search.status}&page=${page}&orderby=${order}&size=10`)
             .then(res => res.json())
             .then(data => {
                 dispatch({

@@ -1,14 +1,12 @@
-import { fetchPlayer } from "../functions/fetchPlayer";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+
 import {
   API_URL,
   GET_TEST,
-  ADD_TEST,
-  SEARCH_PLAYER,
   GET_TOPTEN_PLAYERS,
   GET_PAGINATION,
-  GET_ALL_PLAYERS,
   LOGIN_OR_CREATE,
-  EDIT_PLAYER,
   GET_PLAYER_BY_ID,
 } from "./constans";
 
@@ -39,7 +37,7 @@ export function addTest(test) {
 
 export function findOrCreateUser(name, email) {
   return function (dispatch) {
-    return fetch(`${API_URL}/user`, {
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/user`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify({ name, email }), // data can be `string` or {object}!
       headers: {
@@ -60,7 +58,7 @@ export function getTenPlayers() {
   return async function (dispatch) {
     try {
       const data = await fetch(
-        `${API_URL}/players?page=0&size=11&orderby=dsc`
+        `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players?page=0&size=11&orderby=dsc`
       );
       const res = await data.json();
       dispatch({
@@ -76,7 +74,7 @@ export function getTenPlayers() {
 export function getPlayersPaginated(pageNumber, orderBy, size) {
   return function (dispatch) {
     return fetch(
-      `${API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
+      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -94,7 +92,7 @@ export function getSearchPlayer({ nickname, status }) {
     if (nickname === "") return getPlayersPaginated(0, "desc", 10);
     console.log("Pasé validación de nickname vacío");
     return fetch(
-      `${API_URL}/searchplayer?nickname=${nickname}?status=${status}`
+      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -107,21 +105,35 @@ export function getSearchPlayer({ nickname, status }) {
   };
 }
 
-export function postPlayer(player) {
+export function postPlayer(player, setCreated) {
   return function () {
-    return fetch(`${API_URL}/players`, {
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`, {
       method: "POST",
       body: JSON.stringify(player),
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+    .then((data) => data.json())
+      .then((res) => {
+        Swal.fire({
+          title: res.message === 'El nickname ya existe' ? 'El nickname ya existe, por favor elija otro' :`¡Has creado tu Player con éxito!`,
+          icon: res.message === 'El nickname ya existe' ? 'warning' : 'success',
+          confirmButtonText: 'Continuar'
+      }).then((result) => {            
+            console.log('EL RES',res);
+           if (result.isConfirmed && res.message !== 'El nickname ya existe'){
+            setCreated(true)
+           }
+      })
+      })
+      .catch(err => console.log('Error al crear el player',err))
   };
 }
 
 export function getAllPlayers() {
   return function (dispatch) {
-    return fetch(`${API_URL}/players`)
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({
@@ -134,7 +146,7 @@ export function getAllPlayers() {
 
 export function postGallery(image) {
   return function () {
-    return fetch(`${API_URL}/profile`, {
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/profile`, {
       method: "POST",
       body: JSON.stringify(image),
       headers: {
@@ -144,10 +156,11 @@ export function postGallery(image) {
   };
 }
 
-export function updatePlayer(player) {
+export function updatePlayer(player, setUpdated) {
   return function () {
+    console.log('NODE_ENV',process.env.NODE_ENV);
     return fetch(
-      `${API_URL}/players/${parseInt(player.id)}`,
+      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`,
       {
         method: "PUT",
         body: JSON.stringify(player),
@@ -155,16 +168,28 @@ export function updatePlayer(player) {
           "Content-Type": "application/json",
         },
       }
-    )
+      )
       .then((data) => data.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        Swal.fire({
+          title: res.message === 'El nickname ya existe' ? 'El nickname ya existe, por favor elija otro' :`¡Has editado tu Player con éxito!`,
+          icon: res.message === 'El nickname ya existe' ? 'warning' : 'success',
+          confirmButtonText: 'Continuar'
+      }).then((result) => {            
+            console.log('EL RES',res);
+           if (result.isConfirmed && res.message !== 'El nickname ya existe'){
+            setUpdated(true)
+           }
+      })
+      })
+      .catch(err => console.log('Error al actualizar el player',err))
   };
 }
 
 export function getPlayersByStatus({ status }) {
   return function (dispatch) {
     return fetch(
-      `${API_URL}/filterByStatus?status=${status}`
+      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/filterByStatus?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -178,7 +203,7 @@ export function getPlayersByStatus({ status }) {
 
 export function deletePlayer(player){
   return function () {
-    return fetch(`${API_URL}/players`,{
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`,{
       method: "DELETE",
       body: JSON.stringify(player),
       headers: {
@@ -191,7 +216,7 @@ export function deletePlayer(player){
 
 export function getSinglePlayer(id){
   return function(dispatch){
-    return fetch(`${API_URL}/players/${id}`,{
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${id}`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",

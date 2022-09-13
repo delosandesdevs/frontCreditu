@@ -16,7 +16,7 @@ beforeEach(() => render(
 ))
 
 describe('Testing UI Create Player component', () => {
-    test.only('Should have an input to enter player name', () => {
+    test('Should have an input to enter player name', () => {
         const inputs = screen.getByRole('textbox', {name:/nickname/i})
         expect(inputs).toBeInTheDocument()
     })
@@ -33,18 +33,16 @@ describe('Testing UI Create Player component', () => {
 })
 
 
-xdescribe('Testing Form Error handlers', () => {
+describe('Testing Form Error handlers', () => {
     test('Should throw an error if the fields are empty on submit', () => {
-        // const submitBtn = screen.getByRole('button', {name: /crear player/i})
-        const errorHandler = screen.queryByText("Todos los campos deben ser llenados")
-        // userEvent.click(submitBtn)
+        const errorHandler = screen.queryByText("Todos los campos deben ser llenados, evita usar simbolos")        
         expect(errorHandler).toBeInTheDocument()
     })
 
     test('Should not throw any alerts if the fields are filled', () => {
         const playerName = screen.getByRole('textbox', {name:/nickname/i})
         const avatar = screen.getByRole('button', {name:'1_avatar'})
-        const errorHandler = screen.queryByText("Todos los campos deben ser llenados")
+        const errorHandler = screen.queryByText("Al menos un campo debe ser editado, evita usar simbolos")
         
         userEvent.type(playerName, 'test')        
         userEvent.click(avatar)

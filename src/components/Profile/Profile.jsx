@@ -10,6 +10,7 @@ import Gallery from '../Gallery/Gallery';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import { deletePlayer, findOrCreateUser } from '../../redux/action';
+import defaultAvatar from '../../assets/avatars/default.png';
 
 const Profile = () => {
   const userInfo = useSelector((state) => state.loggedUser);
@@ -44,7 +45,15 @@ const Profile = () => {
               userInfo.createdUser.email
             )
           );
-          Swal.fire('Borrado con éxito', '', 'success');
+          Swal.fire({
+            title:'Se ha borrado tu player',
+            icon:'success',
+            confirmButtonText:'Continuar',
+            confirmButtonColor: '#fe9c84',
+            background:
+            'linear-gradient(0deg, #c65f72 0%, #2a855a 50%, #0f5156 100%)',
+          color: 'white'
+          });
         }
       })
       .then(() =>
@@ -89,8 +98,9 @@ const Profile = () => {
                 className="container-nav-button"
                 onClick={handleDeletePlayer}
               >
-                <div className="nav-button" id="delete-player-btn">
+                <div className="nav-button centered-line" id="delete-player-btn">
                   BORRAR PLAYER
+                  <span class="material-symbols-outlined">delete</span>
                 </div>
               </div>
             </div>
@@ -99,7 +109,12 @@ const Profile = () => {
 
         {userInfo.player === false && (
           <div className="profile-container-notplayer">
-            <h3 className="profile-h3">Tu no tienes un player</h3>
+            <NavLink to="/create-player/create">
+              <div className="animate__animated animate__flip">
+                <img src={defaultAvatar} alt="" id='profile-default-img' />
+              </div>
+            </NavLink>
+            <h3 className="profile-h3">Aún no tienes un player</h3>
             <NavLink to="/create-player/create">
               <button className="profile-button">CREAR PLAYER</button>
             </NavLink>

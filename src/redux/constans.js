@@ -12,5 +12,5 @@ export const EDIT_PLAYER = 'EDIT_PLAYER';
 
 //export const API_URL =
  // 'http://awsback-env.eba-4zfabdzp.us-west-2.elasticbeanstalk.com';
- export const API_URL = 'http://localhost:8080'
+ export const API_URL_LC = 'http://localhost:8080'
 export const API_PORT = '3030';

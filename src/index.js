@@ -8,7 +8,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import store from './redux/store';
 import App from './App';
+import {API_URL} from '../src/redux/action'
 
+console.log(API_URL)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const persistor = persistStore(store);
 

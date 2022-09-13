@@ -2,7 +2,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
 import {
-  API_URL,
+  API_URL_LC,
   GET_TEST,
   GET_TOPTEN_PLAYERS,
   GET_PAGINATION,
@@ -10,9 +10,11 @@ import {
   GET_PLAYER_BY_ID,
 } from "./constans";
 
+export const API_URL = process.env.REACT_APP_API_URL
+
 export function actionTest() {
   return function (dispatch) {
-    return fetch(`${API_URL}/test`)
+    return fetch(`${API_URL_LC}/test`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({
@@ -25,7 +27,7 @@ export function actionTest() {
 
 export function addTest(test) {
   return function (dispatch) {
-    return fetch(`${API_URL}/test1`, {
+    return fetch(`${API_URL_LC}/test1`, {
       method: "POST",
       body: JSON.stringify(test),
       headers: {
@@ -37,7 +39,7 @@ export function addTest(test) {
 
 export function findOrCreateUser(name, email) {
   return function (dispatch) {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/user`, {
+    return fetch(`${API_URL}/user`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify({ name, email }), // data can be `string` or {object}!
       headers: {
@@ -58,7 +60,7 @@ export function getTenPlayers() {
   return async function (dispatch) {
     try {
       const data = await fetch(
-        `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players?page=0&size=11&orderby=dsc`
+        `${API_URL}/players?page=0&size=11&orderby=dsc`
       );
       const res = await data.json();
       dispatch({
@@ -74,7 +76,7 @@ export function getTenPlayers() {
 export function getPlayersPaginated(pageNumber, orderBy, size) {
   return function (dispatch) {
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
+      `${API_URL}}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -92,7 +94,7 @@ export function getSearchPlayer({ nickname, status }) {
     if (nickname === "") return getPlayersPaginated(0, "desc", 10);
     console.log("Pasé validación de nickname vacío");
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/searchplayer?nickname=${nickname}?status=${status}`
+      `${API_URL}/searchplayer?nickname=${nickname}?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -107,7 +109,7 @@ export function getSearchPlayer({ nickname, status }) {
 
 export function postPlayer(player, setCreated) {
   return function () {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`, {
+    return fetch(`${API_URL}/players`, {
       method: "POST",
       body: JSON.stringify(player),
       headers: {
@@ -133,7 +135,7 @@ export function postPlayer(player, setCreated) {
 
 export function getAllPlayers() {
   return function (dispatch) {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`)
+    return fetch(`${API_URL}/players`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({
@@ -146,7 +148,7 @@ export function getAllPlayers() {
 
 export function postGallery(image) {
   return function () {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/profile`, {
+    return fetch(`${API_URL}/profile`, {
       method: "POST",
       body: JSON.stringify(image),
       headers: {
@@ -160,7 +162,7 @@ export function updatePlayer(player, setUpdated) {
   return function () {
     console.log('NODE_ENV',process.env.NODE_ENV);
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`,
+      `${API_URL}/players/${parseInt(player.id)}`,
       {
         method: "PUT",
         body: JSON.stringify(player),
@@ -189,7 +191,7 @@ export function updatePlayer(player, setUpdated) {
 export function getPlayersByStatus({ status }) {
   return function (dispatch) {
     return fetch(
-      `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/filterByStatus?status=${status}`
+      `${API_URL}/filterByStatus?status=${status}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -203,7 +205,7 @@ export function getPlayersByStatus({ status }) {
 
 export function deletePlayer(player){
   return function () {
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`,{
+    return fetch(`${API_URL}/players`,{
       method: "DELETE",
       body: JSON.stringify(player),
       headers: {
@@ -216,7 +218,7 @@ export function deletePlayer(player){
 
 export function getSinglePlayer(id){
   return function(dispatch){
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${id}`,{
+    return fetch(`${API_URL}/players/${id}`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",

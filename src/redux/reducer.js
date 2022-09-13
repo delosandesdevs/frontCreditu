@@ -55,35 +55,29 @@ export const reducer = (state = initialState, action) => {
         pagination: action.payload
       };
 
-        case GET_PAGINATION:
-            console.log('REDUCER',action.payload);
-            return {
-                ...state,
-                pagination: action.payload
-            }
 
-        case GET_ALL_PLAYERS:
-            return {
-                ...state,
-                players: action.payload
-            }
+    case GET_ALL_PLAYERS:
+      return {
+        ...state,
+        players: action.payload
+      }
 
-        case SEARCH_PLAYER:
-            console.log('el payload',action.payload)
-            return {
-                ...state,
-                pagination: {
-                    players : action.payload, 
-                    total:action.payload.length
-                }
-            }
-        
-        // case SEARCH_PLAYERS_BY_STATUS:
-        //     return {
-        //          ...state,
-        //          pagination: 
-        //     }
-        
+    case SEARCH_PLAYER:
+      console.log('el payload', action.payload)
+      return {
+        ...state,
+        pagination: {
+          players: action.payload,
+          total: action.payload.length
+        }
+      }
+
+    // case SEARCH_PLAYERS_BY_STATUS:
+    //     return {
+    //          ...state,
+    //          pagination: 
+    //     }
+
 
     default:
       return state;

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Pages = ({ pages, handlePages }) => {
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
     setPage(value);
     handlePages(value-1)

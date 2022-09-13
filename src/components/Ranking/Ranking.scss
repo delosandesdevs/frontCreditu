@@ -112,6 +112,7 @@ td {
   margin-top: -15px;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .pages {
@@ -130,6 +131,7 @@ td {
 .loader {
   width: 325%;
   padding-top: 40px;
+  
 }
 
 @media screen and (max-width: 525px) {

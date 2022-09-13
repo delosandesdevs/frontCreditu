@@ -60,6 +60,4 @@ describe('Testing Ranking Component', () => {
             expect(playersPaginated).toHaveLength(1)
         })
     })
-
-
 })

@@ -1,9 +1,10 @@
 /* From uiverse.io by @satyamchaudharydev */
 .loader {  
   --loader-color: #c6855f;
-  width: 60%;
+  width: 70%;
   height: 5px;  
-  position: relative;
+  position: absolute;  
+  z-index: 1;
  }
  
  .loader::before {

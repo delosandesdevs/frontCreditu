@@ -107,6 +107,7 @@ export function getSearchPlayer({ nickname, status }) {
 
 export function postPlayer(player, setCreated) {
   return function () {
+    console.log('CREANDO PLAYER', player)
     return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players`, {
       method: "POST",
       body: JSON.stringify(player),
@@ -119,7 +120,11 @@ export function postPlayer(player, setCreated) {
         Swal.fire({
           title: res.message === 'El nickname ya existe' ? 'El nickname ya existe, por favor elija otro' :`¡Has creado tu Player con éxito!`,
           icon: res.message === 'El nickname ya existe' ? 'warning' : 'success',
-          confirmButtonText: 'Continuar'
+          confirmButtonText: 'Continuar',
+          confirmButtonColor: '#fe9c84',
+          background: 'linear-gradient(0deg, #c65f72 0%, #2a855a 50%, #0f5156 100%)',
+          color:"white",
+          border:'10px solid white'
       }).then((result) => {            
             console.log('EL RES',res);
            if (result.isConfirmed && res.message !== 'El nickname ya existe'){
@@ -158,7 +163,6 @@ export function postGallery(image) {
 
 export function updatePlayer(player, setUpdated) {
   return function () {
-    console.log('NODE_ENV',process.env.NODE_ENV);
     return fetch(
       `${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${parseInt(player.id)}`,
       {
@@ -174,7 +178,11 @@ export function updatePlayer(player, setUpdated) {
         Swal.fire({
           title: res.message === 'El nickname ya existe' ? 'El nickname ya existe, por favor elija otro' :`¡Has editado tu Player con éxito!`,
           icon: res.message === 'El nickname ya existe' ? 'warning' : 'success',
-          confirmButtonText: 'Continuar'
+          confirmButtonText: 'Continuar',
+          confirmButtonColor: '#fe9c84',
+          background: 'linear-gradient(0deg, #c65f72 0%, #2a855a 50%, #0f5156 100%)',
+          color:"white",
+          border:'10px solid white'
       }).then((result) => {            
             console.log('EL RES',res);
            if (result.isConfirmed && res.message !== 'El nickname ya existe'){
@@ -216,7 +224,7 @@ export function deletePlayer(player){
 
 export function getSinglePlayer(id){
   return function(dispatch){
-    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/players/${id}`,{
+    return fetch(`${process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_API_URL_LOCAL : process.env.REACT_APP_API_URL}/searchplayer?nickname=${id}`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -228,6 +236,7 @@ export function getSinglePlayer(id){
       type: GET_PLAYER_BY_ID,
       payload: res
     })
+    console.log('respuesta reducer',res)
   })
 }
 }

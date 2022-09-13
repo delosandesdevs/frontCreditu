@@ -101,7 +101,7 @@ const Ranking = () => {
   return (
     <div className="tree-wallpaper">
       <Title text="Ranking" />
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum labore non quos repellendus harum, ratione, dolor, natus nisi pariatur dignissimos voluptatum odit blanditiis! Cupiditate atque saepe fugiat quod fuga labore!</p>
+      <p className="mb-5" id="ranking-text">Este es el ranking actual de posiciones de Free Forest. Podrás ver como los Players van ganando puntos a medida que van superando los distintos desafíos del juego. Si no tiene todavía un Player para competir, ve a tu Perfil y comienza esta gran aventura!</p>
       <div>
         {userInfo &&
           userInfo.createdUser &&

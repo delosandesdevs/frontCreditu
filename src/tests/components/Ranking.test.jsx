@@ -26,13 +26,6 @@ describe('Testing Ranking Component', () => {
         
         const players = await screen.findAllByTestId('testplayer')
         expect(players).toHaveLength(10)
-
-        //CUANDO USAR WAITFOR Y CUANDO NO????
-        //  waitFor( () => {
-        //     const rankedPlayers = screen.getAllByTestId('testplayer')
-        //     expect(rankedPlayers).toHaveLength(10)
-        //     // expect(render(<RankingCard />)).toBeFalsy;            
-        // })
         screen.debug()
     })
 
@@ -41,16 +34,15 @@ describe('Testing Ranking Component', () => {
         const inputPlayer = screen.getByPlaceholderText(/player a buscar$/i)
         const submitSearchBtn = screen.getByRole('button', { name: /buscar/i })
         
-        userEvent.type(inputPlayer, 'velma')
+        userEvent.type(inputPlayer, 'Nyssa-2238')
         userEvent.click(submitSearchBtn)
 
-        const players = await screen.findAllByText('Velma')
+        const players = await screen.findAllByText('Nyssa-2238')
         expect(players).toHaveLength(1)
     })
 
     test('should show an error if no players are found', async () => {
         
-        //SI BORRO ESTO, EL TEST SIGUE PASANDO (???????????)
         server.resetHandlers(
             rest.get(`${process.env.REACT_APP_API_URL}/searchplayer?nickname=&status=todos&page=0&orderby=desc&size=10`, errorMock
         ))

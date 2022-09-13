@@ -98,6 +98,10 @@ const Ranking = () => {
     setOrder(order === 'desc' ? 'asc' : 'desc');
   };
 
+  useEffect(() => {
+    console.log(userInfo)
+  },[userInfo])
+
   return (
     <div className="tree-wallpaper">
       <Title text="Ranking" />

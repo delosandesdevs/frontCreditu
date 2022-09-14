@@ -2,9 +2,9 @@ name: Test Pipeline
 
 on:
   push:
-    branches: [pre-production]
+    branches: [develop, pre-production]
   pull_request:
-    branches: [pre-production]
+    branches: [develop, pre-production]
     types: [opened, synchronize]
   
 jobs:
@@ -16,21 +16,6 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-
-  lint:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v2
-        with:
-          cache: 'npm'
-          node-version: '16'
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
 
   e2e:
       runs-on: ubuntu-18.04
@@ -49,4 +34,4 @@ jobs:
         with:
           command: npm run cypress
           start: npm start
-          wait-on: http://localhost:3000
+          wait-on: https://www.delosandes.xyz

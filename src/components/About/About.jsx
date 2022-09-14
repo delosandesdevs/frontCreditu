@@ -9,13 +9,13 @@ import Title from '../Title/Title';
 const About = () => {
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, []);
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, []);
 
   return (

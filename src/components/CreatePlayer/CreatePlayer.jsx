@@ -36,14 +36,14 @@ const CreatePlayer = () => {
 
   useEffect(() => {
     if (updated || created) navigate('/');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, [updated, created]);
 
   useEffect(() => {
     if (singleValue) {
       dispatch(getSinglePlayer(singleValue));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, []);
 
   useEffect(() => {
@@ -58,12 +58,12 @@ const CreatePlayer = () => {
         user_id: userLogged.createdUser.id
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, [userToEdit]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, []);
 
   useEffect(() => {

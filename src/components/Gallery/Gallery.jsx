@@ -12,10 +12,21 @@ const list = [pic1, pic2, pic3, pic4, pic5, pic6];
 const Gallery = () => {
   return (
     <ImageList
-      sx={{ width: 500, height: 450 }}
+      sx={{
+        width: 500, height: 450, '&::-webkit-scrollbar': { width: 10 },
+        '&::-webkit-scrollbar-track': {
+          backgroundColor: '#09090957',
+          borderRadius: 2
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: '#C65F72',
+          borderRadius: 2
+        }
+      }}
       cols={2}
       gap={20}
       id="grid-gallery"
+
     >
       {list.map((item) => (
         <ImageListItem key={item}>

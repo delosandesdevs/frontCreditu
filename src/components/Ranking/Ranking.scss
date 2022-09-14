@@ -75,7 +75,9 @@ td {
 }
 
 .ranking-status {
-  width: 100px;
+  width: 140px;
+  -webkit-filter: drop-shadow(0px 5px 5px #222);
+  filter: drop-shadow(0px 5px 5px #222);
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td,

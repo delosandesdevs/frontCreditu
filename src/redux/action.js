@@ -4,8 +4,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
 import {
-  API_URL,
-  GET_TEST,
   GET_TOPTEN_PLAYERS,
   GET_PAGINATION,
   LOGIN_OR_CREATE,

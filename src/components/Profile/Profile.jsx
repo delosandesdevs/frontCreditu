@@ -22,7 +22,8 @@ const Profile = () => {
   });
 
   useEffect(() => {
-   }, [userInfo]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [])
 
   const handleDeletePlayer = () => {
     Swal.fire({

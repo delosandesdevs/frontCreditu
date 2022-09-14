@@ -98,10 +98,6 @@ const Ranking = () => {
     setOrder(order === 'desc' ? 'asc' : 'desc');
   };
 
-  useEffect(() => {
-    console.log(userInfo)
-  },[userInfo])
-
   return (
     <div className="tree-wallpaper">
       <Title text="Ranking" />
@@ -129,7 +125,7 @@ const Ranking = () => {
         <BasicSelect statusSelected={statusSelected} />
         <button className="btn btn-ff centered-line">
           Buscar
-          <span class="material-symbols-outlined">search</span>
+          <span className="material-symbols-outlined">search</span>
           </button>
         <button onClick={resetFilters} id="reset-btn">
           <span className="material-symbols-outlined">restart_alt</span>

@@ -16,6 +16,8 @@
     "@uploadcare/react-widget": "^2.1.6",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
+    "axios": "^0.27.2",
+    "axios-mock-adapter": "^1.21.2",
     "chart.js": "^3.9.1",
     "cypress": "^10.7.0",
     "dotenv": "^16.0.2",
@@ -30,14 +32,15 @@
     "react-scripts": "5.0.1",
     "react-scroll-parallax": "^3.3.1",
     "redux": "^4.2.0",
+    "redux-api-middleware": "^3.2.1",
     "redux-devtools-extension": "^2.13.9",
-    "redux-mock-store": "^1.5.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "sass": "^1.54.5",
     "sweetalert2": "^11.4.29",
     "web-vitals": "^2.1.4",
-    "whatwg-fetch": "^3.6.2"
+    "whatwg-fetch": "^3.6.2",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -66,6 +69,8 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "fetch-mock": "^9.11.0",
+    "redux-mock-store": "^1.5.4"
   }
 }

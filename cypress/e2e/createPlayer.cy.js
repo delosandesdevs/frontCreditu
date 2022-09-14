@@ -3,9 +3,9 @@
 describe('Create player', () => {
     it('should display "Todos los campos deben ser llenados, evita usar simbolos" when nickname includes symbols or the avatar is missing', () => {
         cy.contains("Crear Player").click()
-        cy.get(".input-nickname").type('Luis18!', { force: true })
+        cy.get("[type='text']").type('Luis18!', { force: true })
         cy.contains("Todos los campos deben ser llenados, evita usar simbolos").should("be.visible")
-        cy.get(".input-nickname").clear()
+        cy.get("[type='text']").clear()
     })
 
     it('should display "Todos los campos deben ser llenados, evita usar simbolos" when nickname is missing', () => {
@@ -14,17 +14,15 @@ describe('Create player', () => {
     })
 
     it('should deny creating player if the nickname already exists', () => {
-        cy.get(".input-nickname").type("Lila-2529", { force: true })
-        cy.get(".create-player-submit").click()
+        cy.get("[type='text']").type("Lila-2529", { force: true })
+        cy.get(".create-player-submit").click({force: true})
         cy.contains("El nickname ya existe").should("be.visible")
         cy.get(".swal2-confirm").click()
-        cy.get(".input-nickname").type("dos", { force: true })
     })
-
+    
     it('should allow to create player', () => {
+        cy.get("[type='text']").type("dos", { force: true })
         cy.get(".create-player-submit").click()
         cy.get(".swal2-confirm").click()
-        cy.wait(2000)
-        cy.scrollTo('top')
     })
 })

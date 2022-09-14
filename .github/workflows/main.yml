@@ -34,4 +34,4 @@ jobs:
         with:
           command: npm run cypress
           start: npm start
-          wait-on: https://www.delosandes.xyz
+          wait-on: http://localhost:3000

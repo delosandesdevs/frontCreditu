@@ -8,7 +8,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'https://delosandes.xyz'
+    baseUrl: 'http://localhost:3000'
   },
   chromeWebSecurity: false
 });

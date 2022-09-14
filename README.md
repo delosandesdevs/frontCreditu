@@ -1,71 +1,143 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.001.png)
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+<p align="justify"> Free Forest es un proyecto grupal que se desarrolló como prueba técnica de la empresa Creditú. El principal requisito a cumplir fue la puesta en escena de un dashboard de consulta de puntos en una aplicación web de un juego hipotético, el cual también tuvimos que desarrollar conceptualmente y está basado en la concientización del medio ambiente, enfocándonos con profundidad en la forestación, la cual te invitamos a visitarla en el siguiente enlace. </p>  
 
-### `npm start`
+https://develop.delosandes.xyz/players
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
+<br>
+<h1> Primeros pasos 🚀 </h1>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Con las siguientes instrucciones podrás poner en funcionamiento nuestro proyecto localmente .
 
-### `npm test`
+**📑    Requerimientos**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para poder poner a correr esta aplicación tendrás que tener instalado en tu ordenador con anterioridad la última versión de NPM y Node, puedes chequear en consola si la tienes instalada haciendo “npm -v” y “node-v”
 
-### `npm run build`
+Sino en el siguiente link puedes descargarla gratuitamente - <https://nodejs.org/es/download/> .
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Copia el repositorio haciendo click en Fork, así obtendrás una copia del mismo en tu Github.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<div align="center">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.002.png)
 
-### `npm run eject`
+</div>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A continuación haz click en Code, copiando el link del repositorio para clonarlo localmente mediante gitBash o puedes descargar el Zip para luego descomprimirlo en tu computadora.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div align="center">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.003.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+</div>
 
-## Learn More
+<br>
+<br>
+<h1>Para instalar 🛠 </h1>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Llegó el momento para ejecutar en tu ordenador nuestro proyecto.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Abre la consola de tu editor y ejecuta los siguientes comandos.
 
-### Code Splitting
+- **npm install**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Con este comando descargamos e instalamos todas las dependencias que utilizamos en el proyecto de forma automática. El tiempo de este proceso depende de tu conexión a internet y del poder del procesamiento de tu ordenador, ten paciencia, puede tardar unos minutos.
 
-### Analyzing the Bundle Size
+- **npm start**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Este comando busca y ejecuta los scripts contenidos en el archivo que se denomina package.json, automáticamente desplegará la aplicación en su navegador predeterminado por el sistema en la dirección [http://localhost:3000](http://localhost:3000/) , puede este proceso tardar unos minutos dependiendo del poder de procesamiento de su ordenador.
 
-### Making a Progressive Web App
+Puedes realizar cambios en el código, y al ser guardados notarás que tu navegador se refrescará con los mismos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br>
+<br>
+<h1>Ahora a navegar 🏄</h1>
 
-### Advanced Configuration
+- **Home**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Al iniciar la aplicación web te encontrarás con los 10 mejores jugadores de Free Forest.
 
-### Deployment
+<div align="center">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.004.png)
 
-### `npm run build` fails to minify
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# frontCreditu
+En la barra de navegación encontrarás el botón “INICIAR SESIÓN” , allí se abrirá una ventana de autenticación, la que recomendamos que completes, así podrás acceder a todas las funcionalidades de la app.
+
+<div align="center">
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.005.png)
+
+</div>
+
+- **Ranking**
+
+En la pestaña Ranking encontrarás a los jugadores de Free Forest ordenados por posiciones inicialmente. Nosotros te invitamos a que busques jugadores por su nombre, o su status en el juego.
+
+<div align="center">
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.006.png)
+
+</div>
+
+También puede buscar página por página los resultados.
+
+<div align="center">
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.007.png)
+
+</div>
+
+- **Acerca de**
+
+En esta pestaña encontrarás toda la información del juego y los nombres de los desarrolladores.
+
+- **Perfil**
+
+Si tocas tu avatar en la parte superior a la derecha, podrás encontrar el enlace hacia tu perfil en Free Forest, el cual si no tienes un jugador, te invita a crearlo, y si lo tienes mostrará tu progreso en el juego.
+
+<br>
+<br>
+<h1>Testeando app 🕵</h1>
+
+- **Pruebas unitarias**
+
+Mediante Jest ……..
+
+- **Pruebas end-to-end**
+
+Mediante la tecnología Cypress….
+
+<br>
+<br>
+<h1>Tecnologías utilizadas 👨‍💻</h1>
+
+- Para la comunicación en el trabajo en equipo utilizamos Trello, mediante la metodología SCRUM.
+- Para investigación UX y desarrollo conceptual del juego utilizamos Google Forms.
+- Para unificar investigación, desarrollo UX , mockups de baja y alta fidelidad utilizamos Figma.
+- Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist, AWS, Cypress, Jest.
+- Para crear una imagen del proyecto utilizamos Docker. 
+
+<br>
+<br>
+<h1>Equipo de desarrollo 🌄</h1>
+
+- [Florencia Taburelli](<https://github.com/orgs/delosandesdevs/people/FlorenciaTaburelli>)
+- [Juano Cataldo](<https://github.com/orgs/delosandesdevs/people/juanocataldo>)
+- [Ramiro Grisales](<https://github.com/orgs/delosandesdevs/people/orimarselasirg>)
+- [Rodrigo Pérez](<https://github.com/orgs/delosandesdevs/people/rodrigo0109>)
+- [Gianfranco Gobbi](<https://github.com/GianfrancoGobbi>)
+
+
+<div align="center">
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.008.png)
+
+**De Los Andes development**
+</div>

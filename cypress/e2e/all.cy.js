@@ -1,0 +1,7 @@
+import './login.cy'
+import './chatbot.cy'
+import './createPlayer.cy'
+import './findPlayer.cy'
+import './editPlayer.cy'
+import './deletePlayer.cy'
+import './logout.cy'

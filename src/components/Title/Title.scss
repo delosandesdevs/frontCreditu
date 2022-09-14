@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Tadeo';
+    src: url('../../assets/miscellaneous/tadeo.OTF');    
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 40px;
+    
+}
+
+#title {
+    font-size: 100px;
+    font-family: 'Tadeo';
+    color: #C65F72;
+    text-shadow: 3px 0 #fff, -3px 0 #fff, 0 3px #fff, 0 -3px #fff,
+             2px 2px #fff, -2px -2px #fff, 2px -2px #fff, -2px 2px #fff;
+    
+    
+}
+
+@media screen and (max-width: 525px) {
+    #title{
+        font-size: 80px;
+    }
+  }

@@ -1,0 +1,74 @@
+.react-chatbot-kit-chat-container {
+  // border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 35px rgb(0, 0, 0);
+}
+
+.react-chatbot-kit-chat-inner-container {
+  background-image: url('../../assets/miscellaneous/doodle.png');
+  border-radius: 20px;
+  height: 90%;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar-thumb {
+  background-color: #c65f72;
+  border-radius: 20px;
+  border: 4px solid #0f5156;
+}
+
+.react-chatbot-kit-chat-header {
+  background-color: #c65f72;
+  color: white;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.react-chatbot-kit-chat-input-container {
+  border-radius: 20px;
+}
+
+.react-chatbot-kit-chat-input-form {
+  border-radius: 0px 0px 0px 20px;
+  background-color: transparent;
+}
+
+.react-chatbot-kit-chat-input {
+  border-radius: 20px 0px 0px 0px;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #c65f72;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatbot span {
+  padding-right: 5px;
+}
+
+.bot {
+  position: fixed;
+  bottom: 59px;
+  right: 30px;
+  z-index: 9999;
+  display: none;
+}
+
+.showBot {
+  position: fixed;
+  bottom: 76px;
+  right: 30px;
+  z-index: 9999;
+  display: block;
+}

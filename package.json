@@ -3,31 +3,57 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.10.2",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.3",
+    "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.0.0",
+    "@uploadcare/react-widget": "^2.1.6",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
+    "axios": "^0.27.2",
+    "axios-mock-adapter": "^1.21.2",
+    "chart.js": "^3.9.1",
+    "cypress": "^10.7.0",
+    "dotenv": "^16.0.2",
+    "msw": "^0.47.0",
+    "party-js": "^2.2.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
+    "react-chatbot-kit": "^2.1.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0",
     "react-redux": "^8.0.2",
-    "redux": "^4.2.0",
-    "@reduxjs/toolkit": "^1.8.3",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-mock-store": "^1.5.4",
-    "redux-thunk": "^2.4.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scroll-parallax": "^3.3.1",
+    "redux": "^4.2.0",
+    "redux-api-middleware": "^3.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
+    "sass": "^1.54.5",
+    "sweetalert2": "^11.4.29",
+    "web-vitals": "^2.1.4",
+    "whatwg-fetch": "^3.6.2",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open",
+    "coverage": "yarn test --coverage --watchAll"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
     ]
   },
   "browserslist": {
@@ -41,5 +67,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "fetch-mock": "^9.11.0",
+    "redux-mock-store": "^1.5.4"
   }
 }

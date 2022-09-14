@@ -1,0 +1,129 @@
+.about {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background-image: url('../../assets/miscellaneous/doodle.png');
+  margin-top: -13px;
+}
+
+.about_container {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about_logo {
+  width: 330px;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.three-logo {
+  height: 100%;
+}
+
+.about-logo {
+  height: 60%;
+}
+
+.about-text_container {
+  display: flex;
+  flex-direction: column;
+  padding: auto;
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  background: linear-gradient(180deg, #c65f72 0%, #2a855a 50%, #0f5156 100%);
+  border-radius: 7px;
+}
+
+.text {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  padding-top: 30px;
+  text-align: justify;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.about-team {
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-team-title {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 54px;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin: auto;
+}
+
+.about-team-avatar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 35px;
+}
+
+.avatar-img {
+  width: 100%;
+  background: linear-gradient(180deg, #c65f72 0%, #2a855a 50%, #0f5156 100%);
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.avatar-img img {
+  width: 100%;
+}
+
+.avatar p {
+  font-size: 18px;
+  font-weight: bolder;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+@media screen and (max-width: 525px) {
+  .about_container {
+    margin-top: -33px;
+      width: 100%;
+  }
+  .text {
+    width: 90%;
+  }
+  .about-team-title {
+    font-size: 25px;
+    line-height: 35px;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+  }
+}

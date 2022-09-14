@@ -1,0 +1,36 @@
+.upload{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    margin: 25px;
+}
+
+.upload img{
+    width: 200px;  
+    cursor: pointer;  
+}
+
+.upload button{
+    background-color: #FECF78;
+    font-weight: bold;    
+    padding: 10px;
+    font-size: 40px;
+}
+
+.upload button:hover{
+    background-color: greenyellow;
+}
+
+.upload-care {
+    display: none;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 900,
+  'GRAD' 0,
+  'opsz' 48
+}

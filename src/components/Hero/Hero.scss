@@ -1,0 +1,74 @@
+/* From uiverse.io by @alexruix */
+@import '../../scss/breakpoints.scss';
+@import '../../scss/mixins.scss';
+
+.logo-location {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+#home-logo {
+  width: 300px;
+  position: absolute;
+  margin-top: 100px;
+  transition: 1s;
+}
+
+#home-wallpaper {
+  width: 100%;
+  z-index: 1;
+  // position: absolute;
+}
+
+#home-oxigen-text {
+  margin-top: 50vh;
+  color: white;
+
+  @include respond-to('medium') {
+    margin-top: 55vh;
+    color: white;
+    left: -10px;
+  }
+}
+
+#home-oxigen-text h4 {
+  font-size: 40px;
+  width: fit-content;
+  margin-left: 20px;
+  background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @include respond-to('medium') {
+    font-size: 40px;
+    width: fit-content;
+    margin-left: 60px;
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.9));
+}
+
+#home-section {
+  background-image: url('../../assets/miscellaneous/home_wallpaper.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin-top: 75px;
+}
+
+@media screen and (max-width: 525px) {
+  #home-logo {
+    margin-top: 50px;
+    transition: 1s;
+  }
+
+  #home-section {
+    padding-top: 0px;
+  }
+}

@@ -19,11 +19,6 @@ export const initialState = {
 };
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TEST:
-      return {
-        ...state,
-        test_state: action.payload
-      };
 
     case GET_TOPTEN_PLAYERS:
       return {
@@ -55,20 +50,20 @@ export const reducer = (state = initialState, action) => {
         pagination: action.payload
       };
 
-    case GET_ALL_PLAYERS:
-      return {
-        ...state,
-        players: action.payload
-      };
+    // case GET_ALL_PLAYERS: 
+    //   return {
+    //     ...state,
+    //     players: action.payload
+    //   };
 
-    case SEARCH_PLAYER:
-      return {
-        ...state,
-        pagination: {
-          players: action.payload,
-          total: action.payload.length
-        }
-      };
+    // case SEARCH_PLAYER: //
+    //   return {
+    //     ...state,
+    //     pagination: {
+    //       players: action.payload,
+    //       total: action.payload.length
+    //     }
+    //   };
 
     default:
       return state;

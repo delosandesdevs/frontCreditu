@@ -23,7 +23,7 @@ const CurrentPosition = ({ position, status, score }) => {
   return (
     <div className="current-position">
       <div>
-        <span>{position}# puesto</span>
+        <span>Ranking #{position}</span>
       </div>
       <div>{setImage()}</div>
       <div>

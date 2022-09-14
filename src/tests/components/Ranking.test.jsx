@@ -3,11 +3,10 @@ import Ranking from "../../components/Ranking/Ranking";
 import userEvent from "@testing-library/user-event";
 import { rest } from 'msw';
 import { server } from '../mocks/server';
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from '../../redux/store'
-import { errorMock, mockRanking } from "../mocks/resolvers";
-import RankingCard from "../../components/Ranking/RankingCard/RankingCard";
+import { errorMock } from "../mocks/resolvers";
 
 
 beforeEach(() => {

@@ -1,4 +1,4 @@
-import { GET_TOPTEN_PLAYERS, GET_PLAYER_BY_ID, POST_PLAYER, GET_PAGINATION } from "../../redux/constans";
+import { GET_TOPTEN_PLAYERS, GET_PLAYER_BY_ID, POST_PLAYER, GET_PAGINATION, LOGIN_OR_CREATE } from "../../redux/constans";
 import { reducer, initialState } from "../../redux/reducer";
 
 describe('Reducer testing', () => {
@@ -57,6 +57,25 @@ describe('Reducer testing', () => {
             
             const newState = reducer(initialState, {type: GET_PAGINATION, payload: fakePagination});
             expect(newState.pagination.length).toEqual(10)
+         })
+
+        test('should fill the login state when the status type is LOGIN_OR_CREATE', () => { 
+            const fakeUser = {
+                createdUser:{
+                    createdAt:'2022-09-14T12:06:37.961Z',
+                    email: "juanocataldo@gmail.com",
+                    hasPlayer: false,
+                    id: 2,
+                    name: "Juan Manuel Cataldo Pavan",
+                    role: "user",
+                    updatedAt: "2022-09-14T12:06:37.961Z"
+                },
+                player:false,
+                ranking:false
+            }
+            
+            const newState = reducer(initialState, {type: LOGIN_OR_CREATE, payload: fakeUser});
+            expect(newState.loggedUser).toEqual(fakeUser)
          })
        
 })

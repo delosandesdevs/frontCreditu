@@ -23,7 +23,7 @@ export function findOrCreateUser(name, email) {
       }/user`,
       {
         method: 'POST', // or 'PUT'
-        body: JSON.stringify({ name, email }), // data can be `string` or {object}!
+        body: JSON.stringify({ name, email }), 
         headers: {
           'Content-Type': 'application/json'
         }

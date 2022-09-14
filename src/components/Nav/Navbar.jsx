@@ -19,8 +19,10 @@ import LogoutButton from '../LoginControl/Logout';
 import LoginButton from '../LoginControl/Login';
 import NavLinkCmp from './NavLink/NavLinkCmp';
 import logo from '../../assets/miscellaneous/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
@@ -41,10 +43,16 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const toProfile = () => {
+    navigate('/profile')
+    setAnchorElUser(null);
+  }
+
   const createCondition = userLogged && userLogged.player === false;
 
   return (
     <AppBar
+      className='List'
       position="fixed"
       style={{
         backgroundColor: '#FEF1EE',
@@ -210,7 +218,7 @@ const Navbar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={toProfile}>
                   <Typography
                     textAlign="center"
                     component="span"

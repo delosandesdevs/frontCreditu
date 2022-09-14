@@ -12,6 +12,14 @@
   width: 100px;
 }
 
+/* .MuiButtonBase-root.MenuItem {
+  width: 100%;
+} */
+
+.List.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  width: 100%;
+}
+
 // .container-nav-button-active{
 //     border-bottom: 3px solid #C65F72;
 //     display: flex;
@@ -31,15 +39,15 @@
 //     color: #C65F72;
 // }
 
-// .container-nav-button{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: row;
-//     width: 100px;
-//     padding: 6px;
-//     margin-left: 20px;
-// }
+/* .container-nav-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100px;
+    padding: 6px;
+    margin-left: 20px;
+} */
 
 .navw {
   display: flex;

@@ -128,7 +128,7 @@ Para poder manipular nuestra imagen Docker como principal requisito es tener ins
 
 https://www.docker.com/products/docker-desktop/ 
 
-Luego puedes ingresar en la termina de tu ordenador ingresa el siguiente comando para poder descargar la imagen.
+Luego ingresa en la terminal de tu ordenador e ingresa el siguiente comando para poder descargar la imagen.
 
 - **docker pull gianfrancogobbi/freeforest_subido:latest**
 

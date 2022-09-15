@@ -123,7 +123,10 @@ Mediante la tecnología Cypress….
 <br>
 <h1>Tecnologías utilizadas 👨‍💻</h1>
 
-- Para la comunicación en el trabajo en equipo utilizamos Trello, Meet y grupo de Whatsapp, aplicando la metodología SCRUM.
+- Para la comunicación en el trabajo en equipo utilizamos Trello
+<br>(Front: https://trello.com/invite/b/r3u2sWyL/3fceca89fb9fbd54bf9ecdf6a2ddbb76/front-end
+<br>Back: https://trello.com/b/AthDicAp/back-end
+), Meet y grupo de Whatsapp, aplicando la metodología SCRUM.
 - Para investigación UX y desarrollo conceptual del juego utilizamos Google Forms.
 - Para unificar investigación, desarrollo UX , mockups de baja y alta fidelidad utilizamos Figma.
 - Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist, AWS, Cypress, Jest.

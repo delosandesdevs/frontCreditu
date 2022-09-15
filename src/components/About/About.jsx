@@ -5,6 +5,7 @@ import aboutLogo from '../../assets/miscellaneous/logo_white.png';
 import './About.scss';
 import Avatar from '../Avatar/Avatar';
 import Title from '../Title/Title';
+import phone from '../../assets/miscellaneous/phone.png';
 
 const About = () => {
   useEffect(() => {
@@ -32,34 +33,29 @@ const About = () => {
           data-testid="about"
         >
           <div className="text">
-            <p>
+            <p style={{fontWeight:"300"}}>
+            <img src={phone} alt="" id='phone-img'/>
               Atravesamos constantemente una lucha ecológica para evitar
-              destruir el planeta de nuestros hijos, y desde nuestro humilde
-              lugar quisimos ayudar a cambiar esto de manera lúdica e
+              destruir el planeta de nuestros hijos, y desde nuestra posición
+              quisimos ayudar a cambiar esto de manera lúdica e
               innovadora.
-            </p>
-            <p>
-              En Free Forest deberás constribuir reduciendo el dióxido de
-              carbono, para evitar el calentamiento global y así salvar nuestro
-              planeta. Enviaremos semillas a tu hogar con las intrucciones para
-              plantarlas y cuidarlas.
-            </p>
-            <p>
-              Elegirás un bosque para reforestar según tu ubicación para que
-              crezca. Alimentaras, les darás sol, lo regarás, lo cuidarás de
+          <br />
+              Free Forest es un juego de simulación donde deberás cuidar los
+              bosques reduciendo el dióxido de carbono, para evitar el calentamiento global 
+              y así salvar nuestro planeta. 
+              <br />           
+              Elegirás una zona para reforestar con tu Player, les darás sol, regarás, lo cuidarás de
               plagas y aprenderás datos de árboles super curiosos en la
-              aplicación interactuando con mini juegos de acción y rompecabezas
-              forestales super divertidos para mantenerlo saludable y feliz.
-            </p>
-            <p>
+              aplicación interactuando con otros jugadores de manera online.
+              
+              <br />
               Puedes experimentar con comprar nutrientes para tu bosque para que
-              crezcan velozmente.{' '}
-            </p>
-            <p>
-              Una vez que haya nutrido sus árboles desde plántulas hasta árboles
-              adultos, puedes enviarlos a una arboleda junto a una donación para
-              plantarlos en el mundo real. En Free Forest tenemos como objetivo
-              final, lograr plantar 1 millón de árboles con tu ayuda.
+              crezcan velozmente, adquirir boosts y mejoras para tu Player, y todas las recaudaciones seran
+              destinadas para plantar árboles en la vida real.
+              <br />
+
+              Free Forest ya ha colaborado con la plantación de más de 1.000 árboles, y con tu 
+              participación podremos ir aumentando la renovación del oxígeno en nuestro planeta.              
             </p>
           </div>
         </div>

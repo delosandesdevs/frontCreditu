@@ -32,23 +32,3 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
-.top-ten_container {
-  @include respond-to('medium') {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    // background: #0F5156;
-  }
-}
-
-@media screen and (max-width: 525px) {
-  .top-three-title {
-    margin-top: 130px;
-    transition: 1s;
-  }
-}

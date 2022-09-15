@@ -132,7 +132,7 @@ Luego puedes ingresar en la termina de tu ordenador ingresa el siguiente comando
 
 Cuando termine el proceso de descarga ya puedes correr tu imagen con el siguiente comando
 
-- **docker run -it --rm ruby:latest**
+- **docker run -it --rm freeforest_subido:latest**
 
 Ya con todos estos pasos, solamente queda ingresar a Free Forest a navegar en el siguiente enlace.
 

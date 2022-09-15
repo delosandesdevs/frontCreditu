@@ -136,44 +136,44 @@ describe('Testing Action Creators', () => {
     });
 
 
-    test.skip('should test a updatePlayer() action', async () => {
-        const expected = [
-            {
-                "total": 1,
-                "players": [
-                    {
-                        "id": 1,
-                        "nickname": "MOD",
-                        "avatar": "/images/avatar-04.png",
-                        "status": "plata",
-                        "score": 5679,
-                        "ranking": 1302
-                    }
-                ]
-            }
-        ];
+    // test.skip('should test a updatePlayer() action', async () => {
+    //     const expected = [
+    //         {
+    //             "total": 1,
+    //             "players": [
+    //                 {
+    //                     "id": 1,
+    //                     "nickname": "MOD",
+    //                     "avatar": "/images/avatar-04.png",
+    //                     "status": "plata",
+    //                     "score": 5679,
+    //                     "ranking": 1302
+    //                 }
+    //             ]
+    //         }
+    //     ];
 
-        axios.put = jest.fn((url) => {
-            return Promise.resolve();
-        });
+    //     axios.put = jest.fn((url) => {
+    //         return Promise.resolve();
+    //     });
 
-        const fakePlayer = {
-            "id": 1,
-            "nickname": "MOD",
-            "avatar": "/images/avatar-04.png",
-            "status": "plata",
-            "score": 5679,
-        }
+    //     const fakePlayer = {
+    //         "id": 1,
+    //         "nickname": "MOD",
+    //         "avatar": "/images/avatar-04.png",
+    //         "status": "plata",
+    //         "score": 5679,
+    //     }
 
-        const dispatch = jest.fn(),
-            getState = jest.fn(() => {
-                url: `${process.env.REACT_APP_API_URL_LOCAL}/players`;
-            });
+    //     const dispatch = jest.fn(),
+    //         getState = jest.fn(() => {
+    //             url: `${process.env.REACT_APP_API_URL_LOCAL}/players`;
+    //         });
 
-        await updatePlayer(fakePlayer)(dispatch, getState);
-        console.log(dispatch.mock)
-        expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
-    });
+    //     await updatePlayer(fakePlayer)(dispatch, getState);
+    //     console.log(dispatch.mock)
+    //     expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
+    // });
 
     test('should test a getSinglePlayer(1) action', async () => {
         const expected = [

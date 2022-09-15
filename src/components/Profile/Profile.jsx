@@ -25,10 +25,6 @@ const Profile = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [])
 
-  useEffect(() => {
-    console.log(userInfo)
-  },[userInfo])
-
   const handleDeletePlayer = () => {
     Swal.fire({
       title: '¿Desea borrar su player?',

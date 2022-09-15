@@ -1,4 +1,4 @@
-d<br>
+<br>
 <br>
 <div align="center">
 
@@ -201,18 +201,17 @@ http://localhost:3000/
 <br>
 <h1>Equipo de desarrollo 🌄</h1>
 
-<div style="display:flex; align-items:center">
+<div style="display:flex; align-items:center; width:100%;justify-content:center">
+
 <div >
 
 - [Florencia Taburelli](<https://github.com/orgs/delosandesdevs/people/FlorenciaTaburelli>)
 
 </div>
 
-<div style="width:100px">
 
-![](./Readme/flor.png)
+<img src='./Readme/flor.png' alt="drawing" width="100"/>
 
-</div>
 
 <div >
 
@@ -220,11 +219,9 @@ http://localhost:3000/
 
 </div>
 
-<div style="width:100px">
 
-![](./Readme/juano.png)
+<img src='./Readme/juano.png' alt="drawing" width="100"/>
 
-</div>
 
 <div >
 
@@ -232,11 +229,8 @@ http://localhost:3000/
 
 </div>
 
-<div style="width:100px">
 
-![](./Readme/rami.png)
-
-</div>
+<img src='./Readme/rami.png' alt="drawing" width="100"/>
 
 <div >
 
@@ -244,11 +238,11 @@ http://localhost:3000/
 
 </div>
 
-<div style="width:100px">
 
-![](./Readme/rodri.png)
 
-</div>
+<img src='./Readme/rodri.png' alt="drawing" width="100"/>
+
+
 
 <div >
 
@@ -256,11 +250,9 @@ http://localhost:3000/
 
 </div>
 
-<div style="width:100px">
 
-![](./Readme/gian.png)
+<img src='./Readme/gian.png' alt="drawing" width="100"/>
 
-</div>
 
 
 

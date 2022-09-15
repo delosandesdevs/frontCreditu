@@ -122,13 +122,22 @@ Mediante la tecnología Cypress….
 <br>
 <h1> Imagen Docker 🐙 </h1>
 La imagen Docker de este proyecto es solamente del desarrollo frontend tomando todas las funcionalidades del back desde el deploy original.
-Para poder manipular nuestra imagen Docker como principal requisito es tener instalado en tu ordenador Docker, el cual en el siguiente enlace puedes obtener el paso a paso para la instalación. https://www.docker.com/products/docker-desktop/ 
+Para poder manipular nuestra imagen Docker como principal requisito es tener instalado en tu ordenador Docker, el cual en el siguiente enlace puedes obtener el paso a paso para la instalación. 
+
+https://www.docker.com/products/docker-desktop/ 
+
 Luego puedes ingresar en la termina de tu ordenador ingresa el siguiente comando para poder descargar la imagen.
+
 - **docker pull gianfrancogobbi/freeforest_subido:latest**
+- 
 Cuando termine el proceso de descarga ya puedes correr tu imagen con el siguiente comando
+
 - **docker run -it --rm ruby:latest**
+- 
 Ya con todos estos pasos, solamente queda ingresar a Free Forest a navegar en el siguiente enlace.
+
 http://localhost:3000/
+
 <br>
 <br>
 <h1>Tecnologías utilizadas 👨‍💻</h1>

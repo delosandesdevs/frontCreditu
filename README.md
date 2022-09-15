@@ -1,4 +1,4 @@
-<br>
+d<br>
 <br>
 <div align="center">
 
@@ -18,9 +18,21 @@ Con las siguientes instrucciones podrás poner en funcionamiento nuestro proyect
 
 **📑    Requerimientos**
 
-Para poder poner a correr esta aplicación tendrás que tener instalado en tu ordenador con anterioridad la última versión de NPM y Node, puedes chequear en consola si la tienes instalada haciendo “npm -v” y “node-v”
+Para poder poner a correr esta aplicación tendrás que tener instalado en tu ordenador con anterioridad la última versión de NPM y Node, puedes chequear en consola si la tienes instalada haciendo 
+
+```
+npm -v
+```
+ó también
+
+``` 
+node-v
+```
 
 Sino en el siguiente link puedes descargarla gratuitamente - <https://nodejs.org/es/download/> .
+
+Luego, deberás ingresar a nuestro repositorio de GitHub:
+https://github.com/delosandesdevs/frontCreditu
 
 Copia el repositorio haciendo click en Fork, así obtendrás una copia del mismo en tu Github.
 
@@ -42,17 +54,23 @@ A continuación haz click en Code, copiando el link del repositorio para clonarl
 <br>
 <h1>Para instalar 🛠 </h1>
 
-Llegó el momento para ejecutar en tu ordenador nuestro proyecto.
+Llegó el momento para instalar nuestro proyecto en tu ordenador.
 
 Abre la consola de tu editor y ejecuta los siguientes comandos.
 
-- **npm install**
+```
+npm install
+```
 
 Con este comando descargamos e instalamos todas las dependencias que utilizamos en el proyecto de forma automática. El tiempo de este proceso depende de tu conexión a internet y del poder del procesamiento de tu ordenador, ten paciencia, puede tardar unos minutos.
 
-- **npm start**
+Luego, para iniciar la aplicación en tu navegador deberás ejecutar la siguiente línea de código en consola:
 
-Este comando busca y ejecuta los scripts contenidos en el archivo que se denomina package.json, automáticamente desplegará la aplicación en su navegador predeterminado por el sistema en la dirección [http://localhost:3000](http://localhost:3000/) , puede este proceso tardar unos minutos dependiendo del poder de procesamiento de su ordenador.
+```
+npm start
+```
+
+Este comando busca y ejecuta los scripts contenidos en el archivo que se denomina package.json, automáticamente desplegará la aplicación en su navegador predeterminado por el sistema en la dirección [http://localhost:3000](http://localhost:3000/) , este proceso puede demorar unos minutos.
 
 Puedes realizar cambios en el código, y al ser guardados notarás que tu navegador se refrescará con los mismos.
 
@@ -113,9 +131,11 @@ Si tocas tu avatar en la parte superior a la derecha, podrás encontrar el enlac
 Mediante Jest, MSW y algunas otras dependencias, hemos realizado tests unitarios de los componentes de la aplicación, funciones y configuraciones, chequeando el correcto funcionamiento y entendiendo cuál es la cobertura del testing sobre el código (utilizando Coverage), informe el cuál dejamos aquí debajo:
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.009.png)
 
-Para correr los tests unitarios, basta con correr el comando **npm test** en consola, el cuál ejecutará todos los tests ubicados en /src/tests
-
-Entendemos que hay puntos fuertes y débiles en nuestros test unitarios. En estas tres semanas de proyecto, hemos pasado de no haber leído nunca sobre testing a conocer todas estas herramientas que claramente le dan solidez a la App, y por supuesto ya incorporamos todo esto a nuestra metodología de trabajo. Continuamos capacitándonos para pulir cada vez más estos flancos.
+Para correr los tests unitarios, basta con correr el comando 
+```
+npm test
+```
+ en consola, el cuál ejecutará todos los tests ubicados en /src/tests
 
 - **Pruebas end-to-end**
 
@@ -123,6 +143,7 @@ Mediante Cypress realizamos las pruebas end to end emulando la experiencia real 
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.010.png)
 
 Se agrega el siguiente Gif como demo:
+
 ![](./Readme/cypress-videob35e6343-892c-4343-8998-1436aa7e39a6.gif)
 
 Para correr cypress primero se debe ejecutar 
@@ -144,12 +165,15 @@ https://www.docker.com/products/docker-desktop/
 
 Luego ingresa en la terminal de tu ordenador e ingresa el siguiente comando para poder descargar la imagen.
 
-- **docker pull gianfrancogobbi/freeforest_subido:latest**
+```
+docker pull gianfrancogobbi/freeforest_subido:latest
+```
 
 Cuando termine el proceso de descarga ya puedes correr tu imagen con el siguiente comando
 
-- **docker run -it --rm freeforest_subido:latest**
-
+```
+docker run -it -p 3000:3000 gianfrancogobbi/freeforest_subido:latest
+```
 Ya con todos estos pasos, solamente queda ingresar a Free Forest a navegar en el siguiente enlace.
 
 http://localhost:3000/
@@ -164,18 +188,86 @@ http://localhost:3000/
 ), Meet y grupo de Whatsapp, aplicando la metodología SCRUM.
 - Para investigación UX y desarrollo conceptual del juego utilizamos Google Forms.
 - Para unificar investigación, desarrollo UX , mockups de baja y alta fidelidad utilizamos Figma.
-- Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist, AWS, Cypress, Jest.
-- Para crear una imagen del proyecto utilizamos Docker. 
+- Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist y AWS.
+- Para crear una imagen del proyecto utilizamos Docker.
+
+-   Para Testing usamos
+    - Cypress
+    - Jest
+    - Mock Service Worker (MSW)
+    - Clarity ( Test de Usabilidad )
 
 <br>
 <br>
 <h1>Equipo de desarrollo 🌄</h1>
 
+<div style="display:flex; align-items:center">
+<div >
+
 - [Florencia Taburelli](<https://github.com/orgs/delosandesdevs/people/FlorenciaTaburelli>)
+
+</div>
+
+<div style="width:100px">
+
+![](./Readme/flor.png)
+
+</div>
+
+<div >
+
 - [Juano Cataldo](<https://github.com/orgs/delosandesdevs/people/juanocataldo>)
+
+</div>
+
+<div style="width:100px">
+
+![](./Readme/juano.png)
+
+</div>
+
+<div >
+
 - [Ramiro Grisales](<https://github.com/orgs/delosandesdevs/people/orimarselasirg>)
+
+</div>
+
+<div style="width:100px">
+
+![](./Readme/rami.png)
+
+</div>
+
+<div >
+
 - [Rodrigo Pérez](<https://github.com/orgs/delosandesdevs/people/rodrigo0109>)
+
+</div>
+
+<div style="width:100px">
+
+![](./Readme/rodri.png)
+
+</div>
+
+<div >
+
 - [Gianfranco Gobbi](<https://github.com/GianfrancoGobbi>)
+
+</div>
+
+<div style="width:100px">
+
+![](./Readme/gian.png)
+
+</div>
+
+
+
+</div>
+
+<br><br>
+
 
 
 <div align="center">

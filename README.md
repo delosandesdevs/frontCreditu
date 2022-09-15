@@ -129,11 +129,11 @@ https://www.docker.com/products/docker-desktop/
 Luego puedes ingresar en la termina de tu ordenador ingresa el siguiente comando para poder descargar la imagen.
 
 - **docker pull gianfrancogobbi/freeforest_subido:latest**
-- 
+
 Cuando termine el proceso de descarga ya puedes correr tu imagen con el siguiente comando
 
 - **docker run -it --rm ruby:latest**
-- 
+
 Ya con todos estos pasos, solamente queda ingresar a Free Forest a navegar en el siguiente enlace.
 
 http://localhost:3000/

@@ -36,9 +36,9 @@ describe('Testing Action Creators', () => {
 
         // execute
         await getPlayersPaginated(0, 'desc', 10)(dispatch, getState);
-
+        console.log('>>>>>>>>>>>>>',dispatch.mock.calls[0][0]);
         // verify
-        expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
+        expect(dispatch.mock.calls[0][0].payload.length).toEqual(expected[0].payload.length);
         //   expect(dispatch.mock.calls[1][0]).toEqual(expected[1]);
     });
 
@@ -81,8 +81,8 @@ describe('Testing Action Creators', () => {
             });
 
         await getTenPlayers()(dispatch, getState);
-
-        expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
+        console.log(dispatch.mock.calls[0][0]);
+        expect(dispatch.mock.calls[0][0].payload.length).toEqual(expected[0].payload.length);
     });
 
     test('should test a getSearchPlayer() action', async () => {

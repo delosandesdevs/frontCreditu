@@ -4,9 +4,9 @@
 
 </div>
 
-<p align="justify"> Free Forest es un proyecto grupal que se desarrolló como prueba técnica de la empresa Creditú. El principal requisito a cumplir fue la puesta en escena de un dashboard de consulta de puntos en una aplicación web de un juego hipotético, el cual también tuvimos que desarrollar conceptualmente y está basado en la concientización del medio ambiente, enfocándonos con profundidad en la forestación, la cual te invitamos a visitarla en el siguiente enlace. </p>  
+<p align="justify"> Free Forest es un proyecto grupal que se desarrolló como prueba técnica de la empresa Creditú. El principal requisito a cumplir fue la puesta en escena de un dashboard de consulta de puntos en una aplicación web de un juego hipotético, el cuál también tuvimos que desarrollar conceptualmente y está basado en la concientización del medio ambiente, enfocándonos con profundidad en la forestación, la cual te invitamos a visitarla en el siguiente enlace. </p>  
 
-https://develop.delosandes.xyz/players
+https://delosandes.xyz/
 
 <br>
 <br>
@@ -100,7 +100,7 @@ En esta pestaña encontrarás toda la información del juego y los nombres de lo
 
 - **Perfil**
 
-Si tocas tu avatar en la parte superior a la derecha, podrás encontrar el enlace hacia tu perfil en Free Forest, el cual si no tienes un jugador, te invita a crearlo, y si lo tienes mostrará tu progreso en el juego.
+Si tocas tu avatar en la parte superior a la derecha, podrás encontrar el enlace hacia tu perfil en Free Forest, el cual si no tienes un jugador te invita a crearlo, y si lo tienes mostrará tu progreso en el juego.
 
 <br>
 <br>
@@ -108,7 +108,12 @@ Si tocas tu avatar en la parte superior a la derecha, podrás encontrar el enlac
 
 - **Pruebas unitarias**
 
-Mediante Jest ……..
+Mediante Jest, MSW y algunas otras dependencias, hemos realizado tests unitarios de los componentes de la aplicación, funciones y configuraciones, chequeando el correcto funcionamiento y entendiendo cuál es la cobertura del testing sobre el código (utilizando Coverage), informe el cuál dejamos aquí debajo:
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.009.png)
+
+Para correr los tests unitarios, basta con correr el comando **npm test** en consola, el cuál ejecutará todos los tests ubicados en /src/tests
+
+Entendemos que hay puntos fuertes y débiles en nuestros test unitarios. En estas tres semanas de proyecto, hemos pasado de no haber leído nunca sobre testing a conocer todas estas herramientas que claramente le dan solidez a la App, y por supuesto ya incorporamos todo esto a nuestra metodología de trabajo. Continuamos capacitándonos para pulir cada vez más estos flancos.
 
 - **Pruebas end-to-end**
 
@@ -118,7 +123,7 @@ Mediante la tecnología Cypress….
 <br>
 <h1>Tecnologías utilizadas 👨‍💻</h1>
 
-- Para la comunicación en el trabajo en equipo utilizamos Trello, mediante la metodología SCRUM.
+- Para la comunicación en el trabajo en equipo utilizamos Trello, Meet y grupo de Whatsapp, aplicando la metodología SCRUM.
 - Para investigación UX y desarrollo conceptual del juego utilizamos Google Forms.
 - Para unificar investigación, desarrollo UX , mockups de baja y alta fidelidad utilizamos Figma.
 - Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist, AWS, Cypress, Jest.

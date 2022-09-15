@@ -11,6 +11,7 @@ describe('user should log in', () => {
     })
 })
 
+
 describe('Chatbot', () => {
     it('should respond correctly to "help", "about", "contact" and "game"', () => {
         cy.get('.chat-button').click()

@@ -125,11 +125,11 @@ Mediante Cypress realizamos las pruebas end to end emulando la experiencia real 
 Se agrega el siguiente Gif como demo:
 ![](./Readme/cypress-videob35e6343-892c-4343-8998-1436aa7e39a6.gif)
 
-Para ejecutar cypress primero se debe ejecutar 
+Para correr cypress primero se debe ejecutar 
 ```
 npm start
 ```
-para luego desde otra consola ejecutar el comando 
+para luego desde otra consola insertar el comando 
 ```
 npm run cypress
 ```

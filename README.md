@@ -122,6 +122,9 @@ Entendemos que hay puntos fuertes y débiles en nuestros test unitarios. En esta
 Mediante Cypress realizamos las pruebas end to end emulando la experiencia real del usuario sobre la aplicación, en este caso en el role de Admin. Se hizo énfasis sobre las funcionalidades criticas ya que entendemos el costo de tiempo que implica la ejecución de estos test. Debajo se puede encontrar el informe obtenido a través de la dashboard de cypress:
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.010.png)
 
+Se agrega el siguiente Gif como demo:
+![](./Readme/cypress-videob35e6343-892c-4343-8998-1436aa7e39a6.gif)
+
 Para ejecutar cypress primero se debe ejecutar 
 ```
 npm start

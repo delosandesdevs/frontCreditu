@@ -15,7 +15,6 @@ const App = () => {
   const userLogged = useSelector((store) => store.loggedUser);
 return (
   <>
-  {console.log(userLogged)}
     <div style={{ marginBottom: '70px' }}>
       <Navbar />
     </div>

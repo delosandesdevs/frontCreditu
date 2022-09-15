@@ -64,6 +64,21 @@ npm install
 
 Con este comando descargamos e instalamos todas las dependencias que utilizamos en el proyecto de forma automática. El tiempo de este proceso depende de tu conexión a internet y del poder del procesamiento de tu ordenador, ten paciencia, puede tardar unos minutos.
 
+Después, necesitarás crear un archivo bajo el nombre ".env" (sin comillas) con la siguiente información:
+
+```
+# FOR DEVELOPMENT
+REACT_APP_API_URL_LOCAL=
+
+# AUTH0
+REACT_APP_AUTH0_DOMAIN=
+REACT_APP_AUTH0_CLIENT_ID=
+```
+Los valores que irán dentro de cada variable serán enviados por correo electrónico, ya que es información sensible.
+<br>
+<br>
+
+
 Luego, para iniciar la aplicación en tu navegador deberás ejecutar la siguiente línea de código en consola:
 
 ```
@@ -154,7 +169,7 @@ para luego desde otra consola insertar el comando
 ```
 npm run cypress
 ```
- Ambos desde /frontCreditu. Tanto las pruebas unitarias como e2e han sido incorporadas a nustro equipo en este último tiempo, por lo que entendemos que hay puntos que pueden mejorarse y en los que seguiremos trabajando. 
+ ambos desde /frontCreditu. Tanto las pruebas unitarias como e2e han sido incorporadas a nustro equipo en este último tiempo, por lo que entendemos que hay puntos que pueden mejorarse y en los que seguiremos trabajando. 
 <br>
 <br>
 <h1> Imagen Docker 🐙 </h1>

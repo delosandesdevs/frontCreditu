@@ -201,8 +201,7 @@ http://localhost:3000/
 <br>
 <h1>Equipo de desarrollo 🌄</h1>
 
-<div style="display:flex; align-items:center; width:100%;justify-content:center">
-
+<div style="display:flex; align-items:center; width: 100%">
 <div >
 
 - [Florencia Taburelli](<https://github.com/orgs/delosandesdevs/people/FlorenciaTaburelli>)

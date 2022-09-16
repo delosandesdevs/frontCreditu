@@ -24,7 +24,7 @@ const RankingCard = ({ id, position, playername, status, score }) => {
   };
 
   return (
-    <tr>
+    <tr style={{verticalAlign:'middle'}}>
       <th scope="row" style={{ textAlign: 'center', color: 'lightgreen' }}>
         {position}
       </th>

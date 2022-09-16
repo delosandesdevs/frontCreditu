@@ -14,8 +14,7 @@ const Pages = ({ pages, handlePages }) => {
       <Pagination
         sx={{ button: { color: '#ffffff', borderColor: '#ffffff' } }}
         count={pages}
-        variant="outlined"
-        color="error"
+        color="success"
         page={page}
         onChange={handleChange}
         shape="rounded"

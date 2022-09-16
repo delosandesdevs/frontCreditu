@@ -5,7 +5,7 @@ import gold from '../../../assets/miscellaneous/oro.png';
 import silver from '../../../assets/miscellaneous/plata.png';
 import bronze from '../../../assets/miscellaneous/bronce.png';
 
-const RankingCard = ({ id, position, playername, status, score }) => {
+const RankingCard = ({ id, position, playername, status, score, avatar }) => {
   const userInfo = useSelector((store) => store.loggedUser);
 
   const setImage = () => {
@@ -24,14 +24,17 @@ const RankingCard = ({ id, position, playername, status, score }) => {
   };
 
   return (
-    <tr style={{verticalAlign:'middle'}}>
+    <tr style={{verticalAlign:'initial'}}>
       <th scope="row" style={{ textAlign: 'center', color: 'lightgreen' }}>
         {position}
       </th>
       <th scope="row" style={{ textAlign: 'center' }}>
         {id}
       </th>
-      <td data-testid="testplayer">{playername}</td>
+      <td data-testid="testplayer">
+        <img src={avatar} alt="" id='avatar-ranking-table' />
+        {playername}
+        </td>
       <td>{setImage()}</td>
       <td>{score}</td>
       {userInfo &&

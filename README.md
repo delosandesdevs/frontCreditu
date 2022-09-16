@@ -158,7 +158,7 @@ Mediante Cypress realizamos las pruebas end to end emulando la experiencia real 
 ![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.010.png)
 
 
-Para correr cypress primero se debe ejecutar 
+Para correr cypress primero se debe ejecutar desde el directorio \frontCreditu 
 ```
 npm start
 ```
@@ -166,7 +166,21 @@ para luego desde otra consola insertar el comando
 ```
 npm run cypress
 ```
- ambos desde /frontCreditu. Tanto las pruebas unitarias como e2e han sido incorporadas a nustro equipo en este último tiempo, por lo que entendemos que hay puntos que pueden mejorarse y en los que seguiremos trabajando. 
+Luego hay que seleccionar las opciones indicadas
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.011.png)
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.012.png)
+
+Seleccionar el archivo a ejecutar
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.013.png)
+
+Los tests comenzarán a ejecutarse
+
+![](./Readme/Aspose.Words.ea102fbd-e677-478a-991b-66b51ee3534b.014.png)
+
+ Tanto las pruebas unitarias como e2e han sido incorporadas a nustro equipo en este último tiempo, por lo que entendemos que hay puntos que pueden mejorarse y en los que seguiremos trabajando. 
 <br>
 <br>
 <h1> Imagen Docker 🐙 </h1>

@@ -2,7 +2,6 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './components/Home/Home';
-import User from './components/User/User';
 import Navbar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
 import CreatePlayer from './components/CreatePlayer/CreatePlayer';
@@ -20,7 +19,6 @@ return (
     </div>
     <Routes>
       <Route path="/" element={<Home />} exact />
-      <Route path="/user" element={<User />} />
       <Route path="/create-player/:action" element={Array.isArray(userLogged) ?  <Home /> :  <CreatePlayer /> } />
       <Route path="/ranking" element={<Ranking />} />
       <Route path="/profile" element={<Profile />} />

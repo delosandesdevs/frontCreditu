@@ -1,10 +1,9 @@
-import { findOrCreateUser, getAllPlayers, getPlayersPaginated, getSearchPlayer, getSinglePlayer, getTenPlayers, postPlayer, updatePlayer } from "../../redux/action"
+import { findOrCreateUser, getAllPlayers, getPlayersPaginated, getSearchPlayer, getSinglePlayer, getTenPlayers } from "../../redux/action"
 import { GET_PAGINATION, GET_PLAYER_BY_ID, GET_TOPTEN_PLAYERS, LOGIN_OR_CREATE } from "../../redux/constans"
 import configureStore from 'redux-mock-store';
-import { getAllPlayersMock, getPlayersPaginatedMock, getSearchedPlayerMock, getSinglePlayerByIdMock, getTopTenMock, getUserLoggedMock } from "../consts/responses";
+import { getAllPlayersMock, getPlayersPaginatedMock, getSearchedPlayerMock, getSinglePlayerByIdMock, getTopTenMock } from "../consts/responses";
 import thunk from 'redux-thunk';
 import axios from 'axios';
-import { useState } from "react";
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -24,22 +23,17 @@ describe('Testing Action Creators', () => {
             }
         ];
 
-        // mock the axios.post method, so it will just resolve the Promise.
         axios.get = jest.fn(() => {
             return Promise.resolve();
         });
 
-        // mock the dispatch and getState functions from Redux thunk.
         const dispatch = jest.fn(),
             getState = jest.fn(() => {
             });
 
-        // execute
         await getPlayersPaginated(0, 'desc', 10)(dispatch, getState);
         console.log('>>>>>>>>>>>>>',dispatch.mock.calls[0][0]);
-        // verify
         expect(dispatch.mock.calls[0][0].payload.length).toEqual(expected[0].payload.length);
-        //   expect(dispatch.mock.calls[1][0]).toEqual(expected[1]);
     });
 
     test('should test a findOrCreateUser() action', async () => {
@@ -134,46 +128,6 @@ describe('Testing Action Creators', () => {
 
         expect(dispatch.mock.calls[0][0].payload.players.length).toEqual(expected[0].payload.players.length);
     });
-
-
-    // test.skip('should test a updatePlayer() action', async () => {
-    //     const expected = [
-    //         {
-    //             "total": 1,
-    //             "players": [
-    //                 {
-    //                     "id": 1,
-    //                     "nickname": "MOD",
-    //                     "avatar": "/images/avatar-04.png",
-    //                     "status": "plata",
-    //                     "score": 5679,
-    //                     "ranking": 1302
-    //                 }
-    //             ]
-    //         }
-    //     ];
-
-    //     axios.put = jest.fn((url) => {
-    //         return Promise.resolve();
-    //     });
-
-    //     const fakePlayer = {
-    //         "id": 1,
-    //         "nickname": "MOD",
-    //         "avatar": "/images/avatar-04.png",
-    //         "status": "plata",
-    //         "score": 5679,
-    //     }
-
-    //     const dispatch = jest.fn(),
-    //         getState = jest.fn(() => {
-    //             url: `${process.env.REACT_APP_API_URL_LOCAL}/players`;
-    //         });
-
-    //     await updatePlayer(fakePlayer)(dispatch, getState);
-    //     console.log(dispatch.mock)
-    //     expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
-    // });
 
     test('should test a getSinglePlayer(1) action', async () => {
         const expected = [

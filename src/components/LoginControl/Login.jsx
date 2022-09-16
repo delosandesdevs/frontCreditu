@@ -19,23 +19,3 @@ const LoginButton = () => {
 };
 
 export default LoginButton;
-
-// .btn-ff {
-//   background-color: #fe9c84;
-//   color: black;
-//   width: 130px;
-//   height: 55px;
-//   border-radius: 4px;
-//   margin: 20px;
-//   box-shadow: rgba(0, 0, 0, 0.233) 0px 10px 15px -3px;
-// }
-
-// .btn-ff:hover {
-//   background-color: #bb6853;
-//   color: white;
-//   width: 130px;
-//   height: 55px;
-//   border-radius: 4px;
-//   margin: 20px;
-//   transition: 0.8s;
-// }

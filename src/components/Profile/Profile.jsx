@@ -101,7 +101,7 @@ const Profile = () => {
               >
                 <div className="nav-button centered-line" id="delete-player-btn">
                   BORRAR PLAYER
-                  <span class="material-symbols-outlined">delete</span>
+                  <span className="material-symbols-outlined">delete</span>
                 </div>
               </div>
             </div>

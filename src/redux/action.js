@@ -20,8 +20,8 @@ export function findOrCreateUser(name, email) {
           : process.env.REACT_APP_API_URL
       }/user`,
       {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify({ name, email }), // data can be `string` or {object}!
+        method: 'POST', 
+        body: JSON.stringify({ name, email }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -45,7 +45,7 @@ export function getTenPlayers() {
           process.env.NODE_ENV !== 'production'
             ? process.env.REACT_APP_API_URL_LOCAL
             : process.env.REACT_APP_API_URL
-        }/players?page=0&size=11&orderby=dsc`
+        }/players?page=0&size=11&orderby=desc`
       );
       const res = await data.json();
       dispatch({
@@ -200,25 +200,6 @@ export function updatePlayer(player, setUpdated) {
       .catch((err) => console.log('Error al actualizar el player', err));
   };
 }
-
-// export function getPlayersByStatus({ status }) {
-//   return function (dispatch) {
-//     return fetch(
-//       `${
-//         process.env.NODE_ENV !== 'production'
-//           ? process.env.REACT_APP_API_URL_LOCAL
-//           : process.env.REACT_APP_API_URL
-//       }/filterByStatus?status=${status}`
-//     )
-//       .then((res) => res.json())
-//       .then((data) => {
-//         dispatch({
-//           type: GET_PAGINATION,
-//           payload: data
-//         });
-//       });
-//   };
-// }
 
 export function deletePlayer(player) {
   return function () {

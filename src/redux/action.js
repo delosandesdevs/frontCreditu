@@ -20,8 +20,8 @@ export function findOrCreateUser(name, email) {
           : process.env.REACT_APP_API_URL
       }/user`,
       {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify({ name, email }), // data can be `string` or {object}!
+        method: 'POST', 
+        body: JSON.stringify({ name, email }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -45,7 +45,7 @@ export function getTenPlayers() {
           process.env.NODE_ENV !== 'production'
             ? process.env.REACT_APP_API_URL_LOCAL
             : process.env.REACT_APP_API_URL
-        }/players?page=0&size=11&orderby=dsc`
+        }/players?page=0&size=11&orderby=desc`
       );
       const res = await data.json();
       dispatch({
@@ -65,7 +65,7 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
         process.env.NODE_ENV !== 'production'
           ? process.env.REACT_APP_API_URL_LOCAL
           : process.env.REACT_APP_API_URL
-      }}/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
+      }/players?page=${pageNumber}&size=${size}&orderby=${orderBy}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -80,12 +80,17 @@ export function getPlayersPaginated(pageNumber, orderBy, size) {
 export function getSearchPlayer({ nickname, status }) {
   return function (dispatch) {
     if (nickname === '') return getPlayersPaginated(0, 'desc', 10);
+    let url = null;
+    
+    if (!status) url= `searchplayer?nickname=${nickname}`
+    else url=`searchplayer?nickname=${nickname}&status=${status}`
+
     return fetch(
       `${
         process.env.NODE_ENV !== 'production'
           ? process.env.REACT_APP_API_URL_LOCAL
           : process.env.REACT_APP_API_URL
-      }/searchplayer?nickname=${nickname}?status=${status}`
+      }/${url}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -99,7 +104,6 @@ export function getSearchPlayer({ nickname, status }) {
 
 export function postPlayer(player, setCreated) {
   return function () {
-    console.log('>>>>>>>>>',player);
     return fetch(
       `${
         process.env.NODE_ENV !== 'production'
@@ -194,25 +198,6 @@ export function updatePlayer(player, setUpdated) {
         });
       })
       .catch((err) => console.log('Error al actualizar el player', err));
-  };
-}
-
-export function getPlayersByStatus({ status }) {
-  return function (dispatch) {
-    return fetch(
-      `${
-        process.env.NODE_ENV !== 'production'
-          ? process.env.REACT_APP_API_URL_LOCAL
-          : process.env.REACT_APP_API_URL
-      }/filterByStatus?status=${status}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_PAGINATION,
-          payload: data
-        });
-      });
   };
 }
 

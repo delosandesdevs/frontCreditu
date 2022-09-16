@@ -101,7 +101,7 @@ const Profile = () => {
               >
                 <div className="nav-button centered-line" id="delete-player-btn">
                   BORRAR PLAYER
-                  <span class="material-symbols-outlined">delete</span>
+                  <span className="material-symbols-outlined">delete</span>
                 </div>
               </div>
             </div>
@@ -123,12 +123,11 @@ const Profile = () => {
         )}
       </div>
 
-      <h2 id="profile-thanks">Gracias</h2>
+      <h2 id="profile-thanks" style={{fontWeight:"100"}}>¡Gracias!</h2>
       <p id="profile-thanks-p">
-        Gracias a tus contribuciones, hemos podido plantar <strong>4</strong>{' '}
-        árboles en zonas necesitadas de la provincia. Continúa así para subir de
-        ranking y participar por grandes premios...¡Aunque ya estamos ganando
-        todos!
+        Gracias a tu participación en Free Forest, hemos podido continuar con nuestra {' '}
+        misión de plantar árboles en zonas afectadas por los incendios. Sigue así para ganar más puntos 
+        subir de ranking...¡Aunque ya estamos ganando todos!
       </p>
       <div className="profile-gallery">
         <Gallery />

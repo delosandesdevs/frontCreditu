@@ -3,7 +3,6 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  // height: 60px;
   background: #fef1ee;
   box-shadow: 0px 7px 10px -2px rgba(0, 0, 0, 0.25);
 }
@@ -12,42 +11,14 @@
   width: 100px;
 }
 
-/* .MuiButtonBase-root.MenuItem {
-  width: 100%;
-} */
 
 .List.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   width: 100%;
 }
 
-// .container-nav-button-active{
-//     border-bottom: 3px solid #C65F72;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: row;
-//     width: 100px;
-//     padding: 6px;
-//     margin-left: 20px;
-// }
-
 .dropdown {
   display: flex;
 }
-
-// .container-nav-button-active .nav-button{
-//     color: #C65F72;
-// }
-
-/* .container-nav-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 100px;
-    padding: 6px;
-    margin-left: 20px;
-} */
 
 .navw {
   display: flex;
@@ -73,7 +44,6 @@
   justify-content: center;
 }
 
-/* From uiverse.io by @WhiteNervosa */
 .nav-button {
   font-size: 18px;
   color: #0f5156;

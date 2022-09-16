@@ -187,12 +187,13 @@ const Ranking = () => {
                     playername={p.nickname}
                     status={p.status}
                     score={p.score}
+                    avatar={p.avatar}
                     key={p.ranking}
                   />
                 ))
               : <td colSpan={6}><span style={{marginTop:"40px"}} className="centered-line">
                 No se encontraron players
-                <span class="material-symbols-outlined">person_search</span>
+                <span className="material-symbols-outlined">person_search</span>
                 </span></td>}
           </tbody>
         </table>

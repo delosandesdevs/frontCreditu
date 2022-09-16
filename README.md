@@ -173,22 +173,32 @@ npm run cypress
 <br>
 <br>
 <h1> Imagen Docker 🐙 </h1>
-La imagen Docker de este proyecto es solamente del desarrollo frontend tomando todas las funcionalidades del back desde el deploy original.
-Para poder manipular nuestra imagen Docker como principal requisito es tener instalado en tu ordenador Docker, el cual en el siguiente enlace puedes obtener el paso a paso para la instalación. 
+Las imagenes Docker de este proyecto estan pensadas para correr en simultaneo tanto back como front.
+Para poder manipular nuestras imagenes Docker como principal requisito es tener instalado en tu ordenador Docker, el cual en el siguiente enlace puedes obtener el paso a paso para la instalación. 
 
 https://www.docker.com/products/docker-desktop/ 
 
-Luego ingresa en la terminal de tu ordenador e ingresa el siguiente comando para poder descargar la imagen.
+Luego ingresa en la terminal de tu ordenador e ingresa el siguiente comando para poder descargar las imagenes.
 
 ```
-docker pull gianfrancogobbi/freeforest_subido:latest
+docker pull gianfrancogobbi/freeforest_front:v1
+```
+```
+docker pull gianfrancogobbi/freeforest_back:v1
 ```
 
-Cuando termine el proceso de descarga ya puedes correr tu imagen con el siguiente comando
+Cuando termine el proceso de descarga ya puedes correr tus imagenes con los siguientes comandos
 
+Front
 ```
-docker run -it -p 3000:3000 gianfrancogobbi/freeforest_subido:latest
+docker run -it -p 3000:3000 gianfrancogobbi/freeforest_front:v1
 ```
+
+Back
+```
+docker run -it -p 3000:3000 gianfrancogobbi/freeforest_back:v1
+```
+
 Ya con todos estos pasos, solamente queda ingresar a Free Forest a navegar en el siguiente enlace.
 
 http://localhost:3000/

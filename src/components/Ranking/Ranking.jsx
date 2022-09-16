@@ -187,6 +187,7 @@ const Ranking = () => {
                     playername={p.nickname}
                     status={p.status}
                     score={p.score}
+                    avatar={p.avatar}
                     key={p.ranking}
                   />
                 ))

@@ -180,9 +180,12 @@ https://www.docker.com/products/docker-desktop/
 
 Luego ingresa en la terminal de tu ordenador e ingresa el siguiente comando para poder descargar las imagenes.
 
+Front
 ```
 docker pull gianfrancogobbi/freeforest_front:v1
 ```
+
+Back
 ```
 docker pull gianfrancogobbi/freeforest_back:v1
 ```
@@ -196,7 +199,7 @@ docker run -it -p 3000:3000 gianfrancogobbi/freeforest_front:v1
 
 Back
 ```
-docker run -it -p 3000:3000 gianfrancogobbi/freeforest_back:v1
+docker run -it -p 8080:8080 gianfrancogobbi/freeforest_back:v1
 ```
 
 Ya con todos estos pasos, solamente queda ingresar a Free Forest a navegar en el siguiente enlace.

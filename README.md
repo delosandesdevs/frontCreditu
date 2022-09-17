@@ -227,6 +227,7 @@ http://localhost:3000/
 ), Meet y grupo de Whatsapp, aplicando la metodología SCRUM.
 - Para investigación UX y desarrollo conceptual del juego utilizamos Google Forms.
 - Para unificar investigación, desarrollo UX , mockups de baja y alta fidelidad utilizamos Figma.
+https://www.figma.com/file/568t6CRsa2PPJCwv7Lpckp/De-los-Andes
 - Para desarrollo de aplicación utilizamos React, Javascript, Node, Redux, Express, Css, Material UI, React Persist y AWS.
 - Para crear una imagen del proyecto utilizamos Docker.
 
